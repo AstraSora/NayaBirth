@@ -18,10 +18,10 @@ export function ResourceCard({ to, icon, title, color = 'sky' }) {
   return (
     <Link
       to={to}
-      className={`flex flex-col items-center gap-2 p-4 min-h-[88px] rounded-xl bg-white shadow-card hover:shadow-soft transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 ${focusStyles[color]}`}
+      className={`flex flex-col items-center gap-2 p-4 min-h-[100px] rounded-xl bg-white shadow-card hover:shadow-soft transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 ${focusStyles[color]}`}
       aria-label={`${title} resources`}
     >
-      <div className={`w-12 h-12 rounded-full flex items-center justify-center text-2xl ${colorStyles[color]}`} aria-hidden="true">
+      <div className={`w-14 h-14 rounded-full flex items-center justify-center text-3xl ${colorStyles[color]}`} aria-hidden="true">
         {icon}
       </div>
       <span className="text-sm font-medium text-gray-800 text-center leading-tight">{title}</span>
