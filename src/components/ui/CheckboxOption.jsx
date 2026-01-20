@@ -36,7 +36,7 @@ export function CheckboxOption({
           </svg>
         )}
       </div>
-      <span className={`text-base ${checked ? 'text-gray-800 font-medium' : 'text-gray-600'}`}>
+      <span className={`text-base ${checked ? 'text-gray-900 font-medium' : 'text-gray-700'}`}>
         {label}
       </span>
     </label>

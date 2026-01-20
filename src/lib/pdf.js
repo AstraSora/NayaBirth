@@ -1,61 +1,125 @@
 export async function generatePDF(responses, sections) {
-  // Dynamically import html2pdf.js
-  const html2pdf = (await import('html2pdf.js')).default
-
   // Build HTML content
-  const html = buildPDFContent(responses, sections)
+  const html = buildPrintContent(responses, sections)
 
-  // Create a temporary container
-  const container = document.createElement('div')
-  container.innerHTML = html
-  container.style.position = 'absolute'
-  container.style.left = '-9999px'
-  container.style.top = '0'
-  document.body.appendChild(container)
+  // Open a new window with the print content
+  const printWindow = window.open('', '_blank', 'width=800,height=600')
 
-  // Generate PDF
-  const opt = {
-    margin: [0.5, 0.5, 0.5, 0.5],
-    filename: 'my-birth-plan.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true },
-    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-    pagebreak: { mode: 'avoid-all', before: '.page-break' }
+  if (!printWindow) {
+    alert('Please allow popups to print your birth plan')
+    return
   }
 
-  try {
-    await html2pdf().set(opt).from(container).save()
-  } finally {
-    // Clean up
-    document.body.removeChild(container)
+  printWindow.document.write(html)
+  printWindow.document.close()
+
+  // Wait for content to load, then trigger print
+  printWindow.onload = () => {
+    printWindow.focus()
+    printWindow.print()
   }
+
+  // Fallback for browsers where onload doesn't fire reliably
+  setTimeout(() => {
+    printWindow.focus()
+    printWindow.print()
+  }, 250)
 }
 
-function buildPDFContent(responses, sections) {
+function buildPrintContent(responses, sections) {
   const styles = `
     <style>
-      * { font-family: 'Helvetica', 'Arial', sans-serif; }
-      body { color: #1f2937; line-height: 1.5; }
-      .header { text-align: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid #F8A5A5; }
-      .header h1 { color: #F8A5A5; font-size: 28px; margin: 0 0 8px 0; }
-      .header p { color: #6b7280; margin: 0; font-size: 14px; }
-      .section { margin-bottom: 20px; }
-      .section-title { font-size: 16px; font-weight: bold; color: #F8A5A5; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e5e7eb; }
-      .question { margin-bottom: 12px; }
-      .question-label { font-size: 12px; color: #6b7280; margin-bottom: 4px; }
-      .question-answer { font-size: 14px; color: #1f2937; }
-      .not-answered { color: #9ca3af; font-style: italic; }
-      .footer { margin-top: 24px; padding-top: 16px; border-top: 1px solid #e5e7eb; text-align: center; font-size: 11px; color: #9ca3af; }
+      * {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 20px;
+        color: #1f2937;
+        line-height: 1.6;
+        background: white;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 24px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid #F8A5A5;
+      }
+      .header h1 {
+        color: #F8A5A5;
+        font-size: 28px;
+        margin: 0 0 8px 0;
+      }
+      .header p {
+        color: #6b7280;
+        margin: 4px 0;
+        font-size: 14px;
+      }
+      .section {
+        margin-bottom: 24px;
+        page-break-inside: avoid;
+      }
+      .section-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #F8A5A5;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .question {
+        margin-bottom: 12px;
+        page-break-inside: avoid;
+      }
+      .question-label {
+        font-size: 12px;
+        color: #6b7280;
+        margin-bottom: 2px;
+      }
+      .question-answer {
+        font-size: 14px;
+        color: #1f2937;
+      }
+      .footer {
+        margin-top: 32px;
+        padding-top: 16px;
+        border-top: 1px solid #e5e7eb;
+        text-align: center;
+        font-size: 11px;
+        color: #9ca3af;
+      }
+      .footer p {
+        margin: 4px 0;
+      }
+      @media print {
+        body {
+          padding: 0;
+        }
+        .section {
+          page-break-inside: avoid;
+        }
+        .no-print {
+          display: none;
+        }
+      }
     </style>
   `
 
   let content = `
-    ${styles}
-    <div class="header">
-      <h1>🌸 My Birth Plan</h1>
-      <p>Created with NayaBirth for UCI Health</p>
-      <p>Generated: ${new Date().toLocaleDateString()}</p>
-    </div>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>My Birth Plan - UCI Health</title>
+      ${styles}
+    </head>
+    <body>
+      <div class="header">
+        <h1>My Birth Plan</h1>
+        <p>Created with NayaBirth for UCI Health</p>
+        <p>Generated: ${new Date().toLocaleDateString()}</p>
+      </div>
   `
 
   for (const section of sections) {
@@ -78,8 +142,8 @@ function buildPDFContent(responses, sections) {
 
       content += `
         <div class="question">
-          <div class="question-label">${question.question}</div>
-          <div class="question-answer">${displayValue}</div>
+          <div class="question-label">${escapeHtml(question.question)}</div>
+          <div class="question-answer">${escapeHtml(displayValue)}</div>
         </div>
       `
     }
@@ -88,10 +152,12 @@ function buildPDFContent(responses, sections) {
   }
 
   content += `
-    <div class="footer">
-      <p>This birth plan represents my preferences for labor, delivery, and newborn care.</p>
-      <p>I understand that circumstances may require flexibility and I trust my care team to make decisions in the best interest of my baby and me.</p>
-    </div>
+      <div class="footer">
+        <p>This birth plan represents my preferences for labor, delivery, and newborn care.</p>
+        <p>I understand that circumstances may require flexibility and I trust my care team to make decisions in the best interest of my baby and me.</p>
+      </div>
+    </body>
+    </html>
   `
 
   return content
@@ -116,4 +182,11 @@ function getDisplayValue(question, value) {
   }
 
   return value
+}
+
+function escapeHtml(text) {
+  if (typeof text !== 'string') return text
+  const div = document.createElement('div')
+  div.textContent = text
+  return div.innerHTML
 }

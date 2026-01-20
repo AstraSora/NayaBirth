@@ -60,11 +60,18 @@ export function Assessment() {
       {/* Progress Bar */}
       <div className="bg-white border-b border-gray-100">
         <div className="max-w-lg mx-auto px-4 py-3">
-          <div className="flex items-center justify-between text-sm text-gray-500 mb-2">
+          <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
             <span>Question {currentQuestion + 1} of {totalQuestions}</span>
-            <span>{Math.round(progress)}%</span>
+            <span aria-live="polite">{Math.round(progress)}%</span>
           </div>
-          <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+          <div
+            className="h-2 bg-gray-100 rounded-full overflow-hidden"
+            role="progressbar"
+            aria-valuenow={Math.round(progress)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label={`Progress: ${Math.round(progress)}%`}
+          >
             <div
               className="h-full bg-teal-400 transition-all duration-300 ease-out"
               style={{ width: `${progress}%` }}
@@ -76,43 +83,45 @@ export function Assessment() {
       {/* Intro Message (only on first question) */}
       {currentQuestion === 0 && (
         <div className="max-w-lg mx-auto px-4 pt-4">
-          <div className="bg-teal-400/10 rounded-xl p-4 text-sm text-gray-600">
-            <p className="font-medium text-gray-700 mb-1">{epdsData.timeframe}</p>
+          <div className="bg-teal-100 rounded-xl p-4 text-sm text-gray-700">
+            <p className="font-medium text-gray-800 mb-1">{epdsData.timeframe}</p>
           </div>
         </div>
       )}
 
       {/* Question */}
-      <main className="flex-1 max-w-lg mx-auto px-4 py-6 w-full">
+      <main className="flex-1 max-w-lg mx-auto px-4 py-6 w-full" role="form" aria-label="Assessment questionnaire">
         <div className="animate-fade-in">
-          <h2 className="text-xl font-semibold text-gray-800 mb-6 leading-relaxed">
+          <h2 className="text-xl font-semibold text-gray-800 mb-6 leading-relaxed" id="question-text">
             {question.text}
           </h2>
 
-          <div className="space-y-3">
+          <div className="space-y-3" role="radiogroup" aria-labelledby="question-text">
             {question.options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleSelectOption(option.score)}
-                className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 ${
+                role="radio"
+                aria-checked={selectedAnswer === option.score}
+                className={`w-full text-left p-4 min-h-[56px] rounded-xl border-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 ${
                   selectedAnswer === option.score
-                    ? 'border-teal-400 bg-teal-400/10'
+                    ? 'border-teal-400 bg-teal-100'
                     : 'border-gray-200 bg-white hover:border-gray-300'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
+                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors flex-shrink-0 ${
                     selectedAnswer === option.score
                       ? 'border-teal-400 bg-teal-400'
                       : 'border-gray-300'
-                  }`}>
+                  }`} aria-hidden="true">
                     {selectedAnswer === option.score && (
                       <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     )}
                   </div>
-                  <span className="text-gray-700">{option.label}</span>
+                  <span className="text-gray-800">{option.label}</span>
                 </div>
               </button>
             ))}

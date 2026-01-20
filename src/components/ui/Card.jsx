@@ -8,7 +8,7 @@ export function Card({
     white: 'bg-white',
     coral: 'bg-gradient-to-br from-coral-50 to-coral-100',
     sky: 'bg-gradient-to-br from-sky-50 to-sky-100',
-    teal: 'bg-gradient-to-br from-teal-300/20 to-teal-400/20',
+    teal: 'bg-gradient-to-br from-teal-50 to-teal-100',
     sage: 'bg-gradient-to-br from-sage-50 to-sage-100',
   }
 

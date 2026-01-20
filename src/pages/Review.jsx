@@ -67,10 +67,10 @@ export function Review() {
   }
 
   const getDisplayValue = (question, value) => {
-    if (!value) return <span className="text-gray-400 italic">Not answered</span>
+    if (!value) return <span className="text-gray-500 italic">Not answered</span>
 
     if (question.type === 'checkbox' && Array.isArray(value)) {
-      if (value.length === 0) return <span className="text-gray-400 italic">None selected</span>
+      if (value.length === 0) return <span className="text-gray-500 italic">None selected</span>
       const labels = value.map(v => {
         const opt = question.options?.find(o => o.value === v)
         return opt?.label || v
@@ -221,7 +221,7 @@ export function Review() {
               onClick={handleDownloadPDF}
               className="flex-1"
             >
-              📄 Download PDF
+              🖨️ Print
             </Button>
             <Button
               variant="primary"

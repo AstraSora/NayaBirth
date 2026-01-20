@@ -36,7 +36,7 @@ export function RadioOption({
           <div className="w-2 h-2 bg-white rounded-full" />
         )}
       </div>
-      <span className={`text-base ${checked ? 'text-gray-800 font-medium' : 'text-gray-600'}`}>
+      <span className={`text-base ${checked ? 'text-gray-900 font-medium' : 'text-gray-700'}`}>
         {label}
       </span>
     </label>

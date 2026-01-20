@@ -7,6 +7,7 @@ import { Assessment } from './pages/Assessment'
 import { AssessmentResults } from './pages/AssessmentResults'
 import { KickCounter } from './pages/KickCounter'
 import { ContractionTimer } from './pages/ContractionTimer'
+import { HospitalChecklist } from './pages/HospitalChecklist'
 import { Resources } from './pages/Resources'
 import { ResourceCategory } from './pages/ResourceCategory'
 
@@ -28,6 +29,7 @@ function App() {
       {/* Tools */}
       <Route path="/kick-counter" element={<KickCounter />} />
       <Route path="/contraction-timer" element={<ContractionTimer />} />
+      <Route path="/hospital-checklist" element={<HospitalChecklist />} />
 
       {/* Resources */}
       <Route path="/resources" element={<Resources />} />

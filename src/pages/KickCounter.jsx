@@ -122,10 +122,10 @@ export function KickCounter() {
         <Card className="mb-6">
           <CardContent className="pt-5">
             <div className="flex items-start gap-3">
-              <span className="text-2xl">💡</span>
+              <span className="text-2xl" aria-hidden="true">💡</span>
               <div>
-                <h3 className="font-medium text-gray-800 mb-1">Count your baby's kicks</h3>
-                <p className="text-sm text-gray-600">
+                <h2 className="font-medium text-gray-800 mb-1">Count your baby's kicks</h2>
+                <p className="text-sm text-gray-700">
                   Track at the same time daily when baby is active. Goal: Feel {KICK_GOAL} movements within 2 hours.
                 </p>
               </div>
@@ -162,14 +162,18 @@ export function KickCounter() {
 
             {/* Center content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <div className={`text-6xl font-bold ${isGoalReached ? 'text-teal-500' : 'text-gray-800'}`}>
+              <div
+                className={`text-6xl font-bold ${isGoalReached ? 'text-teal-600' : 'text-gray-800'}`}
+                aria-live="polite"
+                aria-label={`${kicks} kicks recorded`}
+              >
                 {kicks}
               </div>
-              <div className="text-gray-500 text-sm">
+              <div className="text-gray-600 text-sm">
                 of {KICK_GOAL} kicks
               </div>
               {isActive && (
-                <div className="text-gray-400 text-lg mt-2 font-mono">
+                <div className="text-gray-600 text-lg mt-2 font-mono" aria-label={`Elapsed time: ${formatTime(elapsedTime)}`}>
                   {formatTime(elapsedTime)}
                 </div>
               )}
@@ -195,9 +199,10 @@ export function KickCounter() {
           {/* Kick Button */}
           <button
             onClick={handleKick}
-            className="w-40 h-40 rounded-full bg-gradient-to-br from-coral-400 to-coral-500 text-white text-xl font-semibold shadow-soft hover:shadow-lg active:scale-95 transition-all duration-200 flex flex-col items-center justify-center mx-auto"
+            aria-label="Record a kick"
+            className="w-40 h-40 rounded-full bg-gradient-to-br from-coral-400 to-coral-500 text-white text-xl font-semibold shadow-soft hover:shadow-lg active:scale-95 transition-all duration-200 flex flex-col items-center justify-center mx-auto focus:outline-none focus:ring-4 focus:ring-coral-300 focus:ring-offset-2"
           >
-            <span className="text-4xl mb-1">👶</span>
+            <span className="text-4xl mb-1" aria-hidden="true">👶</span>
             <span>I felt a kick!</span>
           </button>
         </div>

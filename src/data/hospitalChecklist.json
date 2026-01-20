@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "id": "labor",
+      "title": "For Labor",
+      "icon": "🏥",
+      "items": [
+        { "id": "id-insurance", "label": "ID and insurance cards", "essential": true },
+        { "id": "birth-plan", "label": "Birth plan (if you have one)" },
+        { "id": "robe", "label": "Comfortable robe or gown" },
+        { "id": "grip-socks", "label": "Grip socks" },
+        { "id": "hair-ties", "label": "Hair ties" },
+        { "id": "lip-balm", "label": "Lip balm" },
+        { "id": "phone-charger", "label": "Phone and charger", "essential": true },
+        { "id": "focal-point", "label": "Focal point or comfort items" },
+        { "id": "pillow", "label": "Own pillow (optional)" },
+        { "id": "music", "label": "Music playlist or speaker" }
+      ]
+    },
+    {
+      "id": "after-birth",
+      "title": "For After Birth",
+      "icon": "💝",
+      "items": [
+        { "id": "going-home-outfit", "label": "Going-home outfit (loose and comfortable)", "essential": true },
+        { "id": "nursing-bras", "label": "Nursing bras (if breastfeeding)" },
+        { "id": "toiletries", "label": "Toiletries (toothbrush, shampoo, etc.)" },
+        { "id": "glasses-contacts", "label": "Glasses or contacts" },
+        { "id": "slippers", "label": "Slippers or flip-flops" },
+        { "id": "nursing-pads", "label": "Nursing pads" },
+        { "id": "nipple-cream", "label": "Nipple cream (if breastfeeding)" }
+      ]
+    },
+    {
+      "id": "baby",
+      "title": "For Baby",
+      "icon": "👶",
+      "items": [
+        { "id": "baby-outfit", "label": "Going-home outfit", "essential": true },
+        { "id": "car-seat", "label": "Car seat (installed and ready)", "essential": true },
+        { "id": "baby-blanket", "label": "Blanket" },
+        { "id": "baby-hat", "label": "Hat or beanie" },
+        { "id": "baby-socks", "label": "Socks or booties" }
+      ]
+    },
+    {
+      "id": "support-person",
+      "title": "For Support Person",
+      "icon": "🤝",
+      "items": [
+        { "id": "support-snacks", "label": "Snacks" },
+        { "id": "support-clothes", "label": "Change of clothes" },
+        { "id": "support-toiletries", "label": "Toiletries" },
+        { "id": "support-entertainment", "label": "Entertainment (book, tablet, etc.)" },
+        { "id": "support-cash", "label": "Cash for vending machines" },
+        { "id": "support-charger", "label": "Phone charger" }
+      ]
+    }
+  ],
+  "hospitalProvides": [
+    "Hospital gown",
+    "Mesh underwear and pads",
+    "Basic toiletries",
+    "Diapers and wipes",
+    "Baby blankets"
+  ]
+}

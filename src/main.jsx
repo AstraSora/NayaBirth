@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import { BirthPlanProvider } from './context/BirthPlanContext'
 import { AssessmentProvider } from './context/AssessmentContext'
+import { ChecklistProvider } from './context/ChecklistContext'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -11,7 +12,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <BirthPlanProvider>
         <AssessmentProvider>
-          <App />
+          <ChecklistProvider>
+            <App />
+          </ChecklistProvider>
         </AssessmentProvider>
       </BirthPlanProvider>
     </BrowserRouter>

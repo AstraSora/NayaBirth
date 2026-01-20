@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
+import UCIHealthLogo from '../assets/uci-health-logo.svg'
 
 export function Welcome() {
   return (
@@ -13,8 +14,17 @@ export function Welcome() {
             NayaBirth
           </h1>
           <p className="text-lg text-gray-600">
-            Your personalized birth plan for UCI Health
+            Your personalized birth plan companion
           </p>
+          {/* UCI Health Partnership Badge */}
+          <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-white/70 rounded-full shadow-sm">
+            <span className="text-xs text-gray-500 font-medium">In partnership with</span>
+            <img
+              src={UCIHealthLogo}
+              alt="UCI Health"
+              className="h-5"
+            />
+          </div>
         </div>
 
         {/* Main illustration area */}

@@ -7,20 +7,20 @@ export function Button({
   className = '',
   ...props
 }) {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-2xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100'
+  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-2xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 focus:outline-none focus:ring-2 focus:ring-offset-2'
 
   const variants = {
-    primary: 'bg-coral-400 hover:bg-coral-500 text-white shadow-soft',
-    secondary: 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200',
-    ghost: 'bg-transparent hover:bg-gray-100 text-gray-600',
-    outline: 'bg-transparent border-2 border-coral-400 text-coral-500 hover:bg-coral-50',
+    primary: 'bg-coral-400 hover:bg-coral-500 text-white shadow-soft focus:ring-coral-400',
+    secondary: 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 focus:ring-coral-300',
+    ghost: 'bg-transparent hover:bg-gray-100 text-gray-600 focus:ring-gray-300',
+    outline: 'bg-transparent border-2 border-coral-400 text-coral-500 hover:bg-coral-50 focus:ring-coral-400',
   }
 
   const sizes = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg',
-    icon: 'p-3',
+    sm: 'px-4 py-2.5 text-sm min-h-[44px]',
+    md: 'px-6 py-3 text-base min-h-[44px]',
+    lg: 'px-8 py-4 text-lg min-h-[52px]',
+    icon: 'p-3 min-h-[44px] min-w-[44px]',
   }
 
   return (

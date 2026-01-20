@@ -174,10 +174,10 @@ export function ContractionTimer() {
         <Card className="mb-6">
           <CardContent className="pt-5">
             <div className="flex items-start gap-3">
-              <span className="text-2xl">💡</span>
+              <span className="text-2xl" aria-hidden="true">💡</span>
               <div>
-                <h3 className="font-medium text-gray-800 mb-1">The 5-1-1 Rule</h3>
-                <p className="text-sm text-gray-600">
+                <h2 className="font-medium text-gray-800 mb-1">The 5-1-1 Rule</h2>
+                <p className="text-sm text-gray-700">
                   Call your provider when contractions are <strong>5</strong> minutes apart,
                   lasting <strong>1</strong> minute each, for <strong>1</strong> hour.
                 </p>
@@ -188,14 +188,18 @@ export function ContractionTimer() {
 
         {/* Timer Display */}
         <div className="text-center mb-8">
-          <div className={`text-7xl font-mono font-bold mb-4 transition-colors ${
-            isTimingContraction ? 'text-coral-500' : 'text-gray-800'
-          }`}>
+          <div
+            className={`text-7xl font-mono font-bold mb-4 transition-colors ${
+              isTimingContraction ? 'text-coral-500' : 'text-gray-800'
+            }`}
+            aria-live="polite"
+            aria-label={`Duration: ${formatDuration(currentDuration)}`}
+          >
             {formatDuration(currentDuration)}
           </div>
 
           {isTimingContraction && (
-            <div className="text-gray-500 text-lg mb-6 animate-pulse">
+            <div className="text-gray-600 text-lg mb-6 animate-pulse">
               Timing contraction...
             </div>
           )}
@@ -203,13 +207,14 @@ export function ContractionTimer() {
           {/* Big Timer Button */}
           <button
             onClick={isTimingContraction ? stopContraction : startContraction}
-            className={`w-48 h-48 rounded-full text-white text-xl font-semibold shadow-soft hover:shadow-lg active:scale-95 transition-all duration-200 flex flex-col items-center justify-center mx-auto ${
+            aria-label={isTimingContraction ? 'Stop timing contraction' : 'Start timing contraction'}
+            className={`w-48 h-48 rounded-full text-white text-xl font-semibold shadow-soft hover:shadow-lg active:scale-95 transition-all duration-200 flex flex-col items-center justify-center mx-auto focus:outline-none focus:ring-4 focus:ring-offset-2 ${
               isTimingContraction
-                ? 'bg-gradient-to-br from-coral-500 to-coral-600'
-                : 'bg-gradient-to-br from-teal-400 to-teal-500'
+                ? 'bg-gradient-to-br from-coral-500 to-coral-600 focus:ring-coral-300'
+                : 'bg-gradient-to-br from-teal-400 to-teal-500 focus:ring-teal-300'
             }`}
           >
-            <span className="text-4xl mb-2">
+            <span className="text-4xl mb-2" aria-hidden="true">
               {isTimingContraction ? '⏹️' : '▶️'}
             </span>
             <span>{isTimingContraction ? 'Stop' : 'Start'}</span>
@@ -223,13 +228,13 @@ export function ContractionTimer() {
               <div className="text-2xl font-bold text-gray-800">
                 {formatDuration(avgDuration)}
               </div>
-              <div className="text-sm text-gray-500">Avg Duration</div>
+              <div className="text-sm text-gray-600">Avg Duration</div>
             </div>
             <div className="bg-white rounded-xl p-4 shadow-card text-center">
               <div className="text-2xl font-bold text-gray-800">
                 {avgInterval > 0 ? formatDuration(avgInterval) : '--:--'}
               </div>
-              <div className="text-sm text-gray-500">Avg Interval</div>
+              <div className="text-sm text-gray-600">Avg Interval</div>
             </div>
           </div>
         )}
@@ -249,30 +254,31 @@ export function ContractionTimer() {
               </button>
             </div>
 
-            <div className="bg-white rounded-xl shadow-card overflow-hidden">
+            <div className="bg-white rounded-xl shadow-card overflow-hidden" role="table" aria-label="Contraction history">
               {/* Header */}
-              <div className="grid grid-cols-3 gap-2 p-3 bg-gray-50 border-b border-gray-100 text-xs font-medium text-gray-500">
-                <div>Time</div>
-                <div>Duration</div>
-                <div>Interval</div>
+              <div className="grid grid-cols-3 gap-2 p-3 bg-gray-50 border-b border-gray-100 text-xs font-medium text-gray-600" role="row">
+                <div role="columnheader">Time</div>
+                <div role="columnheader">Duration</div>
+                <div role="columnheader">Interval</div>
               </div>
 
               {/* Rows */}
               <div className="divide-y divide-gray-100 max-h-64 overflow-y-auto">
-                {contractions.map((contraction, index) => (
+                {contractions.map((contraction) => (
                   <div
                     key={contraction.id}
                     className="grid grid-cols-3 gap-2 p-3 text-sm"
+                    role="row"
                   >
-                    <div className="text-gray-800">{formatTime(contraction.startTime)}</div>
+                    <div className="text-gray-800" role="cell">{formatTime(contraction.startTime)}</div>
                     <div className={`font-medium ${
-                      contraction.duration >= 60 ? 'text-coral-500' : 'text-gray-800'
-                    }`}>
+                      contraction.duration >= 60 ? 'text-coral-600' : 'text-gray-800'
+                    }`} role="cell">
                       {formatDuration(contraction.duration)}
                     </div>
                     <div className={`${
-                      contraction.interval && contraction.interval <= 300 ? 'text-coral-500 font-medium' : 'text-gray-500'
-                    }`}>
+                      contraction.interval && contraction.interval <= 300 ? 'text-coral-600 font-medium' : 'text-gray-600'
+                    }`} role="cell">
                       {contraction.interval ? formatDuration(contraction.interval) : '—'}
                     </div>
                   </div>
@@ -284,10 +290,10 @@ export function ContractionTimer() {
 
         {/* Empty State */}
         {contractions.length === 0 && (
-          <div className="text-center text-gray-500 py-8">
-            <div className="text-4xl mb-3">⏱️</div>
+          <div className="text-center text-gray-600 py-8">
+            <div className="text-4xl mb-3" aria-hidden="true">⏱️</div>
             <p>Press Start when a contraction begins.</p>
-            <p className="text-sm">Press Stop when it ends.</p>
+            <p className="text-sm text-gray-600">Press Stop when it ends.</p>
           </div>
         )}
       </main>

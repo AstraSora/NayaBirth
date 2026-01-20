@@ -28,20 +28,33 @@ export function generatePIN() {
   return pin
 }
 
+// Helper to add timeout to async operations
+function withTimeout(promise, timeoutMs = 10000) {
+  return Promise.race([
+    promise,
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('Operation timed out. Please check your internet connection.')), timeoutMs)
+    )
+  ])
+}
+
 // Save birth plan to Firestore
 export async function saveBirthPlan(pin, responses) {
   try {
     const docRef = doc(db, BIRTH_PLANS_COLLECTION, pin)
-    await setDoc(docRef, {
-      pin,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      responses
-    }, { merge: true })
+    await withTimeout(
+      setDoc(docRef, {
+        pin,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        responses
+      }, { merge: true }),
+      15000 // 15 second timeout
+    )
     return { success: true, pin }
   } catch (error) {
     console.error('Error saving birth plan:', error)
-    return { success: false, error: error.message }
+    return { success: false, error: error.message || 'Failed to save. Please try again.' }
   }
 }
 
@@ -49,7 +62,7 @@ export async function saveBirthPlan(pin, responses) {
 export async function loadBirthPlan(pin) {
   try {
     const docRef = doc(db, BIRTH_PLANS_COLLECTION, pin.toUpperCase())
-    const docSnap = await getDoc(docRef)
+    const docSnap = await withTimeout(getDoc(docRef), 10000)
 
     if (docSnap.exists()) {
       return { success: true, data: docSnap.data() }
@@ -58,7 +71,7 @@ export async function loadBirthPlan(pin) {
     }
   } catch (error) {
     console.error('Error loading birth plan:', error)
-    return { success: false, error: error.message }
+    return { success: false, error: error.message || 'Failed to load. Please try again.' }
   }
 }
 
@@ -66,7 +79,7 @@ export async function loadBirthPlan(pin) {
 export async function checkPINExists(pin) {
   try {
     const docRef = doc(db, BIRTH_PLANS_COLLECTION, pin)
-    const docSnap = await getDoc(docRef)
+    const docSnap = await withTimeout(getDoc(docRef), 5000)
     return docSnap.exists()
   } catch (error) {
     console.error('Error checking PIN:', error)
