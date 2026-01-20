@@ -225,16 +225,16 @@ export function ContractionTimer() {
         {contractions.length > 0 && (
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="bg-white rounded-xl p-4 shadow-card text-center">
-              <div className="text-2xl font-bold text-gray-800">
+              <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
                 {formatDuration(avgDuration)}
               </div>
-              <div className="text-sm text-gray-600">Avg Duration</div>
+              <div className="text-sm text-gray-600 dark:text-gray-300">Avg Duration</div>
             </div>
             <div className="bg-white rounded-xl p-4 shadow-card text-center">
-              <div className="text-2xl font-bold text-gray-800">
+              <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
                 {avgInterval > 0 ? formatDuration(avgInterval) : '--:--'}
               </div>
-              <div className="text-sm text-gray-600">Avg Interval</div>
+              <div className="text-sm text-gray-600 dark:text-gray-300">Avg Interval</div>
             </div>
           </div>
         )}
@@ -243,7 +243,7 @@ export function ContractionTimer() {
         {contractions.length > 0 && (
           <div className="mb-6">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="font-semibold text-gray-800">
+              <h3 className="font-semibold text-gray-800 dark:text-gray-100">
                 Contractions ({contractions.length})
               </h3>
               <button
@@ -256,7 +256,7 @@ export function ContractionTimer() {
 
             <div className="bg-white rounded-xl shadow-card overflow-hidden" role="table" aria-label="Contraction history">
               {/* Header */}
-              <div className="grid grid-cols-3 gap-2 p-3 bg-gray-50 border-b border-gray-100 text-xs font-medium text-gray-600" role="row">
+              <div className="grid grid-cols-3 gap-2 p-3 bg-gray-50 border-b border-gray-100 text-xs font-medium text-gray-600 dark:text-gray-300" role="row">
                 <div role="columnheader">Time</div>
                 <div role="columnheader">Duration</div>
                 <div role="columnheader">Interval</div>
@@ -270,7 +270,7 @@ export function ContractionTimer() {
                     className="grid grid-cols-3 gap-2 p-3 text-sm"
                     role="row"
                   >
-                    <div className="text-gray-800" role="cell">{formatTime(contraction.startTime)}</div>
+                    <div className="text-gray-800 dark:text-gray-100" role="cell">{formatTime(contraction.startTime)}</div>
                     <div className={`font-medium ${
                       contraction.duration >= 60 ? 'text-coral-600' : 'text-gray-800'
                     }`} role="cell">
@@ -293,7 +293,7 @@ export function ContractionTimer() {
           <div className="text-center text-gray-600 py-8">
             <div className="text-4xl mb-3" aria-hidden="true">⏱️</div>
             <p>Press Start when a contraction begins.</p>
-            <p className="text-sm text-gray-600">Press Stop when it ends.</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">Press Stop when it ends.</p>
           </div>
         )}
       </main>

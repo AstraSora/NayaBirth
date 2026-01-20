@@ -59,7 +59,7 @@ function DueDateModal({ onSave, onClose }) {
           <div className="text-center mb-6">
             <span className="text-4xl mb-3 block">📅</span>
             <h2 className="text-xl font-bold text-gray-800 mb-2">When is your due date?</h2>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
               We'll calculate your current week and show relevant milestones.
             </p>
           </div>
@@ -102,7 +102,7 @@ function WeekSelector({ selectedWeek, currentWeek, onSelect, dueDate }) {
     <div className="bg-white border-b border-gray-100 pb-4">
       <div className="max-w-lg mx-auto px-4">
         <div className="text-center mb-3">
-          <span className="text-3xl font-bold text-gray-800">Week {selectedWeek}</span>
+          <span className="text-3xl font-bold text-gray-800 dark:text-gray-100">Week {selectedWeek}</span>
           {dueDate && (
             <p className="text-sm text-gray-500 mt-1">{getWeekDateRange(selectedWeek, dueDate)}</p>
           )}
@@ -143,7 +143,7 @@ function WeekSelector({ selectedWeek, currentWeek, onSelect, dueDate }) {
           })}
         </div>
 
-        <div className="flex justify-center gap-4 mt-3 text-xs text-gray-500">
+        <div className="flex justify-center gap-4 mt-3 text-xs text-gray-500 dark:text-gray-400">
           <span className="flex items-center gap-1">
             <span className="w-3 h-3 rounded-full bg-teal-500"></span>
             Current week
@@ -243,8 +243,8 @@ function MilestoneCard({ milestone, currentWeek, isExpanded, onToggle }) {
             {isPast && !isOngoing && <span className="text-teal-500 text-sm">✓</span>}
             {isOngoing && <span className="text-xs text-amber-600 font-medium">Ongoing</span>}
           </div>
-          <h4 className="font-semibold text-gray-800">{milestone.title}</h4>
-          <p className="text-sm text-gray-600">{milestone.shortDescription}</p>
+          <h4 className="font-semibold text-gray-800 dark:text-gray-100">{milestone.title}</h4>
+          <p className="text-sm text-gray-600 dark:text-gray-300">{milestone.shortDescription}</p>
         </div>
         <svg
           className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-200 mt-1 ${isExpanded ? 'rotate-180' : ''}`}
@@ -270,7 +270,7 @@ function MilestoneCard({ milestone, currentWeek, isExpanded, onToggle }) {
                 {category.label}
               </span>
               {milestone.priority === 'optional' && (
-                <span className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600">Optional</span>
+                <span className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600 dark:text-gray-300">Optional</span>
               )}
               {milestone.priority === 'essential' && (
                 <span className="text-xs px-2 py-1 rounded-full bg-coral-100 text-coral-600">Essential</span>
@@ -417,8 +417,8 @@ export function PregnancyTimeline() {
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">🎯</span>
                     <div>
-                      <p className="text-sm text-gray-500">Due date</p>
-                      <p className="font-semibold text-gray-800">
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Due date</p>
+                      <p className="font-semibold text-gray-800 dark:text-gray-100">
                         {new Date(dueDate).toLocaleDateString('en-US', {
                           weekday: 'short',
                           month: 'long',
@@ -452,7 +452,7 @@ export function PregnancyTimeline() {
             <Card>
               <CardContent className="pt-5 text-center">
                 <span className="text-4xl mb-2 block">📋</span>
-                <p className="text-gray-600">No specific milestones for this week.</p>
+                <p className="text-gray-600 dark:text-gray-300">No specific milestones for this week.</p>
                 <p className="text-sm text-gray-500 mt-1">Keep taking your prenatal vitamins!</p>
               </CardContent>
             </Card>
@@ -464,13 +464,13 @@ export function PregnancyTimeline() {
           <CardContent className="pt-5">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-500">You're in your</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">You're in your</p>
                 <p className="font-semibold text-gray-800 text-lg">
                   {selectedWeek <= 13 ? 'First' : selectedWeek <= 26 ? 'Second' : 'Third'} Trimester
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   {selectedWeek <= 13 ? 'Weeks 1-13' : selectedWeek <= 26 ? 'Weeks 14-26' : 'Weeks 27-40'}
                 </p>
                 <p className="text-xs text-gray-400">

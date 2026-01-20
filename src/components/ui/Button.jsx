@@ -7,13 +7,13 @@ export function Button({
   className = '',
   ...props
 }) {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-2xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 focus:outline-none focus:ring-2 focus:ring-offset-2'
+  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-2xl transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900'
 
   const variants = {
     primary: 'bg-coral-400 hover:bg-coral-500 text-white shadow-soft focus:ring-coral-400',
-    secondary: 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 focus:ring-coral-300',
-    ghost: 'bg-transparent hover:bg-gray-100 text-gray-600 focus:ring-gray-300',
-    outline: 'bg-transparent border-2 border-coral-400 text-coral-500 hover:bg-coral-50 focus:ring-coral-400',
+    secondary: 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 focus:ring-coral-300 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100 dark:border-gray-600',
+    ghost: 'bg-transparent hover:bg-gray-100 text-gray-600 focus:ring-gray-300 dark:hover:bg-gray-800 dark:text-gray-300',
+    outline: 'bg-transparent border-2 border-coral-400 text-coral-500 hover:bg-coral-50 focus:ring-coral-400 dark:border-coral-400 dark:text-coral-400 dark:hover:bg-coral-400/10',
   }
 
   const sizes = {

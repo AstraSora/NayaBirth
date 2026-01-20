@@ -26,7 +26,7 @@ export function CheckboxOption({
           transition-all duration-200
           ${checked
             ? 'border-coral-400 bg-coral-400'
-            : 'border-gray-300 bg-white'
+            : 'border-gray-300 bg-white dark:border-gray-600 dark:bg-gray-700'
           }
         `}
       >
@@ -36,7 +36,7 @@ export function CheckboxOption({
           </svg>
         )}
       </div>
-      <span className={`text-base ${checked ? 'text-gray-900 font-medium' : 'text-gray-700'}`}>
+      <span className={`text-base ${checked ? 'text-gray-900 dark:text-gray-100 font-medium' : 'text-gray-700 dark:text-gray-300'}`}>
         {label}
       </span>
     </label>

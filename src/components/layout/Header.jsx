@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom'
 
 export function Header({ showBack = false, onBack, title, showHome = false }) {
   return (
-    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 safe-area-top">
+    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 safe-area-top dark:bg-gray-900/80 dark:border-gray-800">
       <div className="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
         <div className="w-11">
           {showBack && (
             <button
               onClick={onBack}
-              className="w-11 h-11 -ml-2 flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-coral-300 focus:ring-offset-1"
+              className="w-11 h-11 -ml-2 flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-coral-300 focus:ring-offset-1 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-gray-100"
               aria-label="Go back"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -20,7 +20,7 @@ export function Header({ showBack = false, onBack, title, showHome = false }) {
 
         <div className="flex-1 text-center">
           {title ? (
-            <h1 className="text-lg font-semibold text-gray-800">{title}</h1>
+            <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">{title}</h1>
           ) : (
             <Link
               to="/"
@@ -28,7 +28,7 @@ export function Header({ showBack = false, onBack, title, showHome = false }) {
               aria-label="Go to home page"
             >
               <span className="text-xl">🌸</span>
-              <span className="font-bold text-gray-800">NayaBirth</span>
+              <span className="font-bold text-gray-800 dark:text-gray-100">NayaBirth</span>
             </Link>
           )}
         </div>
@@ -37,7 +37,7 @@ export function Header({ showBack = false, onBack, title, showHome = false }) {
           {showHome && (
             <Link
               to="/"
-              className="w-11 h-11 -mr-2 flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-coral-300 focus:ring-offset-1"
+              className="w-11 h-11 -mr-2 flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-coral-300 focus:ring-offset-1 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-gray-100"
               aria-label="Go to home"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

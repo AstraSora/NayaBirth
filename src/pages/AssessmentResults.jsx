@@ -68,7 +68,7 @@ export function AssessmentResults() {
       <main className="flex-1 max-w-lg mx-auto px-4 py-6 w-full">
         {/* Crisis Banner - Always visible if high risk */}
         {(showCrisis || result.color === 'red') && (
-          <div className="bg-red-50 border border-red-200 rounded-2xl p-4 mb-6 animate-fade-in">
+          <div className="bg-red-50 border border-red-200 rounded-2xl p-4 mb-6 animate-fade-in dark:bg-red-900/30 dark:border-red-700">
             <div className="flex items-start gap-3">
               <span className="text-2xl">🆘</span>
               <div>
@@ -89,8 +89,8 @@ export function AssessmentResults() {
                         📞
                       </div>
                       <div className="flex-1">
-                        <div className="font-medium text-gray-800">{contact.name}</div>
-                        <div className="text-sm text-gray-500">{contact.description}</div>
+                        <div className="font-medium text-gray-800 dark:text-gray-100">{contact.name}</div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400">{contact.description}</div>
                       </div>
                       <div className="font-bold text-red-600">{contact.phone}</div>
                     </a>
@@ -104,9 +104,9 @@ export function AssessmentResults() {
         {/* Score Display */}
         <div className={`${style.bg} border-2 ${style.border} rounded-2xl p-6 mb-6 text-center animate-fade-in`}>
           <div className="text-4xl mb-3">{style.icon}</div>
-          <div className="text-4xl font-bold text-gray-800 mb-2">{result.score}</div>
+          <div className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">{result.score}</div>
           <div className={`text-lg font-semibold ${style.text} mb-3`}>{result.title}</div>
-          <p className="text-gray-600 text-sm leading-relaxed">{result.message}</p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{result.message}</p>
         </div>
 
         {/* Disclaimer */}
@@ -115,8 +115,8 @@ export function AssessmentResults() {
             <div className="flex items-start gap-3">
               <span className="text-xl">ℹ️</span>
               <div>
-                <h4 className="font-medium text-gray-800 mb-1">Important Information</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-medium text-gray-800 dark:text-gray-100 mb-1">Important Information</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   {epdsData.disclaimer}
                 </p>
               </div>
@@ -126,13 +126,13 @@ export function AssessmentResults() {
 
         {/* Next Steps */}
         <div className="mb-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Recommended Next Steps</h3>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">Recommended Next Steps</h3>
           <div className="space-y-3">
             {resources.support.map((item, index) => (
               <Card key={index} color="white">
                 <CardContent className="pt-5">
-                  <h4 className="font-medium text-gray-800 mb-1">{item.title}</h4>
-                  <p className="text-sm text-gray-600">{item.description}</p>
+                  <h4 className="font-medium text-gray-800 dark:text-gray-100 mb-1">{item.title}</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{item.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -140,20 +140,20 @@ export function AssessmentResults() {
         </div>
 
         {/* Score Explanation */}
-        <div className="bg-gray-50 rounded-2xl p-4 mb-6">
-          <h4 className="font-medium text-gray-700 mb-3">Understanding Your Score</h4>
+        <div className="bg-gray-50 rounded-2xl p-4 mb-6 dark:bg-gray-800">
+          <h4 className="font-medium text-gray-700 mb-3 dark:text-gray-200">Understanding Your Score</h4>
           <div className="space-y-2 text-sm">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-teal-400"></div>
-              <span className="text-gray-600">0-9: Low - Coping well</span>
+              <span className="text-gray-600 dark:text-gray-300">0-9: Low - Coping well</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-coral-400"></div>
-              <span className="text-gray-600">10-12: Moderate - May benefit from support</span>
+              <span className="text-gray-600 dark:text-gray-300">10-12: Moderate - May benefit from support</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-red-400"></div>
-              <span className="text-gray-600">13+: Elevated - Recommend speaking with provider</span>
+              <span className="text-gray-600 dark:text-gray-300">13+: Elevated - Recommend speaking with provider</span>
             </div>
           </div>
         </div>

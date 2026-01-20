@@ -11,7 +11,7 @@ function parseMarkdown(text) {
     // First convert markdown links to HTML anchors
     .replace(
       /\[([^\]]+)\]\(([^)]+)\)/g,
-      '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-coral-600 hover:text-coral-700 underline decoration-coral-300 hover:decoration-coral-500 inline-flex items-center gap-0.5">$1<svg class="w-3 h-3 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>'
+      '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-coral-600 dark:text-coral-400 hover:text-coral-700 dark:hover:text-coral-300 underline decoration-coral-300 dark:decoration-coral-600 hover:decoration-coral-500 dark:hover:decoration-coral-400 inline-flex items-center gap-0.5">$1<svg class="w-3 h-3 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>'
     )
     // Then convert bold text
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
@@ -31,7 +31,7 @@ export function ResourceCategory() {
         <main className="flex-1 flex items-center justify-center p-4">
           <div className="text-center">
             <div className="text-4xl mb-4" aria-hidden="true">🔍</div>
-            <h1 className="text-xl font-bold text-gray-800 mb-2">Category not found</h1>
+            <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">Category not found</h1>
             <Link
               to="/resources"
               className="text-coral-600 hover:text-coral-700 focus:outline-none focus:ring-2 focus:ring-coral-300 rounded px-2 py-1"
@@ -83,26 +83,26 @@ export function ResourceCategory() {
         {!category.heroImage && (
           <div className="text-center mb-6">
             <div className="text-5xl mb-3" aria-hidden="true">{category.icon}</div>
-            <h1 className="text-xl font-bold text-gray-800">{category.title}</h1>
-            <p className="text-gray-700 text-sm">{category.description}</p>
+            <h1 className="text-xl font-bold text-gray-800 dark:text-gray-100 dark:text-gray-100">{category.title}</h1>
+            <p className="text-gray-700 dark:text-gray-300 text-sm">{category.description}</p>
           </div>
         )}
 
         {/* Articles List */}
         <div className="space-y-3">
           {category.resources.map((resource) => (
-            <article key={resource.id} className="bg-white rounded-2xl shadow-card overflow-hidden">
+            <article key={resource.id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-card dark:shadow-none overflow-hidden">
               {/* Article Header - Clickable */}
               <button
                 onClick={() => toggleArticle(resource.id)}
                 aria-expanded={expandedArticle === resource.id}
                 aria-controls={`article-${resource.id}`}
-                className="w-full text-left p-5 min-h-[72px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-coral-300"
+                className="w-full text-left p-5 min-h-[72px] hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-coral-300"
               >
                 <div className="flex items-start gap-3">
                   <div className="flex-1">
-                    <h2 className="font-semibold text-gray-800 mb-1">{resource.title}</h2>
-                    <p className="text-sm text-gray-700">{resource.summary}</p>
+                    <h2 className="font-semibold text-gray-800 dark:text-gray-100 mb-1">{resource.title}</h2>
+                    <p className="text-sm text-gray-700 dark:text-gray-300">{resource.summary}</p>
                     <div className="flex items-center gap-2 mt-2">
                       <span className={`text-xs font-medium ${colorStyles[category.color]}`}>
                         {resource.type === 'article' ? '📄 Article' : '🔗 Link'}
@@ -110,7 +110,7 @@ export function ResourceCategory() {
                     </div>
                   </div>
                   <svg
-                    className={`w-5 h-5 text-gray-500 transition-transform flex-shrink-0 ${
+                    className={`w-5 h-5 text-gray-500 dark:text-gray-400 transition-transform flex-shrink-0 ${
                       expandedArticle === resource.id ? 'rotate-180' : ''
                     }`}
                     fill="none"
@@ -125,7 +125,7 @@ export function ResourceCategory() {
 
               {/* Expanded Content */}
               {expandedArticle === resource.id && (
-                <div id={`article-${resource.id}`} className="border-t border-gray-100 animate-fade-in">
+                <div id={`article-${resource.id}`} className="border-t border-gray-100 dark:border-gray-700 animate-fade-in">
                   <div className="p-5 pt-4">
                     {/* Article Image */}
                     {resource.image && (
@@ -149,7 +149,7 @@ export function ResourceCategory() {
                         // Handle pure bold headers (single line, starts and ends with **)
                         if (lines.length === 1 && paragraph.startsWith('**') && paragraph.endsWith('**')) {
                           return (
-                            <h3 key={index} className="font-semibold text-gray-800 mt-4 mb-2">
+                            <h3 key={index} className="font-semibold text-gray-800 dark:text-gray-100 mt-4 mb-2">
                               {paragraph.slice(2, -2)}
                             </h3>
                           )
@@ -168,7 +168,7 @@ export function ResourceCategory() {
                               // Flush any pending list items
                               if (currentList.length > 0) {
                                 elements.push(
-                                  <ul key={`list-${lineIndex}`} className="list-disc list-inside text-gray-700 space-y-1 my-2">
+                                  <ul key={`list-${lineIndex}`} className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 my-2">
                                     {currentList.map((item, i) => (
                                       <li key={i} dangerouslySetInnerHTML={{
                                         __html: parseMarkdown(item)
@@ -179,7 +179,7 @@ export function ResourceCategory() {
                                 currentList = []
                               }
                               elements.push(
-                                <h4 key={`h-${lineIndex}`} className="font-semibold text-gray-800 mt-3 mb-1">
+                                <h4 key={`h-${lineIndex}`} className="font-semibold text-gray-800 dark:text-gray-100 mt-3 mb-1">
                                   {trimmedLine.slice(2, -2)}
                                 </h4>
                               )
@@ -189,7 +189,7 @@ export function ResourceCategory() {
                               // Flush any pending list items
                               if (currentList.length > 0) {
                                 elements.push(
-                                  <ul key={`list-${lineIndex}`} className="list-disc list-inside text-gray-700 space-y-1 my-2">
+                                  <ul key={`list-${lineIndex}`} className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 my-2">
                                     {currentList.map((item, i) => (
                                       <li key={i} dangerouslySetInnerHTML={{
                                         __html: parseMarkdown(item)
@@ -200,7 +200,7 @@ export function ResourceCategory() {
                                 currentList = []
                               }
                               elements.push(
-                                <h4 key={`h-${lineIndex}`} className="font-semibold text-gray-800 mt-3 mb-1" dangerouslySetInnerHTML={{
+                                <h4 key={`h-${lineIndex}`} className="font-semibold text-gray-800 dark:text-gray-100 mt-3 mb-1" dangerouslySetInnerHTML={{
                                   __html: parseMarkdown(trimmedLine)
                                 }} />
                               )
@@ -214,7 +214,7 @@ export function ResourceCategory() {
                               // Flush any pending list items
                               if (currentList.length > 0) {
                                 elements.push(
-                                  <ul key={`list-${lineIndex}`} className="list-disc list-inside text-gray-700 space-y-1 my-2">
+                                  <ul key={`list-${lineIndex}`} className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 my-2">
                                     {currentList.map((item, i) => (
                                       <li key={i} dangerouslySetInnerHTML={{
                                         __html: parseMarkdown(item)
@@ -225,7 +225,7 @@ export function ResourceCategory() {
                                 currentList = []
                               }
                               elements.push(
-                                <p key={`p-${lineIndex}`} className="text-gray-700 my-1" dangerouslySetInnerHTML={{
+                                <p key={`p-${lineIndex}`} className="text-gray-700 dark:text-gray-300 my-1" dangerouslySetInnerHTML={{
                                   __html: parseMarkdown(trimmedLine)
                                 }} />
                               )
@@ -235,7 +235,7 @@ export function ResourceCategory() {
                           // Flush any remaining list items
                           if (currentList.length > 0) {
                             elements.push(
-                              <ul key={`list-final`} className="list-disc list-inside text-gray-700 space-y-1 my-2">
+                              <ul key={`list-final`} className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1 my-2">
                                 {currentList.map((item, i) => (
                                   <li key={i} dangerouslySetInnerHTML={{
                                     __html: parseMarkdown(item)
@@ -252,7 +252,7 @@ export function ResourceCategory() {
                         return (
                           <p
                             key={index}
-                            className="text-gray-700 my-2"
+                            className="text-gray-700 dark:text-gray-300 my-2"
                             dangerouslySetInnerHTML={{
                               __html: parseMarkdown(paragraph)
                             }}
@@ -262,11 +262,11 @@ export function ResourceCategory() {
                     </div>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-100">
+                    <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
                       {resource.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-full"
+                          className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full"
                         >
                           {tag}
                         </span>
@@ -283,7 +283,7 @@ export function ResourceCategory() {
         <div className="mt-6 text-center">
           <Link
             to="/resources"
-            className="text-coral-600 hover:text-coral-700 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-coral-300 rounded px-2 py-1"
+            className="text-coral-600 dark:text-coral-400 hover:text-coral-700 dark:hover:text-coral-300 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-coral-300 rounded px-2 py-1"
           >
             ← All Resources
           </Link>

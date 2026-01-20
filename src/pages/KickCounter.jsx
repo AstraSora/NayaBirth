@@ -228,8 +228,8 @@ export function KickCounter() {
             >
               <div className="flex items-center gap-3">
                 <span className="text-xl">📊</span>
-                <span className="font-medium text-gray-800">Session History</span>
-                <span className="text-sm text-gray-500">({sessions.length})</span>
+                <span className="font-medium text-gray-800 dark:text-gray-100">Session History</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">({sessions.length})</span>
               </div>
               <svg
                 className={`w-5 h-5 text-gray-400 transition-transform ${showHistory ? 'rotate-180' : ''}`}
@@ -250,10 +250,10 @@ export function KickCounter() {
               {sessions.map((session) => (
                 <div key={session.id} className="p-4 flex items-center justify-between">
                   <div>
-                    <div className="font-medium text-gray-800">
+                    <div className="font-medium text-gray-800 dark:text-gray-100">
                       {session.kicks} kicks in {formatTime(session.duration)}
                     </div>
-                    <div className="text-sm text-gray-500">{formatDate(session.date)}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">{formatDate(session.date)}</div>
                   </div>
                   {session.goalReached && (
                     <span className="text-teal-500 text-xl">✓</span>
@@ -261,7 +261,7 @@ export function KickCounter() {
                 </div>
               ))}
             </div>
-            <div className="p-3 bg-gray-50 border-t border-gray-100">
+            <div className="p-3 bg-gray-50 border-t border-gray-100 dark:border-gray-700">
               <button
                 onClick={handleClearHistory}
                 className="text-sm text-red-500 hover:text-red-600"

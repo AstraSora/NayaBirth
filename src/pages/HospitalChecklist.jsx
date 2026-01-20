@@ -132,8 +132,8 @@ function CategorySection({ category, isExpanded, onToggle, isItemChecked, onTogg
         <div className="flex items-center gap-3">
           <span className="text-2xl" aria-hidden="true">{category.icon}</span>
           <div className="text-left">
-            <h3 className="font-semibold text-gray-800">{category.title}</h3>
-            <p className="text-sm text-gray-500">{checkedCount} of {totalCount} packed</p>
+            <h3 className="font-semibold text-gray-800 dark:text-gray-100">{category.title}</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{checkedCount} of {totalCount} packed</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -212,7 +212,7 @@ export function HospitalChecklist() {
         <Card className="mb-6">
           <CardContent className="pt-5">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-gray-600 dark:text-gray-300">
                 {checkedCount} of {totalItems} items packed
               </span>
               <span className="text-sm font-medium text-teal-600">
@@ -279,7 +279,7 @@ export function HospitalChecklist() {
           >
             <div className="flex items-center gap-3">
               <span className="text-2xl" aria-hidden="true">🏥</span>
-              <span className="font-semibold text-gray-800">UCI Hospital Provides</span>
+              <span className="font-semibold text-gray-800 dark:text-gray-100">UCI Hospital Provides</span>
             </div>
             <svg
               className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${showHospitalInfo ? 'rotate-180' : ''}`}

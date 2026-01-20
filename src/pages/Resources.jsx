@@ -7,10 +7,10 @@ export function Resources() {
   const navigate = useNavigate()
 
   const colorStyles = {
-    coral: 'bg-gradient-to-br from-coral-50 to-coral-100 focus:ring-coral-300',
-    sky: 'bg-gradient-to-br from-sky-50 to-sky-100 focus:ring-sky-300',
-    teal: 'bg-gradient-to-br from-teal-50 to-teal-100 focus:ring-teal-300',
-    sage: 'bg-gradient-to-br from-sage-50 to-sage-100 focus:ring-sage-300',
+    coral: 'bg-gradient-to-br from-coral-50 to-coral-100 dark:from-gray-800 dark:to-gray-800 focus:ring-coral-300',
+    sky: 'bg-gradient-to-br from-sky-50 to-sky-100 dark:from-gray-800 dark:to-gray-800 focus:ring-sky-300',
+    teal: 'bg-gradient-to-br from-teal-50 to-teal-100 dark:from-gray-800 dark:to-gray-800 focus:ring-teal-300',
+    sage: 'bg-gradient-to-br from-sage-50 to-sage-100 dark:from-gray-800 dark:to-gray-800 focus:ring-sage-300',
   }
 
   return (
@@ -21,10 +21,10 @@ export function Resources() {
         {/* Intro */}
         <div className="text-center mb-8">
           <div className="text-4xl mb-3" aria-hidden="true">📚</div>
-          <h2 className="text-xl font-bold text-gray-800 mb-2">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">
             Pregnancy & Parenting Resources
           </h2>
-          <p className="text-gray-700 text-sm">
+          <p className="text-gray-700 dark:text-gray-300 text-sm">
             Information to support you through pregnancy, birth, and beyond.
           </p>
         </div>
@@ -35,7 +35,7 @@ export function Resources() {
             <Link
               key={category.id}
               to={`/resources/${category.id}`}
-              className="block rounded-2xl shadow-card overflow-hidden transition-all duration-200 active:scale-[0.98] hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-coral-300 bg-white"
+              className="block rounded-2xl shadow-card dark:shadow-none overflow-hidden transition-all duration-200 active:scale-[0.98] hover:shadow-soft dark:hover:shadow-none focus:outline-none focus:ring-2 focus:ring-offset-2 dark:ring-offset-gray-900 focus:ring-coral-300 bg-white dark:bg-gray-800"
               aria-label={`${category.title}: ${category.description}. ${category.resources.length} articles`}
             >
               {/* Category Hero Image */}
@@ -60,13 +60,13 @@ export function Resources() {
                     <div className="text-3xl" aria-hidden="true">{category.icon}</div>
                   )}
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-800 text-lg">{category.title}</h3>
-                    <p className="text-sm text-gray-700 line-clamp-2">{category.description}</p>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <h3 className="font-semibold text-gray-800 dark:text-gray-100 text-lg">{category.title}</h3>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-2">{category.description}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                       {category.resources.length} articles
                     </p>
                   </div>
-                  <svg className="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <svg className="w-5 h-5 text-gray-400 dark:text-gray-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
@@ -76,7 +76,7 @@ export function Resources() {
         </nav>
 
         {/* Disclaimer */}
-        <div className="mt-8 bg-gray-50 rounded-xl p-4 text-sm text-gray-600">
+        <div className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-xl p-4 text-sm text-gray-600 dark:text-gray-300">
           <p>
             This information is for educational purposes only and is not a substitute for
             professional medical advice. Always consult your healthcare provider with
