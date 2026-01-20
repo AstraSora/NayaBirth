@@ -8,23 +8,28 @@ export function Hub() {
   const [showAllTools, setShowAllTools] = useState(false)
 
   return (
-    <div className="min-h-screen bg-gradient-warm">
+    <div className="min-h-screen bg-gradient-warm dark:bg-gray-900">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-gray-100 safe-area-top">
+      <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-700 safe-area-top">
         <div className="max-w-lg mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="text-3xl" aria-hidden="true">🌸</span>
               <div>
-                <h1 className="font-bold text-gray-800 text-lg leading-tight">UCI Pregnancy Hub</h1>
-                <p className="text-xs text-gray-600">Your pregnancy resource center</p>
+                <h1 className="font-bold text-gray-800 dark:text-gray-100 text-lg leading-tight">UCI Pregnancy Hub</h1>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Your pregnancy resource center</p>
               </div>
             </div>
-            <img
-              src={UCIHealthLogo}
-              alt="UCI Health"
-              className="h-6"
-            />
+            <Link
+              to="/settings"
+              className="w-11 h-11 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-coral-300"
+              aria-label="Settings"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </Link>
           </div>
         </div>
       </header>
@@ -33,10 +38,10 @@ export function Hub() {
       <main className="max-w-lg mx-auto px-4 py-6 pb-12">
         {/* Welcome Message */}
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
             Welcome to your pregnancy journey
           </h2>
-          <p className="text-gray-700">
+          <p className="text-gray-700 dark:text-gray-300">
             Tools and resources to support you through pregnancy, birth, and beyond.
           </p>
         </div>
@@ -65,7 +70,7 @@ export function Hub() {
 
         {/* Tools Section */}
         <section className="mb-8" aria-labelledby="tools-heading">
-          <h3 id="tools-heading" className="text-lg font-semibold text-gray-800 mb-4">
+          <h3 id="tools-heading" className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">
             Tools
           </h3>
           <div className="space-y-3">
@@ -134,7 +139,7 @@ export function Hub() {
         {/* Resources Section */}
         <section className="mb-8" aria-labelledby="resources-heading">
           <div className="flex items-center justify-between mb-4">
-            <h3 id="resources-heading" className="text-lg font-semibold text-gray-800">
+            <h3 id="resources-heading" className="text-lg font-semibold text-gray-800 dark:text-gray-100">
               Resources
             </h3>
             <Link
@@ -187,7 +192,7 @@ export function Hub() {
 
         {/* Quick Links Section */}
         <section className="mb-8" aria-labelledby="quicklinks-heading">
-          <h3 id="quicklinks-heading" className="text-lg font-semibold text-gray-800 mb-4">
+          <h3 id="quicklinks-heading" className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">
             Quick Links
           </h3>
           <div className="bg-white rounded-2xl shadow-card divide-y divide-gray-100 overflow-hidden">
