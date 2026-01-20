@@ -1,0 +1,468 @@
+{
+  "sections": [
+    {
+      "id": "aboutYou",
+      "title": "About You",
+      "subtitle": "Let's start with some basic information",
+      "icon": "user",
+      "color": "coral",
+      "questions": [
+        {
+          "id": "name",
+          "type": "text",
+          "question": "What name would you like us to use?",
+          "placeholder": "Your preferred name",
+          "required": true
+        },
+        {
+          "id": "dueDate",
+          "type": "date",
+          "question": "What is your due date?",
+          "required": true
+        },
+        {
+          "id": "provider",
+          "type": "text",
+          "question": "Who is your healthcare provider?",
+          "placeholder": "Doctor or midwife name"
+        },
+        {
+          "id": "supportPeople",
+          "type": "checkbox",
+          "question": "Who will be supporting you during labor?",
+          "learnMore": "Having continuous support during labor has been shown to improve outcomes and satisfaction. Support people can help with comfort measures, advocacy, and emotional encouragement.",
+          "options": [
+            { "value": "partner", "label": "Partner/Spouse" },
+            { "value": "doula", "label": "Doula" },
+            { "value": "family", "label": "Family member" },
+            { "value": "friend", "label": "Friend" }
+          ]
+        },
+        {
+          "id": "specialConsiderations",
+          "type": "textarea",
+          "question": "Is there anything special we should know about you?",
+          "placeholder": "Cultural preferences, medical conditions, past experiences, fears, etc.",
+          "learnMore": "This helps your care team provide personalized support. Feel free to share any cultural traditions, past birth experiences, anxiety concerns, or medical conditions that might affect your care."
+        }
+      ]
+    },
+    {
+      "id": "laborPreferences",
+      "title": "Labor Preferences",
+      "subtitle": "How would you like your labor environment?",
+      "icon": "heart",
+      "color": "sky",
+      "questions": [
+        {
+          "id": "laborEnvironment",
+          "type": "checkbox",
+          "question": "What environment preferences do you have for labor?",
+          "learnMore": "Creating a calm, comfortable environment can help you relax and allow labor to progress naturally. The nursing staff will do their best to accommodate your preferences.",
+          "options": [
+            { "value": "dimLighting", "label": "Dim lighting" },
+            { "value": "music", "label": "Music/playlist" },
+            { "value": "quiet", "label": "Quiet atmosphere" },
+            { "value": "minimal", "label": "Minimal interruptions" },
+            { "value": "aromatherapy", "label": "Aromatherapy" }
+          ]
+        },
+        {
+          "id": "mobility",
+          "type": "radio",
+          "question": "What are your preferences for movement during labor?",
+          "learnMore": "Movement during labor can help manage pain and may help your baby move into the best position. Options may be limited if you have an epidural or continuous fetal monitoring is needed.",
+          "options": [
+            { "value": "free", "label": "Move freely - walk, use birth ball, change positions" },
+            { "value": "some", "label": "Some movement with guidance from staff" },
+            { "value": "bed", "label": "Prefer to stay in bed" },
+            { "value": "noPreference", "label": "No preference - follow medical recommendations" }
+          ]
+        },
+        {
+          "id": "hydration",
+          "type": "radio",
+          "question": "What are your preferences for eating and drinking during labor?",
+          "learnMore": "Clear liquids are typically allowed during labor. Some hospitals allow light snacks during early labor. IV fluids are available if needed.",
+          "options": [
+            { "value": "clearLiquids", "label": "Clear liquids only (water, ice chips, popsicles)" },
+            { "value": "lightSnacks", "label": "Light snacks if allowed" },
+            { "value": "ivOnly", "label": "IV fluids - no oral intake" },
+            { "value": "noPreference", "label": "No preference" }
+          ]
+        },
+        {
+          "id": "monitoring",
+          "type": "radio",
+          "question": "What are your preferences for fetal monitoring?",
+          "learnMore": "Continuous monitoring is required in certain situations (epidural, Pitocin, high-risk pregnancy). Intermittent monitoring may allow more freedom of movement for low-risk pregnancies.",
+          "options": [
+            { "value": "intermittent", "label": "Intermittent monitoring if medically appropriate" },
+            { "value": "continuous", "label": "Continuous monitoring" },
+            { "value": "wireless", "label": "Wireless/waterproof monitor if available" },
+            { "value": "noPreference", "label": "Follow medical recommendations" }
+          ]
+        },
+        {
+          "id": "laborInduction",
+          "type": "radio",
+          "question": "If induction becomes necessary, what are your preferences?",
+          "learnMore": "Induction may be recommended for medical reasons such as post-dates pregnancy, preeclampsia, or gestational diabetes. Methods include membrane sweeping, cervical ripening agents, and Pitocin.",
+          "options": [
+            { "value": "natural", "label": "Try natural methods first (walking, nipple stimulation)" },
+            { "value": "medical", "label": "Start with medical induction if recommended" },
+            { "value": "discuss", "label": "Discuss options with me when the time comes" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "painManagement",
+      "title": "Pain Management",
+      "subtitle": "How would you like to manage discomfort?",
+      "icon": "shield",
+      "color": "teal",
+      "questions": [
+        {
+          "id": "painApproach",
+          "type": "radio",
+          "question": "What is your overall approach to pain management?",
+          "learnMore": "There's no right or wrong approach. Your comfort and ability to cope are what matter. You can always change your mind during labor.",
+          "options": [
+            { "value": "unmedicated", "label": "Prefer unmedicated birth - will request medication if needed" },
+            { "value": "waitAndSee", "label": "Wait and see - open to medication based on how labor progresses" },
+            { "value": "epidural", "label": "Would like an epidural when appropriate" },
+            { "value": "earlyEpidural", "label": "Would like an epidural as early as possible" }
+          ]
+        },
+        {
+          "id": "nonMedicalPain",
+          "type": "checkbox",
+          "question": "Which non-medical pain relief methods interest you?",
+          "learnMore": "These techniques can be used alone or combined with medication. Your support person and nurses can help you with many of these techniques.",
+          "options": [
+            { "value": "breathing", "label": "Breathing techniques" },
+            { "value": "massage", "label": "Massage/counter-pressure" },
+            { "value": "water", "label": "Hydrotherapy (shower/tub)" },
+            { "value": "birthBall", "label": "Birth ball" },
+            { "value": "heat", "label": "Heat/cold packs" },
+            { "value": "music", "label": "Music/meditation" },
+            { "value": "movement", "label": "Movement/position changes" }
+          ]
+        },
+        {
+          "id": "medicalPain",
+          "type": "checkbox",
+          "question": "Which medical pain relief options would you consider?",
+          "learnMore": "Epidurals are the most effective form of pain relief and allow you to rest. IV medications provide temporary relief but may make you drowsy. Nitrous oxide (laughing gas) provides mild relief with no lasting effects.",
+          "options": [
+            { "value": "epidural", "label": "Epidural" },
+            { "value": "ivMedication", "label": "IV pain medication" },
+            { "value": "nitrous", "label": "Nitrous oxide (if available)" },
+            { "value": "none", "label": "Prefer to avoid medical pain relief" }
+          ]
+        },
+        {
+          "id": "epiduralTiming",
+          "type": "radio",
+          "question": "If you want an epidural, when would you like it?",
+          "condition": {
+            "field": "medicalPain",
+            "includes": "epidural"
+          },
+          "options": [
+            { "value": "asap", "label": "As soon as possible" },
+            { "value": "active", "label": "When in active labor" },
+            { "value": "request", "label": "When I request it" },
+            { "value": "lastResort", "label": "Only as a last resort" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deliveryPreferences",
+      "title": "Delivery Preferences",
+      "subtitle": "Your preferences for the moment of birth",
+      "icon": "baby",
+      "color": "coral",
+      "questions": [
+        {
+          "id": "pushingPosition",
+          "type": "checkbox",
+          "question": "What positions interest you for pushing?",
+          "learnMore": "Different positions can help with comfort and may help your baby descend. Your ability to use certain positions may depend on whether you have an epidural.",
+          "options": [
+            { "value": "semiReclined", "label": "Semi-reclined (standard hospital position)" },
+            { "value": "sideying", "label": "Side-lying" },
+            { "value": "handsKnees", "label": "Hands and knees" },
+            { "value": "squatting", "label": "Squatting" },
+            { "value": "whatever", "label": "Whatever feels right in the moment" }
+          ]
+        },
+        {
+          "id": "pushingGuidance",
+          "type": "radio",
+          "question": "What type of pushing guidance would you prefer?",
+          "learnMore": "Directed pushing involves holding your breath and pushing for 10 seconds. Spontaneous pushing follows your body's urges. Research shows both methods are safe.",
+          "options": [
+            { "value": "directed", "label": "Directed pushing with coaching" },
+            { "value": "spontaneous", "label": "Spontaneous pushing - follow my body's urges" },
+            { "value": "combination", "label": "Combination based on progress" },
+            { "value": "noPreference", "label": "No preference - trust my care team" }
+          ]
+        },
+        {
+          "id": "episiotomy",
+          "type": "radio",
+          "question": "What are your preferences regarding episiotomy?",
+          "learnMore": "Episiotomy is a cut made to enlarge the vaginal opening. Routine episiotomy is no longer recommended. It may be needed in emergencies.",
+          "options": [
+            { "value": "avoid", "label": "Prefer to avoid unless medically necessary" },
+            { "value": "okay", "label": "Okay if provider recommends" },
+            { "value": "noPreference", "label": "No preference" }
+          ]
+        },
+        {
+          "id": "birthMoment",
+          "type": "checkbox",
+          "question": "What would you like during the moment of birth?",
+          "learnMore": "These preferences help your care team know how you'd like to experience meeting your baby for the first time.",
+          "options": [
+            { "value": "mirror", "label": "Use a mirror to see baby emerge" },
+            { "value": "touch", "label": "Touch baby's head as they crown" },
+            { "value": "announce", "label": "Let us discover baby's sex" },
+            { "value": "catch", "label": "Help catch the baby" },
+            { "value": "photos", "label": "Photos/video of the birth" },
+            { "value": "quiet", "label": "Keep the room calm and quiet" }
+          ]
+        },
+        {
+          "id": "cordClamping",
+          "type": "radio",
+          "question": "What are your preferences for cord clamping?",
+          "learnMore": "Delayed cord clamping (waiting 1-3 minutes) allows more blood to transfer to baby and may have health benefits. Immediate clamping may be needed in emergencies.",
+          "options": [
+            { "value": "delayed", "label": "Delayed cord clamping (1-3 minutes)" },
+            { "value": "immediate", "label": "Immediate cord clamping" },
+            { "value": "noPreference", "label": "No preference - follow standard practice" }
+          ]
+        },
+        {
+          "id": "cordCutting",
+          "type": "radio",
+          "question": "Who would you like to cut the umbilical cord?",
+          "options": [
+            { "value": "partner", "label": "My partner/support person" },
+            { "value": "self", "label": "I would like to" },
+            { "value": "provider", "label": "My healthcare provider" },
+            { "value": "noPreference", "label": "No preference" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cesareanPreferences",
+      "title": "Cesarean Preferences",
+      "subtitle": "In case a C-section is needed",
+      "icon": "hospital",
+      "color": "sky",
+      "questions": [
+        {
+          "id": "cesareanIntro",
+          "type": "info",
+          "content": "Even if you're planning a vaginal birth, it's helpful to think about your preferences in case a cesarean becomes necessary. About 30% of births in the US are cesarean deliveries."
+        },
+        {
+          "id": "cesareanSupport",
+          "type": "radio",
+          "question": "Who would you like present during a cesarean?",
+          "options": [
+            { "value": "partner", "label": "My partner/support person" },
+            { "value": "two", "label": "Two support people if allowed" },
+            { "value": "alone", "label": "I'm okay being alone" }
+          ]
+        },
+        {
+          "id": "cesareanPreferences",
+          "type": "checkbox",
+          "question": "What preferences do you have for a cesarean birth?",
+          "learnMore": "Many hospitals can accommodate 'gentle' or 'family-centered' cesarean preferences when it's safe to do so. Ask your provider what options are available.",
+          "options": [
+            { "value": "narration", "label": "Narration of what's happening" },
+            { "value": "music", "label": "Play my music" },
+            { "value": "loweredDrape", "label": "Lowered drape to see baby born" },
+            { "value": "clearDrape", "label": "Clear drape" },
+            { "value": "skinToSkin", "label": "Immediate skin-to-skin in OR" },
+            { "value": "delayedCord", "label": "Delayed cord clamping if possible" },
+            { "value": "photos", "label": "Photos/video" }
+          ]
+        },
+        {
+          "id": "cesareanAnesthesia",
+          "type": "radio",
+          "question": "Anesthesia preferences for cesarean:",
+          "learnMore": "Regional anesthesia (spinal or epidural) is preferred for most cesareans. General anesthesia is used in emergencies or when regional isn't possible.",
+          "options": [
+            { "value": "regional", "label": "Regional anesthesia (spinal/epidural) - stay awake" },
+            { "value": "general", "label": "General anesthesia if needed" },
+            { "value": "noPreference", "label": "Follow anesthesiologist's recommendation" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "newbornCare",
+      "title": "Newborn Care",
+      "subtitle": "Preferences for your baby's first hours",
+      "icon": "star",
+      "color": "teal",
+      "questions": [
+        {
+          "id": "skinToSkin",
+          "type": "radio",
+          "question": "What are your preferences for skin-to-skin contact?",
+          "learnMore": "Skin-to-skin contact helps regulate baby's temperature, heart rate, and breathing. It also promotes bonding and breastfeeding. It's typically done immediately after birth and continued as desired.",
+          "options": [
+            { "value": "immediate", "label": "Immediate and uninterrupted skin-to-skin" },
+            { "value": "afterAssessment", "label": "After initial assessment" },
+            { "value": "partner", "label": "Partner does skin-to-skin if I can't" },
+            { "value": "noPreference", "label": "No preference" }
+          ]
+        },
+        {
+          "id": "firstBath",
+          "type": "radio",
+          "question": "When would you like baby's first bath?",
+          "learnMore": "Delaying the first bath (24+ hours) helps maintain baby's temperature, blood sugar, and allows the vernix to absorb into the skin. The World Health Organization recommends waiting at least 24 hours.",
+          "options": [
+            { "value": "delay", "label": "Delay 24+ hours" },
+            { "value": "same", "label": "Before leaving hospital is fine" },
+            { "value": "present", "label": "I want to be present/participate" },
+            { "value": "noPreference", "label": "No preference" }
+          ]
+        },
+        {
+          "id": "feeding",
+          "type": "radio",
+          "question": "How do you plan to feed your baby?",
+          "learnMore": "Whatever your choice, the nursing staff will support you. Lactation consultants are available to help with breastfeeding challenges.",
+          "options": [
+            { "value": "breastfeeding", "label": "Breastfeeding exclusively" },
+            { "value": "formula", "label": "Formula feeding" },
+            { "value": "combination", "label": "Combination of breast and formula" },
+            { "value": "undecided", "label": "Undecided - would like guidance" }
+          ]
+        },
+        {
+          "id": "feedingSupport",
+          "type": "checkbox",
+          "question": "What feeding support would you like?",
+          "condition": {
+            "field": "feeding",
+            "notEquals": "formula"
+          },
+          "options": [
+            { "value": "lactation", "label": "Lactation consultant visit" },
+            { "value": "noFormula", "label": "No formula or pacifiers unless medically needed" },
+            { "value": "supplementOkay", "label": "Okay to supplement with formula if needed" },
+            { "value": "pumpingHelp", "label": "Help with pumping if needed" }
+          ]
+        },
+        {
+          "id": "newbornProcedures",
+          "type": "checkbox",
+          "question": "Standard newborn procedures - please indicate any you'd like to discuss or decline:",
+          "learnMore": "These procedures are routine but can be discussed with your provider. Vitamin K prevents a rare bleeding disorder. Eye ointment prevents infection. The hepatitis B vaccine is the first in a series.",
+          "options": [
+            { "value": "vitaminK", "label": "Vitamin K injection" },
+            { "value": "eyeOintment", "label": "Antibiotic eye ointment" },
+            { "value": "hepB", "label": "Hepatitis B vaccine" },
+            { "value": "hearingTest", "label": "Hearing screening" },
+            { "value": "metabolicScreen", "label": "Metabolic screening (heel prick)" }
+          ]
+        },
+        {
+          "id": "circumcision",
+          "type": "radio",
+          "question": "If you have a boy, what are your circumcision preferences?",
+          "learnMore": "Circumcision is an elective procedure. There are medical benefits and risks to consider. The American Academy of Pediatrics states the benefits outweigh the risks but does not recommend routine circumcision.",
+          "options": [
+            { "value": "yes", "label": "Yes, we want circumcision" },
+            { "value": "no", "label": "No, we do not want circumcision" },
+            { "value": "undecided", "label": "Undecided" },
+            { "value": "notApplicable", "label": "Not applicable / Having a girl" }
+          ]
+        },
+        {
+          "id": "rooming",
+          "type": "radio",
+          "question": "What are your rooming preferences?",
+          "learnMore": "Rooming-in means baby stays with you 24/7. This promotes bonding and breastfeeding. The nursery is available if you need rest.",
+          "options": [
+            { "value": "roomingIn", "label": "Baby with me 24/7 (rooming-in)" },
+            { "value": "nursery", "label": "Baby in nursery at night for rest" },
+            { "value": "flexible", "label": "Flexible based on how I'm feeling" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "postpartum",
+      "title": "Postpartum",
+      "subtitle": "After your baby arrives",
+      "icon": "home",
+      "color": "coral",
+      "questions": [
+        {
+          "id": "visitors",
+          "type": "radio",
+          "question": "What are your preferences for visitors?",
+          "options": [
+            { "value": "limited", "label": "Limited visitors - need rest and bonding time" },
+            { "value": "family", "label": "Close family only" },
+            { "value": "welcome", "label": "Visitors welcome" },
+            { "value": "flexible", "label": "Flexible - will decide based on how I feel" }
+          ]
+        },
+        {
+          "id": "photoSharing",
+          "type": "radio",
+          "question": "Photo and social media preferences:",
+          "options": [
+            { "value": "noPhotos", "label": "Please ask before taking photos" },
+            { "value": "privateOnly", "label": "Photos okay but no social media" },
+            { "value": "okay", "label": "Photos and social media sharing okay" }
+          ]
+        },
+        {
+          "id": "dischargeTiming",
+          "type": "radio",
+          "question": "Discharge timing preferences:",
+          "learnMore": "Typical hospital stay is 1-2 days for vaginal birth and 2-4 days for cesarean. Early discharge may be possible if you and baby are doing well.",
+          "options": [
+            { "value": "early", "label": "Prefer to go home as soon as possible" },
+            { "value": "standard", "label": "Standard hospital stay is fine" },
+            { "value": "extended", "label": "Would like to stay longer if possible" }
+          ]
+        },
+        {
+          "id": "postpartumSupport",
+          "type": "checkbox",
+          "question": "What postpartum support would you like to learn about?",
+          "options": [
+            { "value": "breastfeeding", "label": "Breastfeeding support groups" },
+            { "value": "mentalHealth", "label": "Postpartum mental health resources" },
+            { "value": "newParent", "label": "New parent classes" },
+            { "value": "homeVisit", "label": "Home health visits" }
+          ]
+        },
+        {
+          "id": "additionalNotes",
+          "type": "textarea",
+          "question": "Anything else you'd like your care team to know?",
+          "placeholder": "Any other preferences, concerns, or special requests..."
+        }
+      ]
+    }
+  ]
+}

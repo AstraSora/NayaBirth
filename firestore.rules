@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Birth plans collection
+    match /birth_plans/{pin} {
+      // Anyone can read if they have the PIN (document ID)
+      allow read: if true;
+
+      // Anyone can create a new birth plan
+      allow create: if request.resource.data.pin == pin
+                    && request.resource.data.pin.size() == 6
+                    && request.resource.data.responses != null;
+
+      // Anyone can update if they have the correct PIN
+      allow update: if resource.data.pin == pin
+                    && request.resource.data.pin == pin
+                    && request.resource.data.responses != null;
+
+      // No delete allowed - plans are permanent
+      allow delete: if false;
+    }
+  }
+}

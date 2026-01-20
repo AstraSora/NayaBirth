@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased text-gray-800 bg-sky-50;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  /* Ensure inputs don't zoom on mobile */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .btn-primary {
+    @apply bg-coral-400 hover:bg-coral-500 text-white font-semibold py-3 px-6 rounded-2xl
+           transition-all duration-200 active:scale-95 shadow-soft;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-gray-700 font-medium py-3 px-6 rounded-2xl
+           border border-gray-200 transition-all duration-200 active:scale-95;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card p-5;
+  }
+
+  .card-coral {
+    @apply bg-gradient-to-br from-coral-50 to-coral-100 rounded-2xl shadow-card p-5;
+  }
+
+  .card-sky {
+    @apply bg-gradient-to-br from-sky-50 to-sky-100 rounded-2xl shadow-card p-5;
+  }
+
+  .card-teal {
+    @apply bg-gradient-to-br from-teal-300/20 to-teal-400/20 rounded-2xl shadow-card p-5;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200
+           focus:border-coral-400 focus:ring-2 focus:ring-coral-400/20
+           outline-none transition-all duration-200;
+  }
+
+  .option-card {
+    @apply flex items-center gap-3 p-4 rounded-xl border-2 border-gray-100
+           hover:border-coral-200 cursor-pointer transition-all duration-200;
+  }
+
+  .option-card-selected {
+    @apply border-coral-400 bg-coral-50;
+  }
+
+  .progress-step {
+    @apply w-2 h-2 rounded-full bg-gray-200 transition-all duration-300;
+  }
+
+  .progress-step-active {
+    @apply w-8 bg-coral-400;
+  }
+
+  .progress-step-completed {
+    @apply bg-coral-400;
+  }
+}
+
+/* Gradient backgrounds */
+.bg-gradient-warm {
+  background: linear-gradient(135deg, #FFF5F5 0%, #F0F9FF 50%, #DCFCE7 100%);
+}
+
+.bg-gradient-sky {
+  background: linear-gradient(180deg, #F0F9FF 0%, #E0F2FE 100%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 2px;
+}
+
+/* Hide scrollbar for horizontal scroll containers */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe area padding for mobile */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
