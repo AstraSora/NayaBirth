@@ -45,6 +45,7 @@ export function BirthPlan() {
         showBack
         onBack={handleBack}
         title={section.title}
+        showHome
       />
 
       {/* Progress */}

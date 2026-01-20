@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export function Header({ showBack = false, onBack, title }) {
+export function Header({ showBack = false, onBack, title, showHome = false }) {
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 safe-area-top">
       <div className="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
@@ -33,7 +33,19 @@ export function Header({ showBack = false, onBack, title }) {
           )}
         </div>
 
-        <div className="w-11" />
+        <div className="w-11">
+          {showHome && (
+            <Link
+              to="/"
+              className="w-11 h-11 -mr-2 flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-coral-300 focus:ring-offset-1"
+              aria-label="Go to home"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   )
