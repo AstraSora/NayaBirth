@@ -11,6 +11,7 @@ import { HospitalChecklist } from './pages/HospitalChecklist'
 import { PregnancyTimeline } from './pages/PregnancyTimeline'
 import { Resources } from './pages/Resources'
 import { ResourceCategory } from './pages/ResourceCategory'
+import { Settings } from './pages/Settings'
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
       {/* Resources */}
       <Route path="/resources" element={<Resources />} />
       <Route path="/resources/:category" element={<ResourceCategory />} />
+
+      {/* Settings */}
+      <Route path="/settings" element={<Settings />} />
     </Routes>
   )
 }
