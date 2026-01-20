@@ -3,19 +3,14 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     // Birth plans collection - PIN-based access
+    // The PIN (document ID) acts as the access key
     match /birth_plans/{pin} {
       // Anyone can read if they have the PIN (document ID)
       allow read: if true;
 
-      // Anyone can create a new birth plan with valid structure
-      allow create: if request.resource.data.pin == pin
-                    && request.resource.data.pin.size() == 6
-                    && request.resource.data.responses != null;
-
-      // Anyone can update if they have the correct PIN
-      allow update: if resource.data.pin == pin
-                    && request.resource.data.pin == pin
-                    && request.resource.data.responses != null;
+      // Anyone can create/update if the PIN in the data matches the document ID
+      allow create, update: if request.resource.data.pin == pin
+                            && request.resource.data.responses != null;
 
       // No delete allowed - plans are permanent
       allow delete: if false;
