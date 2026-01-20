@@ -9,9 +9,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.png', 'illustrations/*.svg'],
       manifest: {
-        name: 'NayaBirth - Birth Plan Builder',
-        short_name: 'NayaBirth',
-        description: 'Create your personalized birth plan for UCI Health',
+        name: 'UCI Pregnancy Hub - NayaBirth',
+        short_name: 'UCI Pregnancy',
+        description: 'Your pregnancy resource center - birth plan, tools, and resources for UCI Health patients',
         theme_color: '#F8A5A5',
         background_color: '#F0F9FF',
         display: 'standalone',

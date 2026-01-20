@@ -1,0 +1,165 @@
+{
+  "title": "Postpartum Emotional Wellbeing Check",
+  "description": "This brief questionnaire helps you reflect on how you've been feeling. Your answers help identify if additional support might be helpful.",
+  "disclaimer": "This screening tool is not a diagnosis. It's designed to help you and your healthcare provider understand your emotional wellbeing. Please discuss your results with your care team.",
+  "timeframe": "Please choose the answer that comes closest to how you have felt IN THE PAST 7 DAYS, not just how you feel today.",
+  "questions": [
+    {
+      "id": 1,
+      "text": "I have been able to laugh and see the funny side of things",
+      "options": [
+        {"label": "As much as I always could", "score": 0},
+        {"label": "Not quite so much now", "score": 1},
+        {"label": "Definitely not so much now", "score": 2},
+        {"label": "Not at all", "score": 3}
+      ]
+    },
+    {
+      "id": 2,
+      "text": "I have looked forward with enjoyment to things",
+      "options": [
+        {"label": "As much as I ever did", "score": 0},
+        {"label": "Rather less than I used to", "score": 1},
+        {"label": "Definitely less than I used to", "score": 2},
+        {"label": "Hardly at all", "score": 3}
+      ]
+    },
+    {
+      "id": 3,
+      "text": "I have blamed myself unnecessarily when things went wrong",
+      "options": [
+        {"label": "No, never", "score": 0},
+        {"label": "Not very often", "score": 1},
+        {"label": "Yes, some of the time", "score": 2},
+        {"label": "Yes, most of the time", "score": 3}
+      ]
+    },
+    {
+      "id": 4,
+      "text": "I have been anxious or worried for no good reason",
+      "options": [
+        {"label": "No, not at all", "score": 0},
+        {"label": "Hardly ever", "score": 1},
+        {"label": "Yes, sometimes", "score": 2},
+        {"label": "Yes, very often", "score": 3}
+      ]
+    },
+    {
+      "id": 5,
+      "text": "I have felt scared or panicky for no very good reason",
+      "options": [
+        {"label": "No, not at all", "score": 0},
+        {"label": "No, not much", "score": 1},
+        {"label": "Yes, sometimes", "score": 2},
+        {"label": "Yes, quite a lot", "score": 3}
+      ]
+    },
+    {
+      "id": 6,
+      "text": "Things have been getting on top of me",
+      "options": [
+        {"label": "No, I have been coping as well as ever", "score": 0},
+        {"label": "No, most of the time I have coped quite well", "score": 1},
+        {"label": "Yes, sometimes I haven't been coping as well as usual", "score": 2},
+        {"label": "Yes, most of the time I haven't been able to cope at all", "score": 3}
+      ]
+    },
+    {
+      "id": 7,
+      "text": "I have been so unhappy that I have had difficulty sleeping",
+      "options": [
+        {"label": "No, not at all", "score": 0},
+        {"label": "Not very often", "score": 1},
+        {"label": "Yes, sometimes", "score": 2},
+        {"label": "Yes, most of the time", "score": 3}
+      ]
+    },
+    {
+      "id": 8,
+      "text": "I have felt sad or miserable",
+      "options": [
+        {"label": "No, not at all", "score": 0},
+        {"label": "Not very often", "score": 1},
+        {"label": "Yes, quite often", "score": 2},
+        {"label": "Yes, most of the time", "score": 3}
+      ]
+    },
+    {
+      "id": 9,
+      "text": "I have been so unhappy that I have been crying",
+      "options": [
+        {"label": "No, never", "score": 0},
+        {"label": "Only occasionally", "score": 1},
+        {"label": "Yes, quite often", "score": 2},
+        {"label": "Yes, most of the time", "score": 3}
+      ]
+    },
+    {
+      "id": 10,
+      "text": "The thought of harming myself has occurred to me",
+      "options": [
+        {"label": "Never", "score": 0},
+        {"label": "Hardly ever", "score": 1},
+        {"label": "Sometimes", "score": 2},
+        {"label": "Yes, quite often", "score": 3}
+      ]
+    }
+  ],
+  "scoring": {
+    "low": {
+      "range": [0, 9],
+      "title": "Low Score",
+      "message": "Your responses suggest you're coping well. It's still important to stay connected with loved ones and reach out if your feelings change.",
+      "color": "teal"
+    },
+    "moderate": {
+      "range": [10, 12],
+      "title": "Moderate Score",
+      "message": "Your responses suggest you may be experiencing some emotional difficulties. We recommend discussing these feelings with your healthcare provider at your next visit.",
+      "color": "coral"
+    },
+    "high": {
+      "range": [13, 30],
+      "title": "Elevated Score",
+      "message": "Your responses suggest you may be experiencing significant emotional difficulties. We strongly recommend speaking with your healthcare provider soon. Support is available and effective treatments exist.",
+      "color": "red"
+    }
+  },
+  "resources": {
+    "crisis": {
+      "title": "Need Immediate Support?",
+      "message": "If you're having thoughts of harming yourself or your baby, please reach out now. You are not alone, and help is available.",
+      "contacts": [
+        {
+          "name": "988 Suicide & Crisis Lifeline",
+          "phone": "988",
+          "description": "Call or text 24/7"
+        },
+        {
+          "name": "Postpartum Support International",
+          "phone": "1-800-944-4773",
+          "description": "Call or text 'HELP' to 1-800-944-4773"
+        },
+        {
+          "name": "Emergency Services",
+          "phone": "911",
+          "description": "For immediate emergencies"
+        }
+      ]
+    },
+    "support": [
+      {
+        "title": "Talk to Your Provider",
+        "description": "Schedule a visit with your OB, midwife, or primary care provider to discuss your results."
+      },
+      {
+        "title": "UCI Perinatal Mental Health",
+        "description": "UCI Health offers specialized support for emotional wellbeing during and after pregnancy."
+      },
+      {
+        "title": "Support Groups",
+        "description": "Connecting with other parents who understand can be incredibly helpful."
+      }
+    ]
+  }
+}

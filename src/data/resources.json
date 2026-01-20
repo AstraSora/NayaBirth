@@ -1,0 +1,169 @@
+{
+  "categories": [
+    {
+      "id": "pregnancy",
+      "title": "During Pregnancy",
+      "icon": "🤰",
+      "color": "coral",
+      "description": "Information and tips for a healthy pregnancy",
+      "resources": [
+        {
+          "id": "prenatal-visits",
+          "title": "What to Expect at Prenatal Visits",
+          "summary": "Learn about routine checkups and what happens at each trimester",
+          "type": "article",
+          "content": "Regular prenatal visits are essential for monitoring your health and your baby's development.\n\n**First Trimester (Weeks 1-12)**\nYour first visit is usually the longest. Your provider will review your medical history, perform a physical exam, and order lab tests. You may have an early ultrasound to confirm your due date.\n\n**Second Trimester (Weeks 13-27)**\nVisits typically occur every 4 weeks. You'll have the anatomy scan ultrasound around 18-20 weeks. Glucose screening for gestational diabetes usually happens around 24-28 weeks.\n\n**Third Trimester (Weeks 28-40)**\nVisits become more frequent - every 2 weeks until 36 weeks, then weekly. Your provider will monitor baby's position and check for signs of labor.\n\n**What to bring:**\n- List of questions\n- Current medications\n- Insurance card\n- Support person if desired",
+          "tags": ["prenatal", "checkups", "appointments"]
+        },
+        {
+          "id": "nutrition-pregnancy",
+          "title": "Nutrition During Pregnancy",
+          "summary": "Guidelines for eating well and foods to avoid",
+          "type": "article",
+          "content": "Good nutrition during pregnancy supports your baby's growth and development.\n\n**Important nutrients:**\n- **Folic acid**: 400-800 mcg daily (leafy greens, fortified cereals)\n- **Iron**: 27 mg daily (lean meats, beans, spinach)\n- **Calcium**: 1000 mg daily (dairy, fortified foods)\n- **DHA**: 200-300 mg daily (fish, supplements)\n\n**Foods to avoid:**\n- Raw or undercooked meat, fish, and eggs\n- Unpasteurized dairy and juices\n- High-mercury fish (shark, swordfish, king mackerel)\n- Deli meats unless heated until steaming\n- Alcohol\n\n**Tips:**\n- Eat small, frequent meals to manage nausea\n- Stay hydrated with 8-10 glasses of water daily\n- Take your prenatal vitamin consistently",
+          "tags": ["nutrition", "diet", "health"]
+        },
+        {
+          "id": "warning-signs",
+          "title": "When to Call Your Provider",
+          "summary": "Warning signs that need immediate attention",
+          "type": "article",
+          "content": "Some symptoms during pregnancy require prompt medical attention.\n\n**Call immediately for:**\n- Vaginal bleeding\n- Severe abdominal pain\n- Severe headache that doesn't go away\n- Vision changes (blurry, spots, flashing lights)\n- Sudden swelling of face or hands\n- Decreased fetal movement\n- Signs of labor before 37 weeks\n- Leaking fluid from vagina\n- Fever over 100.4°F\n\n**Contact your provider for:**\n- Persistent nausea/vomiting\n- Painful urination\n- Unusual vaginal discharge\n- Concerns about baby's movement\n\n**UCI Labor & Delivery:** (949) 824-8200\n**Emergency:** Call 911",
+          "tags": ["emergency", "warning signs", "safety"]
+        }
+      ]
+    },
+    {
+      "id": "labor-delivery",
+      "title": "Labor & Delivery",
+      "icon": "👶",
+      "color": "sky",
+      "description": "Preparing for birth and what to expect",
+      "resources": [
+        {
+          "id": "signs-of-labor",
+          "title": "Signs of Labor",
+          "summary": "How to know when labor is starting",
+          "type": "article",
+          "content": "Recognizing the signs of labor helps you know when to head to the hospital.\n\n**Early signs (days to hours before):**\n- \"Nesting\" urge (burst of energy)\n- Loose stools\n- Loss of mucus plug\n- Backache\n- Lightening (baby drops lower)\n\n**True labor signs:**\n- Regular contractions that get closer together\n- Contractions that don't stop with movement or rest\n- Water breaking (may be a gush or trickle)\n- Bloody show (mucus tinged with blood)\n\n**5-1-1 Rule for first-time moms:**\nCall or come in when contractions are:\n- **5** minutes apart\n- Lasting **1** minute each\n- For **1** hour\n\n**Call immediately if:**\n- Water breaks\n- Heavy bleeding\n- Baby stops moving\n- Severe pain",
+          "tags": ["labor", "contractions", "birth"]
+        },
+        {
+          "id": "hospital-bag",
+          "title": "What to Pack for the Hospital",
+          "summary": "Essential items for your hospital stay",
+          "type": "article",
+          "content": "Pack your bag around 36 weeks, just in case!\n\n**For labor:**\n- ID and insurance cards\n- Birth plan (if you have one)\n- Comfortable robe or gown\n- Grip socks\n- Hair ties\n- Lip balm\n- Phone and charger\n- Focal point or comfort items\n\n**For after birth:**\n- Going-home outfit (loose and comfortable)\n- Nursing bras if breastfeeding\n- Toiletries\n- Glasses/contacts\n\n**For baby:**\n- Going-home outfit\n- Car seat (installed and ready)\n- Blanket\n\n**For your support person:**\n- Snacks\n- Change of clothes\n- Toiletries\n- Entertainment\n- Cash for vending machines\n\n**UCI provides:**\n- Hospital gown\n- Mesh underwear and pads\n- Basic toiletries\n- Diapers and wipes\n- Baby blankets",
+          "tags": ["packing", "hospital", "preparation"]
+        },
+        {
+          "id": "pain-management",
+          "title": "Pain Management Options",
+          "summary": "Understanding your options for comfort during labor",
+          "type": "article",
+          "content": "You have many options for managing labor pain. Discuss these with your provider beforehand.\n\n**Non-medication options:**\n- Movement and position changes\n- Breathing techniques\n- Massage and counter-pressure\n- Warm shower or tub (if available)\n- Birth ball\n- Music and visualization\n- TENS unit\n\n**Medication options:**\n- **IV pain medication**: Takes edge off, allows movement\n- **Epidural**: Numbs from waist down, very effective\n- **Nitrous oxide**: Inhaled gas, mild relief\n- **Local anesthesia**: For specific areas\n\n**About epidurals:**\n- Can be placed once active labor begins\n- You'll still feel pressure but not sharp pain\n- Allows rest during long labors\n- Can be adjusted for pushing\n\n**Remember:**\n- Your plan can change during labor\n- All options are valid choices\n- Your team will support whatever you decide",
+          "tags": ["pain relief", "epidural", "comfort"]
+        }
+      ]
+    },
+    {
+      "id": "postpartum",
+      "title": "After Baby Arrives",
+      "icon": "💝",
+      "color": "teal",
+      "description": "Recovery, newborn care, and adjusting to parenthood",
+      "resources": [
+        {
+          "id": "physical-recovery",
+          "title": "Your Physical Recovery",
+          "summary": "What to expect in the weeks after birth",
+          "type": "article",
+          "content": "Your body needs time to heal after birth. Be patient with yourself.\n\n**First few days:**\n- Vaginal bleeding (lochia) - normal for 4-6 weeks\n- Cramping, especially while breastfeeding\n- Soreness in perineum or incision area\n- Breast engorgement when milk comes in\n- Sweating, especially at night\n\n**Recovery tips:**\n- Rest as much as possible\n- Accept help from others\n- Stay hydrated\n- Use ice packs for swelling\n- Take medications as prescribed\n- Move gently to prevent blood clots\n\n**After cesarean:**\n- Keep incision clean and dry\n- Avoid lifting heavy objects (over 10 lbs) for 6 weeks\n- Support your belly when coughing or laughing\n\n**Call your provider if:**\n- Fever over 100.4°F\n- Heavy bleeding (soaking a pad in 1 hour)\n- Severe pain not relieved by medication\n- Signs of infection (redness, pus, foul odor)\n- Difficulty breathing or chest pain\n- Leg pain or swelling (one side)",
+          "tags": ["recovery", "healing", "postpartum"]
+        },
+        {
+          "id": "newborn-basics",
+          "title": "Newborn Care Basics",
+          "summary": "Essential information for caring for your new baby",
+          "type": "article",
+          "content": "Caring for a newborn can feel overwhelming, but you'll learn quickly!\n\n**Feeding:**\n- Feed on demand, usually every 2-3 hours\n- Look for hunger cues: rooting, hand-to-mouth\n- 8-12 feedings per day is normal\n\n**Diapering:**\n- Expect 6-8 wet diapers per day once milk comes in\n- Clean umbilical stump with water, keep dry\n- Fold diaper below stump until it falls off\n\n**Sleep:**\n- Newborns sleep 16-17 hours per day in short stretches\n- Always place baby on back to sleep\n- Keep crib free of loose bedding, toys, bumpers\n- Room share (not bed share) for first 6-12 months\n\n**Bathing:**\n- Sponge baths only until cord falls off\n- 2-3 baths per week is plenty\n- Keep room warm\n\n**Normal newborn things:**\n- Sneezing (clearing passages)\n- Hiccups\n- Irregular breathing patterns\n- Startle reflex\n- Peeling skin",
+          "tags": ["newborn", "baby care", "feeding"]
+        },
+        {
+          "id": "postpartum-visit",
+          "title": "Your Postpartum Checkup",
+          "summary": "What happens at your follow-up appointment",
+          "type": "article",
+          "content": "Your postpartum visit is an important check on your recovery.\n\n**When:**\n- Usually 4-6 weeks after delivery\n- Earlier if you had a cesarean or complications\n- May have additional check-ins by phone\n\n**What to expect:**\n- Physical exam\n- Check incision or perineal healing\n- Blood pressure check\n- Discussion of birth control options\n- Screening for postpartum depression\n- Address any concerns or questions\n\n**Topics to discuss:**\n- How you're feeling emotionally\n- Feeding challenges\n- Sleep and fatigue\n- Pain or complications\n- Return to exercise\n- Intimacy and birth control\n- Support system\n\n**Prepare by:**\n- Writing down questions\n- Noting any symptoms or concerns\n- Bringing your baby (or arranging childcare)\n- Being honest about how you're really feeling",
+          "tags": ["checkup", "appointment", "recovery"]
+        }
+      ]
+    },
+    {
+      "id": "mental-health",
+      "title": "Mental Health & Wellness",
+      "icon": "🧠",
+      "color": "sage",
+      "description": "Emotional wellbeing during pregnancy and postpartum",
+      "resources": [
+        {
+          "id": "baby-blues-vs-ppd",
+          "title": "Baby Blues vs. Postpartum Depression",
+          "summary": "Understanding the difference and when to seek help",
+          "type": "article",
+          "content": "Mood changes after birth are common, but some symptoms need attention.\n\n**Baby Blues (normal):**\n- Affects up to 80% of new parents\n- Starts within first few days after birth\n- Lasts up to 2 weeks\n- Symptoms: mood swings, crying, anxiety, irritability\n- Resolves on its own\n\n**Postpartum Depression (needs support):**\n- Affects 1 in 7 new parents\n- Can start anytime in first year\n- Lasts longer than 2 weeks\n- Symptoms: persistent sadness, hopelessness, guilt\n- Difficulty bonding with baby\n- Changes in sleep or appetite\n- Thoughts of harming yourself or baby\n\n**Risk factors:**\n- History of depression or anxiety\n- Difficult pregnancy or birth\n- Lack of support\n- Major life stressors\n- Previous postpartum depression\n\n**Remember:**\n- PPD is treatable\n- It's not your fault\n- Getting help is a sign of strength\n- Treatment helps you and your baby",
+          "tags": ["mental health", "depression", "anxiety"]
+        },
+        {
+          "id": "self-care-tips",
+          "title": "Self-Care for New Parents",
+          "summary": "Practical ways to take care of yourself",
+          "type": "article",
+          "content": "Taking care of yourself helps you take care of your baby.\n\n**Sleep when you can:**\n- Nap when baby naps\n- Take shifts with partner\n- Accept help with night feedings if possible\n\n**Nourish your body:**\n- Eat regular meals\n- Keep easy snacks accessible\n- Stay hydrated\n\n**Connect with others:**\n- Don't isolate yourself\n- Join a new parent group\n- Video chat with friends and family\n- Accept visitors who offer to help\n\n**Move your body (when cleared):**\n- Short walks outside\n- Gentle stretching\n- Baby-wearing counts as exercise!\n\n**Ask for help:**\n- Be specific about what you need\n- Let others do household tasks\n- Use meal delivery services\n- Don't aim for perfection\n\n**Protect your mental health:**\n- Limit social media\n- Lower your expectations\n- Celebrate small wins\n- Talk about your feelings",
+          "tags": ["self-care", "wellness", "support"]
+        },
+        {
+          "id": "getting-help",
+          "title": "Getting Help for Emotional Struggles",
+          "summary": "Resources and next steps for support",
+          "type": "article",
+          "content": "If you're struggling, help is available. You don't have to face this alone.\n\n**Talk to someone:**\n- Your OB, midwife, or primary care provider\n- Your baby's pediatrician\n- A therapist specializing in perinatal mental health\n\n**Crisis resources:**\n- **988 Suicide & Crisis Lifeline**: Call or text 988\n- **Postpartum Support International**: 1-800-944-4773 (call/text)\n- **Emergency**: Call 911\n\n**What treatment looks like:**\n- Therapy (talk therapy, CBT)\n- Support groups\n- Medication (many are safe while breastfeeding)\n- Combination approaches\n\n**What to say to your provider:**\n- \"I'm not feeling like myself\"\n- \"I'm struggling more than I expected\"\n- \"I'm having scary thoughts\"\n- \"I need help\"\n\n**Remember:**\n- Treatment works\n- Most people improve significantly\n- You deserve support\n- Your baby needs you to be well",
+          "tags": ["help", "resources", "crisis"]
+        }
+      ]
+    },
+    {
+      "id": "breastfeeding",
+      "title": "Breastfeeding & Feeding",
+      "icon": "🍼",
+      "color": "sky",
+      "description": "Support for feeding your baby",
+      "resources": [
+        {
+          "id": "breastfeeding-basics",
+          "title": "Getting Started with Breastfeeding",
+          "summary": "Tips for the first days and weeks",
+          "type": "article",
+          "content": "Breastfeeding is natural, but it takes practice for both you and baby.\n\n**First hours:**\n- Skin-to-skin contact helps initiate breastfeeding\n- Baby may feed or just nuzzle at first\n- Colostrum (first milk) is all baby needs initially\n\n**First days:**\n- Feed whenever baby shows hunger cues\n- Expect 8-12 feedings per day\n- Each session may last 10-45 minutes\n- Both breasts don't need to be used each time\n\n**Signs of good latch:**\n- Wide open mouth with lips flanged out\n- Chin touching breast\n- Nose slightly away from breast\n- No clicking sounds\n- No pain after initial latch\n\n**Signs baby is getting enough:**\n- 6-8 wet diapers per day by day 4\n- Yellow seedy stools\n- Weight gain after initial loss\n- Satisfied after feedings\n- Audible swallowing\n\n**Get help if:**\n- Latching is painful\n- Baby isn't gaining weight\n- You have nipple damage\n- Feeding takes over an hour every time",
+          "tags": ["breastfeeding", "latch", "feeding"]
+        },
+        {
+          "id": "common-challenges",
+          "title": "Common Breastfeeding Challenges",
+          "summary": "Solutions for frequent issues",
+          "type": "article",
+          "content": "Many breastfeeding challenges have solutions. Don't give up!\n\n**Sore nipples:**\n- Usually from shallow latch\n- Apply expressed milk and let air dry\n- Use lanolin cream\n- Try different positions\n- See a lactation consultant\n\n**Engorgement:**\n- Feed frequently\n- Apply cold compresses between feedings\n- Hand express for comfort if needed\n- Wear supportive bra\n\n**Low supply concerns:**\n- Feed more frequently\n- Ensure good latch\n- Stay hydrated and nourished\n- Consider pumping after feedings\n- Most perceived low supply is actually normal\n\n**Mastitis:**\n- Flu-like symptoms with breast pain\n- Red, hot area on breast\n- Continue nursing to clear blockage\n- Apply heat before feedings\n- See provider—may need antibiotics\n\n**Where to get help:**\n- Hospital lactation consultants\n- Private lactation consultants (IBCLC)\n- La Leche League meetings\n- Breastfeeding support groups",
+          "tags": ["challenges", "help", "solutions"]
+        },
+        {
+          "id": "formula-feeding",
+          "title": "Formula Feeding Basics",
+          "summary": "Information for formula feeding families",
+          "type": "article",
+          "content": "Formula is a safe, nutritious option for feeding your baby.\n\n**Choosing formula:**\n- Most babies do well on standard cow's milk formula\n- Talk to your pediatrician before switching types\n- Generic brands are nutritionally equivalent to name brands\n\n**Preparation:**\n- Follow package directions exactly\n- Use the scoop that comes with the formula\n- Use clean water (check if needs to be boiled)\n- Prepare one bottle at a time when possible\n\n**Feeding:**\n- Hold baby in semi-upright position\n- Keep bottle tilted so nipple is full\n- Let baby set the pace\n- Burp during and after feeding\n- Discard unfinished formula after 1 hour\n\n**Amount and frequency:**\n- Newborns: 1-3 oz every 2-3 hours\n- Increases gradually over first months\n- 24-32 oz total per day by one month\n- Watch for hunger and fullness cues\n\n**Remember:**\n- Formula feeding is a valid choice\n- Bonding happens with any feeding method\n- Fed is best",
+          "tags": ["formula", "bottle", "feeding"]
+        }
+      ]
+    }
+  ]
+}
