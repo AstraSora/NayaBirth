@@ -45,6 +45,13 @@ export function Hub() {
           </h3>
           <div className="space-y-3">
             <ToolCard
+              to="/pregnancy-timeline"
+              icon="📅"
+              title="Pregnancy Timeline"
+              description="Track milestones, tests, and baby development week by week"
+              color="coral"
+            />
+            <ToolCard
               to="/birth-plan"
               icon="📝"
               title="Birth Plan Builder"

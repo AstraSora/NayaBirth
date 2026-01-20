@@ -8,6 +8,7 @@ import { AssessmentResults } from './pages/AssessmentResults'
 import { KickCounter } from './pages/KickCounter'
 import { ContractionTimer } from './pages/ContractionTimer'
 import { HospitalChecklist } from './pages/HospitalChecklist'
+import { PregnancyTimeline } from './pages/PregnancyTimeline'
 import { Resources } from './pages/Resources'
 import { ResourceCategory } from './pages/ResourceCategory'
 
@@ -30,6 +31,7 @@ function App() {
       <Route path="/kick-counter" element={<KickCounter />} />
       <Route path="/contraction-timer" element={<ContractionTimer />} />
       <Route path="/hospital-checklist" element={<HospitalChecklist />} />
+      <Route path="/pregnancy-timeline" element={<PregnancyTimeline />} />
 
       {/* Resources */}
       <Route path="/resources" element={<Resources />} />
