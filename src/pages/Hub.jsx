@@ -223,6 +223,16 @@ export function Hub() {
 
       {/* Footer */}
       <footer className="max-w-lg mx-auto px-4 pb-8 text-center text-sm text-gray-600 dark:text-gray-400 safe-area-bottom">
+        <div className="flex justify-center mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/70 dark:bg-gray-800/70 rounded-full shadow-sm">
+            <span className="text-xs text-gray-500 dark:text-gray-400">In partnership with</span>
+            <img
+              src={UCIHealthLogo}
+              alt="UCI Health"
+              className="h-4 dark:brightness-0 dark:invert"
+            />
+          </div>
+        </div>
         <p className="mb-2">
           For informational purposes only. Always consult your healthcare provider.
         </p>
