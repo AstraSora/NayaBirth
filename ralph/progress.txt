@@ -86,3 +86,23 @@
 
 ---
 
+## Iteration 5
+
+### US-005: Create tool recommendation helper function
+**Status:** PASSED
+**Files created:**
+- src/lib/getRecommendedTools.js
+
+**Implementation:**
+- getRecommendedTools({ trimester, stage }) function
+- Returns array of tool objects with: id, name, description, icon, route, relevanceText, isPrimary
+- First trimester: Timeline (primary), Resources
+- Second trimester: Birth Plan (primary), Timeline, Kick Counter
+- Third trimester: Birth Plan (primary), Hospital Checklist, Contraction Timer
+- Postpartum: Assessment (primary), Resources
+- Planning: Resources (primary), Timeline
+- Default fallback for unknown stage
+- Build passes
+
+---
+
