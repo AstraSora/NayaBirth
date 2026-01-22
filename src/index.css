@@ -2,6 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Custom Properties for Dark Mode */
+:root {
+  /* Backgrounds */
+  --color-bg-primary: #F0F9FF;       /* Page background (sky-50) */
+  --color-bg-surface: #FFFFFF;       /* Cards, containers */
+  --color-bg-surface-hover: #F9FAFB; /* Card hover state (gray-50) */
+  --color-bg-muted: #F3F4F6;         /* Subtle backgrounds (gray-100) */
+  --color-bg-elevated: #FFFFFF;      /* Elevated surfaces */
+
+  /* Text */
+  --color-text-primary: #1f2937;     /* Headings (gray-800) */
+  --color-text-secondary: #374151;   /* Body text (gray-700) */
+  --color-text-tertiary: #6b7280;    /* Muted text (gray-500) */
+  --color-text-inverted: #FFFFFF;    /* Text on dark backgrounds */
+
+  /* Borders */
+  --color-border: #e5e7eb;           /* Default borders (gray-200) */
+  --color-border-subtle: #f3f4f6;    /* Subtle borders (gray-100) */
+  --color-border-strong: #d1d5db;    /* Stronger borders (gray-300) */
+
+  /* Input fields */
+  --color-input-bg: #FFFFFF;
+  --color-input-border: #e5e7eb;
+  --color-input-placeholder: #9ca3af;
+
+  /* Gradient card backgrounds */
+  --gradient-card-coral: linear-gradient(to bottom right, #FFF5F5, #FFE5E5);
+  --gradient-card-coral-hover: linear-gradient(to bottom right, #FFE5E5, #FFCCCC);
+  --gradient-card-sky: linear-gradient(to bottom right, #F0F9FF, #E0F2FE);
+  --gradient-card-sky-hover: linear-gradient(to bottom right, #E0F2FE, #BAE6FD);
+  --gradient-card-teal: linear-gradient(to bottom right, #F0FDFA, #CCFBF1);
+  --gradient-card-teal-hover: linear-gradient(to bottom right, #CCFBF1, #99F6E4);
+  --gradient-card-sage: linear-gradient(to bottom right, #F0FDF4, #DCFCE7);
+  --gradient-card-sage-hover: linear-gradient(to bottom right, #DCFCE7, #BBF7D0);
+
+  /* Page gradients */
+  --gradient-warm: linear-gradient(135deg, #FFF5F5 0%, #F0F9FF 50%, #DCFCE7 100%);
+  --gradient-sky: linear-gradient(180deg, #F0F9FF 0%, #E0F2FE 100%);
+
+  /* Scrollbar */
+  --color-scrollbar: #d1d5db;
+}
+
+.dark {
+  /* Backgrounds */
+  --color-bg-primary: #111827;       /* Page background (gray-900) */
+  --color-bg-surface: #1f2937;       /* Cards, containers (gray-800) */
+  --color-bg-surface-hover: #374151; /* Card hover state (gray-700) */
+  --color-bg-muted: #374151;         /* Subtle backgrounds (gray-700) */
+  --color-bg-elevated: #1f2937;      /* Elevated surfaces */
+
+  /* Text */
+  --color-text-primary: #f3f4f6;     /* Headings (gray-100) */
+  --color-text-secondary: #d1d5db;   /* Body text (gray-300) */
+  --color-text-tertiary: #9ca3af;    /* Muted text (gray-400) */
+  --color-text-inverted: #1f2937;    /* Text on light backgrounds */
+
+  /* Borders */
+  --color-border: #374151;           /* Default borders (gray-700) */
+  --color-border-subtle: #1f2937;    /* Subtle borders (gray-800) */
+  --color-border-strong: #4b5563;    /* Stronger borders (gray-600) */
+
+  /* Input fields */
+  --color-input-bg: #1f2937;
+  --color-input-border: #374151;
+  --color-input-placeholder: #6b7280;
+
+  /* Gradient card backgrounds - subtle tinted overlays on dark surface */
+  --gradient-card-coral: linear-gradient(to bottom right, rgba(248, 165, 165, 0.1), rgba(240, 128, 128, 0.1)), #1f2937;
+  --gradient-card-coral-hover: linear-gradient(to bottom right, rgba(248, 165, 165, 0.15), rgba(240, 128, 128, 0.15)), #374151;
+  --gradient-card-sky: linear-gradient(to bottom right, rgba(135, 206, 235, 0.1), rgba(96, 165, 250, 0.1)), #1f2937;
+  --gradient-card-sky-hover: linear-gradient(to bottom right, rgba(135, 206, 235, 0.15), rgba(96, 165, 250, 0.15)), #374151;
+  --gradient-card-teal: linear-gradient(to bottom right, rgba(45, 212, 191, 0.1), rgba(20, 184, 166, 0.1)), #1f2937;
+  --gradient-card-teal-hover: linear-gradient(to bottom right, rgba(45, 212, 191, 0.15), rgba(20, 184, 166, 0.15)), #374151;
+  --gradient-card-sage: linear-gradient(to bottom right, rgba(134, 239, 172, 0.1), rgba(74, 222, 128, 0.1)), #1f2937;
+  --gradient-card-sage-hover: linear-gradient(to bottom right, rgba(134, 239, 172, 0.15), rgba(74, 222, 128, 0.15)), #374151;
+
+  /* Page gradients */
+  --gradient-warm: linear-gradient(135deg, #1f2937 0%, #111827 50%, #0f172a 100%);
+  --gradient-sky: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+
+  /* Scrollbar */
+  --color-scrollbar: #4b5563;
+}
+
 /* Custom base styles */
 @layer base {
   html {
@@ -10,7 +95,9 @@
   }
 
   body {
-    @apply font-sans antialiased text-gray-800 bg-sky-50 dark:text-gray-100 dark:bg-gray-900;
+    @apply font-sans antialiased;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
     min-height: 100vh;
     min-height: 100dvh;
   }
@@ -29,77 +116,115 @@
   }
 
   .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-gray-700 font-medium py-3 px-6 rounded-2xl
-           border border-gray-200 transition-all duration-200 active:scale-95
-           dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100 dark:border-gray-600;
+    @apply font-medium py-3 px-6 rounded-2xl transition-all duration-200 active:scale-95;
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-bg-surface-hover);
   }
 
   .card {
-    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-card p-5;
+    @apply rounded-2xl shadow-card p-5;
+    background-color: var(--color-bg-surface);
   }
 
   .card-coral {
-    @apply bg-gradient-to-br from-coral-50 to-coral-100 rounded-2xl shadow-card p-5;
-  }
-
-  .dark .card-coral {
-    @apply bg-gradient-to-br from-gray-800 to-gray-800;
-    background-image: linear-gradient(to bottom right, rgba(248, 165, 165, 0.1), rgba(240, 128, 128, 0.1));
+    @apply rounded-2xl shadow-card p-5;
+    background: var(--gradient-card-coral);
   }
 
   .card-sky {
-    @apply bg-gradient-to-br from-sky-50 to-sky-100 rounded-2xl shadow-card p-5;
-  }
-
-  .dark .card-sky {
-    @apply bg-gradient-to-br from-gray-800 to-gray-800;
-    background-image: linear-gradient(to bottom right, rgba(135, 206, 235, 0.1), rgba(96, 165, 250, 0.1));
+    @apply rounded-2xl shadow-card p-5;
+    background: var(--gradient-card-sky);
   }
 
   .card-teal {
-    @apply bg-gradient-to-br from-teal-50 to-teal-100 rounded-2xl shadow-card p-5;
+    @apply rounded-2xl shadow-card p-5;
+    background: var(--gradient-card-teal);
   }
 
-  .dark .card-teal {
-    @apply bg-gradient-to-br from-gray-800 to-gray-800;
-    background-image: linear-gradient(to bottom right, rgba(45, 212, 191, 0.1), rgba(20, 184, 166, 0.1));
+  .card-sage {
+    @apply rounded-2xl shadow-card p-5;
+    background: var(--gradient-card-sage);
+  }
+
+  /* Tool cards with hover states */
+  .tool-card-coral {
+    @apply rounded-2xl shadow-card p-5 transition-all duration-200;
+    background: var(--gradient-card-coral);
+  }
+  .tool-card-coral:hover {
+    background: var(--gradient-card-coral-hover);
+  }
+
+  .tool-card-sky {
+    @apply rounded-2xl shadow-card p-5 transition-all duration-200;
+    background: var(--gradient-card-sky);
+  }
+  .tool-card-sky:hover {
+    background: var(--gradient-card-sky-hover);
+  }
+
+  .tool-card-teal {
+    @apply rounded-2xl shadow-card p-5 transition-all duration-200;
+    background: var(--gradient-card-teal);
+  }
+  .tool-card-teal:hover {
+    background: var(--gradient-card-teal-hover);
+  }
+
+  .tool-card-sage {
+    @apply rounded-2xl shadow-card p-5 transition-all duration-200;
+    background: var(--gradient-card-sage);
+  }
+  .tool-card-sage:hover {
+    background: var(--gradient-card-sage-hover);
   }
 
   .input-field {
-    @apply w-full px-4 py-3 min-h-[44px] rounded-xl border border-gray-200 dark:border-gray-700
-           bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100
-           placeholder-gray-400 dark:placeholder-gray-500
+    @apply w-full px-4 py-3 min-h-[44px] rounded-xl
            focus:border-coral-400 focus:ring-2 focus:ring-coral-200
            focus:outline-none transition-all duration-200;
+    background-color: var(--color-input-bg);
+    border: 1px solid var(--color-input-border);
+    color: var(--color-text-primary);
+  }
+
+  .input-field::placeholder {
+    color: var(--color-input-placeholder);
   }
 
   .option-card {
-    @apply flex items-center gap-3 p-4 min-h-[44px] rounded-xl border-2 border-gray-100
+    @apply flex items-center gap-3 p-4 min-h-[44px] rounded-xl border-2
            hover:border-coral-200 cursor-pointer transition-all duration-200
-           focus-within:ring-2 focus-within:ring-coral-400 focus-within:ring-offset-1
-           dark:border-gray-700 dark:hover:border-coral-500;
+           focus-within:ring-2 focus-within:ring-coral-400 focus-within:ring-offset-1;
+    border-color: var(--color-border-subtle);
+  }
+
+  .option-card:hover {
+    border-color: #FFCCCC; /* coral-200 */
   }
 
   .option-card-selected {
-    @apply border-coral-400 bg-coral-50;
-  }
-
-  .dark .option-card-selected {
-    @apply border-coral-400 bg-gray-800;
+    @apply border-coral-400;
     background-color: rgba(248, 165, 165, 0.1);
   }
 
-  /* Accessible text colors - use these instead of gray-400/gray-500 for better contrast */
+  /* Accessible text colors using CSS variables */
   .text-muted {
-    @apply text-gray-600 dark:text-gray-400;
+    color: var(--color-text-tertiary);
   }
 
   .text-muted-dark {
-    @apply text-gray-700 dark:text-gray-500;
+    color: var(--color-text-secondary);
   }
 
   .progress-step {
-    @apply w-2 h-2 rounded-full bg-gray-200 transition-all duration-300;
+    @apply w-2 h-2 rounded-full transition-all duration-300;
+    background-color: var(--color-border);
   }
 
   .progress-step-active {
@@ -111,24 +236,16 @@
   }
 }
 
-/* Gradient backgrounds */
+/* Gradient backgrounds - auto-switch based on theme */
 .bg-gradient-warm {
-  background: linear-gradient(135deg, #FFF5F5 0%, #F0F9FF 50%, #DCFCE7 100%);
-}
-
-.dark .bg-gradient-warm {
-  background: linear-gradient(135deg, #1f2937 0%, #111827 50%, #0f172a 100%);
+  background: var(--gradient-warm);
 }
 
 .bg-gradient-sky {
-  background: linear-gradient(180deg, #F0F9FF 0%, #E0F2FE 100%);
+  background: var(--gradient-sky);
 }
 
-.dark .bg-gradient-sky {
-  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-}
-
-/* Custom scrollbar */
+/* Custom scrollbar - auto-switch based on theme */
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;
@@ -139,12 +256,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d1d5db;
+  background: var(--color-scrollbar);
   border-radius: 2px;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #4b5563;
 }
 
 /* Hide scrollbar for horizontal scroll containers */

@@ -32,7 +32,7 @@ export function QuestionRenderer({ question, sectionId, value }) {
         <CardContent className="pt-5">
           <div className="flex items-start gap-3">
             <div className="text-2xl">💡</div>
-            <p className="text-gray-600">{question.content}</p>
+            <p className="text-foreground-secondary">{question.content}</p>
           </div>
         </CardContent>
       </Card>
@@ -43,7 +43,7 @@ export function QuestionRenderer({ question, sectionId, value }) {
     <Card color="white">
       <CardContent className="pt-5">
         <label className="block">
-          <span className="text-base font-medium text-gray-800 mb-3 block">
+          <span className="text-base font-medium text-foreground mb-3 block">
             {question.question}
             {question.required && <span className="text-coral-500 ml-1">*</span>}
           </span>

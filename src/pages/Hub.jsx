@@ -8,21 +8,21 @@ export function Hub() {
   const [showAllTools, setShowAllTools] = useState(false)
 
   return (
-    <div className="min-h-screen bg-gradient-warm dark:bg-gray-900">
+    <div className="min-h-screen bg-gradient-warm">
       {/* Header */}
-      <header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-700 safe-area-top">
+      <header className="bg-surface/80 backdrop-blur-md border-b border-subtle safe-area-top">
         <div className="max-w-lg mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="text-3xl" aria-hidden="true">🌸</span>
               <div>
-                <h1 className="font-bold text-gray-800 dark:text-gray-100 text-lg leading-tight">UCI Pregnancy Hub</h1>
-                <p className="text-xs text-gray-600 dark:text-gray-400">Your pregnancy resource center</p>
+                <h1 className="font-bold text-foreground text-lg leading-tight">UCI Pregnancy Hub</h1>
+                <p className="text-xs text-foreground-muted">Your pregnancy resource center</p>
               </div>
             </div>
             <Link
               to="/settings"
-              className="w-11 h-11 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-coral-300"
+              className="w-11 h-11 flex items-center justify-center text-foreground-secondary hover:text-foreground hover:bg-muted rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-coral-300"
               aria-label="Settings"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -38,10 +38,10 @@ export function Hub() {
       <main className="max-w-lg mx-auto px-4 py-6 pb-12">
         {/* Welcome Message */}
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+          <h2 className="text-2xl font-bold text-foreground mb-2">
             Welcome to your pregnancy journey
           </h2>
-          <p className="text-gray-700 dark:text-gray-300">
+          <p className="text-foreground-secondary">
             Tools and resources to support you through pregnancy, birth, and beyond.
           </p>
         </div>
@@ -50,18 +50,18 @@ export function Hub() {
         <section className="mb-8">
           <Link
             to="/retrieve"
-            className="block bg-white dark:bg-gray-800 rounded-2xl shadow-card p-4 hover:shadow-soft transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-coral-300 focus:ring-offset-2"
+            className="block bg-surface rounded-2xl shadow-card p-4 hover:shadow-soft transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-coral-300 focus:ring-offset-2"
             aria-label="Retrieve a saved birth plan using your PIN"
           >
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-coral-100 dark:bg-gray-700 flex items-center justify-center text-2xl" aria-hidden="true">
+              <div className="w-12 h-12 rounded-full bg-coral-100 flex items-center justify-center text-2xl" aria-hidden="true">
                 💾
               </div>
               <div className="flex-1">
-                <h4 className="font-semibold text-gray-800 dark:text-gray-100">Have a saved birth plan?</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Enter your PIN to continue</p>
+                <h4 className="font-semibold text-foreground">Have a saved birth plan?</h4>
+                <p className="text-sm text-foreground-muted">Enter your PIN to continue</p>
               </div>
-              <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <svg className="w-5 h-5 text-foreground-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </div>
@@ -70,7 +70,7 @@ export function Hub() {
 
         {/* Tools Section */}
         <section className="mb-8" aria-labelledby="tools-heading">
-          <h3 id="tools-heading" className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">
+          <h3 id="tools-heading" className="text-lg font-semibold text-foreground mb-4">
             Tools
           </h3>
           <div className="space-y-3">
@@ -128,7 +128,7 @@ export function Hub() {
           {/* Show more/less button */}
           <button
             onClick={() => setShowAllTools(!showAllTools)}
-            className="w-full mt-3 py-2.5 text-sm font-medium text-coral-600 dark:text-coral-400 hover:text-coral-700 dark:hover:text-coral-300 hover:bg-coral-50 dark:hover:bg-coral-900/20 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-coral-300"
+            className="w-full mt-3 py-2.5 text-sm font-medium text-coral-600 hover:text-coral-700 hover:bg-coral-50 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-coral-300"
             aria-expanded={showAllTools}
             aria-controls="tools-section"
           >
@@ -139,12 +139,12 @@ export function Hub() {
         {/* Resources Section */}
         <section className="mb-8" aria-labelledby="resources-heading">
           <div className="flex items-center justify-between mb-4">
-            <h3 id="resources-heading" className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+            <h3 id="resources-heading" className="text-lg font-semibold text-foreground">
               Resources
             </h3>
             <Link
               to="/resources"
-              className="text-sm text-coral-600 dark:text-coral-400 font-medium hover:text-coral-700 dark:hover:text-coral-300 focus:outline-none focus:ring-2 focus:ring-coral-300 rounded px-2 py-1"
+              className="text-sm text-coral-600 font-medium hover:text-coral-700 focus:outline-none focus:ring-2 focus:ring-coral-300 rounded px-2 py-1"
               aria-label="View all resources"
             >
               View all →
@@ -192,10 +192,10 @@ export function Hub() {
 
         {/* Quick Links Section */}
         <section className="mb-8" aria-labelledby="quicklinks-heading">
-          <h3 id="quicklinks-heading" className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">
+          <h3 id="quicklinks-heading" className="text-lg font-semibold text-foreground mb-4">
             Quick Links
           </h3>
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-card divide-y divide-gray-100 dark:divide-gray-700 overflow-hidden">
+          <div className="bg-surface rounded-2xl shadow-card divide-y divide-subtle overflow-hidden">
             {/* Emergency link at top with prominent styling */}
             <QuickLink
               href="tel:911"
@@ -222,21 +222,21 @@ export function Hub() {
       </main>
 
       {/* Footer */}
-      <footer className="max-w-lg mx-auto px-4 pb-8 text-center text-sm text-gray-600 dark:text-gray-400 safe-area-bottom">
+      <footer className="max-w-lg mx-auto px-4 pb-8 text-center text-sm text-foreground-muted safe-area-bottom">
         <div className="flex justify-center mb-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/70 dark:bg-gray-800/70 rounded-full shadow-sm">
-            <span className="text-xs text-gray-500 dark:text-gray-400">In partnership with</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-surface/70 rounded-full shadow-sm">
+            <span className="text-xs text-foreground-muted">In partnership with</span>
             <img
               src={UCIHealthLogo}
               alt="UCI Health"
-              className="h-4 dark:brightness-0 dark:invert"
+              className="h-4"
             />
           </div>
         </div>
         <p className="mb-2">
           For informational purposes only. Always consult your healthcare provider.
         </p>
-        <p className="text-xs text-gray-500 dark:text-gray-500">
+        <p className="text-xs text-foreground-muted">
           © {new Date().getFullYear()} UCI Health • NayaBirth
         </p>
       </footer>
@@ -245,18 +245,18 @@ export function Hub() {
 }
 
 function QuickLink({ href, icon, title, subtitle, external, emergency }) {
-  const baseClasses = `block min-h-[56px] hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-coral-300 ${emergency ? 'border-l-4 border-red-500 bg-red-50/50 dark:bg-red-900/20' : ''}`
+  const baseClasses = `block min-h-[56px] hover:bg-surface-hover transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-coral-300 ${emergency ? 'border-l-4 border-red-500 bg-red-50/50' : ''}`
 
   const content = (
     <div className="flex items-center gap-4 p-4">
-      <div className={`${emergency ? 'w-12 h-12 text-2xl' : 'w-11 h-11 text-xl'} rounded-full flex items-center justify-center flex-shrink-0 ${emergency ? 'bg-red-100 dark:bg-red-900/30' : 'bg-gray-100 dark:bg-gray-700'}`} aria-hidden="true">
+      <div className={`${emergency ? 'w-12 h-12 text-2xl' : 'w-11 h-11 text-xl'} rounded-full flex items-center justify-center flex-shrink-0 ${emergency ? 'bg-red-100' : 'bg-muted'}`} aria-hidden="true">
         {icon}
       </div>
       <div className="flex-1 min-w-0">
-        <h4 className={`${emergency ? 'font-semibold text-red-700 dark:text-red-400' : 'font-medium text-gray-800 dark:text-gray-100'}`}>{title}</h4>
-        <p className={`text-sm truncate ${emergency ? 'text-red-600 dark:text-red-500' : 'text-gray-600 dark:text-gray-400'}`}>{subtitle}</p>
+        <h4 className={`${emergency ? 'font-semibold text-red-700' : 'font-medium text-foreground'}`}>{title}</h4>
+        <p className={`text-sm truncate ${emergency ? 'text-red-600' : 'text-foreground-muted'}`}>{subtitle}</p>
       </div>
-      <svg className={`w-5 h-5 flex-shrink-0 ${emergency ? 'text-red-500 dark:text-red-400' : 'text-gray-500 dark:text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <svg className={`w-5 h-5 flex-shrink-0 ${emergency ? 'text-red-500' : 'text-foreground-muted'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
         {external ? (
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
         ) : (

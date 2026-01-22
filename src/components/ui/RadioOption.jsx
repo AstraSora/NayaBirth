@@ -28,7 +28,7 @@ export function RadioOption({
           transition-all duration-200
           ${checked
             ? 'border-coral-400 bg-coral-400'
-            : 'border-gray-300 bg-white dark:border-gray-600 dark:bg-gray-700'
+            : 'border-strong bg-surface'
           }
         `}
       >
@@ -36,7 +36,7 @@ export function RadioOption({
           <div className="w-2 h-2 bg-white rounded-full" />
         )}
       </div>
-      <span className={`text-base ${checked ? 'text-gray-900 dark:text-gray-100 font-medium' : 'text-gray-700 dark:text-gray-300'}`}>
+      <span className={`text-base ${checked ? 'text-foreground font-medium' : 'text-foreground-secondary'}`}>
         {label}
       </span>
     </label>

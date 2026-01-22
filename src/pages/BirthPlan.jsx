@@ -49,14 +49,14 @@ export function BirthPlan() {
       />
 
       {/* Progress */}
-      <div className="bg-white border-b border-gray-100 dark:bg-gray-900 dark:border-gray-800">
+      <div className="bg-surface border-b border-subtle">
         <div className="max-w-lg mx-auto px-4 py-3">
           <ProgressBar current={currentSection} total={sections.length} />
         </div>
       </div>
 
       {/* Section tabs */}
-      <div className="bg-white border-b border-gray-100 dark:bg-gray-900 dark:border-gray-800">
+      <div className="bg-surface border-b border-subtle">
         <div className="max-w-lg mx-auto">
           <SectionTabs
             sections={sections}
@@ -71,11 +71,11 @@ export function BirthPlan() {
         <div className="max-w-lg mx-auto px-4 py-6">
           {/* Section header */}
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2 dark:text-gray-100">
+            <h2 className="text-2xl font-bold text-foreground mb-2">
               {section.title}
             </h2>
             {section.subtitle && (
-              <p className="text-gray-600 dark:text-gray-400">{section.subtitle}</p>
+              <p className="text-foreground-muted">{section.subtitle}</p>
             )}
           </div>
 

@@ -176,8 +176,8 @@ export function ContractionTimer() {
             <div className="flex items-start gap-3">
               <span className="text-2xl" aria-hidden="true">💡</span>
               <div>
-                <h2 className="font-medium text-gray-800 mb-1">The 5-1-1 Rule</h2>
-                <p className="text-sm text-gray-700">
+                <h2 className="font-medium text-foreground mb-1">The 5-1-1 Rule</h2>
+                <p className="text-sm text-foreground-secondary">
                   Call your provider when contractions are <strong>5</strong> minutes apart,
                   lasting <strong>1</strong> minute each, for <strong>1</strong> hour.
                 </p>
@@ -190,7 +190,7 @@ export function ContractionTimer() {
         <div className="text-center mb-8">
           <div
             className={`text-7xl font-mono font-bold mb-4 transition-colors ${
-              isTimingContraction ? 'text-coral-500' : 'text-gray-800'
+              isTimingContraction ? 'text-coral-500' : 'text-foreground'
             }`}
             aria-live="polite"
             aria-label={`Duration: ${formatDuration(currentDuration)}`}
@@ -199,7 +199,7 @@ export function ContractionTimer() {
           </div>
 
           {isTimingContraction && (
-            <div className="text-gray-600 text-lg mb-6 animate-pulse">
+            <div className="text-foreground-secondary text-lg mb-6 animate-pulse">
               Timing contraction...
             </div>
           )}
@@ -224,17 +224,17 @@ export function ContractionTimer() {
         {/* Stats */}
         {contractions.length > 0 && (
           <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="bg-white rounded-xl p-4 shadow-card text-center">
-              <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+            <div className="bg-surface rounded-xl p-4 shadow-card text-center">
+              <div className="text-2xl font-bold text-foreground">
                 {formatDuration(avgDuration)}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-300">Avg Duration</div>
+              <div className="text-sm text-foreground-secondary">Avg Duration</div>
             </div>
-            <div className="bg-white rounded-xl p-4 shadow-card text-center">
-              <div className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+            <div className="bg-surface rounded-xl p-4 shadow-card text-center">
+              <div className="text-2xl font-bold text-foreground">
                 {avgInterval > 0 ? formatDuration(avgInterval) : '--:--'}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-300">Avg Interval</div>
+              <div className="text-sm text-foreground-secondary">Avg Interval</div>
             </div>
           </div>
         )}
@@ -243,7 +243,7 @@ export function ContractionTimer() {
         {contractions.length > 0 && (
           <div className="mb-6">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="font-semibold text-gray-800 dark:text-gray-100">
+              <h3 className="font-semibold text-foreground">
                 Contractions ({contractions.length})
               </h3>
               <button
@@ -254,30 +254,30 @@ export function ContractionTimer() {
               </button>
             </div>
 
-            <div className="bg-white rounded-xl shadow-card overflow-hidden" role="table" aria-label="Contraction history">
+            <div className="bg-surface rounded-xl shadow-card overflow-hidden" role="table" aria-label="Contraction history">
               {/* Header */}
-              <div className="grid grid-cols-3 gap-2 p-3 bg-gray-50 border-b border-gray-100 text-xs font-medium text-gray-600 dark:text-gray-300" role="row">
+              <div className="grid grid-cols-3 gap-2 p-3 bg-muted border-b border-subtle text-xs font-medium text-foreground-secondary" role="row">
                 <div role="columnheader">Time</div>
                 <div role="columnheader">Duration</div>
                 <div role="columnheader">Interval</div>
               </div>
 
               {/* Rows */}
-              <div className="divide-y divide-gray-100 max-h-64 overflow-y-auto">
+              <div className="divide-y divide-subtle max-h-64 overflow-y-auto">
                 {contractions.map((contraction) => (
                   <div
                     key={contraction.id}
                     className="grid grid-cols-3 gap-2 p-3 text-sm"
                     role="row"
                   >
-                    <div className="text-gray-800 dark:text-gray-100" role="cell">{formatTime(contraction.startTime)}</div>
+                    <div className="text-foreground" role="cell">{formatTime(contraction.startTime)}</div>
                     <div className={`font-medium ${
-                      contraction.duration >= 60 ? 'text-coral-600' : 'text-gray-800'
+                      contraction.duration >= 60 ? 'text-coral-600' : 'text-foreground'
                     }`} role="cell">
                       {formatDuration(contraction.duration)}
                     </div>
                     <div className={`${
-                      contraction.interval && contraction.interval <= 300 ? 'text-coral-600 font-medium' : 'text-gray-600'
+                      contraction.interval && contraction.interval <= 300 ? 'text-coral-600 font-medium' : 'text-foreground-muted'
                     }`} role="cell">
                       {contraction.interval ? formatDuration(contraction.interval) : '—'}
                     </div>
@@ -290,10 +290,10 @@ export function ContractionTimer() {
 
         {/* Empty State */}
         {contractions.length === 0 && (
-          <div className="text-center text-gray-600 py-8">
+          <div className="text-center text-foreground-muted py-8">
             <div className="text-4xl mb-3" aria-hidden="true">⏱️</div>
             <p>Press Start when a contraction begins.</p>
-            <p className="text-sm text-gray-600 dark:text-gray-300">Press Stop when it ends.</p>
+            <p className="text-sm text-foreground-secondary">Press Stop when it ends.</p>
           </div>
         )}
       </main>

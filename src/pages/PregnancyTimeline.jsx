@@ -58,8 +58,8 @@ function DueDateModal({ onSave, onClose }) {
         <CardContent className="pt-6">
           <div className="text-center mb-6">
             <span className="text-4xl mb-3 block">📅</span>
-            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">When is your due date?</h2>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
+            <h2 className="text-xl font-bold text-foreground mb-2">When is your due date?</h2>
+            <p className="text-sm text-foreground-secondary">
               We'll calculate your current week and show relevant milestones.
             </p>
           </div>
@@ -71,7 +71,7 @@ function DueDateModal({ onSave, onClose }) {
               onChange={(e) => setDueDate(e.target.value)}
               min={today}
               max={maxDate.toISOString().split('T')[0]}
-              className="w-full max-w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-coral-300 focus:border-coral-400 mb-4 box-border"
+              className="w-full max-w-full px-4 py-3 border border-strong bg-surface text-foreground rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-coral-300 focus:border-coral-400 mb-4 box-border"
               style={{ WebkitAppearance: 'none' }}
               required
             />
@@ -100,12 +100,12 @@ function WeekSelector({ selectedWeek, currentWeek, onSelect, dueDate }) {
   }, [selectedWeek])
 
   return (
-    <div className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 pb-4 overflow-hidden">
+    <div className="bg-surface border-b border-subtle pb-4 overflow-hidden">
       <div className="max-w-lg mx-auto px-4">
         <div className="text-center mb-3">
-          <span className="text-3xl font-bold text-gray-800 dark:text-gray-100">Week {selectedWeek}</span>
+          <span className="text-3xl font-bold text-foreground">Week {selectedWeek}</span>
           {dueDate && (
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{getWeekDateRange(selectedWeek, dueDate)}</p>
+            <p className="text-sm text-foreground-muted mt-1">{getWeekDateRange(selectedWeek, dueDate)}</p>
           )}
         </div>
 
@@ -132,8 +132,8 @@ function WeekSelector({ selectedWeek, currentWeek, onSelect, dueDate }) {
                     : isCurrent
                       ? 'bg-teal-500 text-white'
                       : isPast
-                        ? 'bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-300'
-                        : 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
+                        ? 'bg-muted text-foreground-muted'
+                        : 'bg-surface text-foreground-secondary hover:bg-muted'
                   }
                 `}
                 aria-label={`Week ${week}${isCurrent ? ' (current)' : ''}${isSelected ? ' (selected)' : ''}`}
@@ -144,7 +144,7 @@ function WeekSelector({ selectedWeek, currentWeek, onSelect, dueDate }) {
           })}
         </div>
 
-        <div className="flex justify-center gap-4 mt-3 text-xs text-gray-500 dark:text-gray-400">
+        <div className="flex justify-center gap-4 mt-3 text-xs text-foreground-muted">
           <span className="flex items-center gap-1">
             <span className="w-3 h-3 rounded-full bg-teal-500"></span>
             Current week
@@ -172,8 +172,8 @@ function BabyDevelopmentCard({ week }) {
           <div className="flex items-center gap-4">
             <div className="text-5xl">👶</div>
             <div>
-              <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-1">Baby is the size of a {closest.size.toLowerCase()}</h3>
-              <p className="text-sm text-gray-700 dark:text-gray-300">{closest.highlight}</p>
+              <h3 className="font-semibold text-foreground mb-1">Baby is the size of a {closest.size.toLowerCase()}</h3>
+              <p className="text-sm text-foreground-secondary">{closest.highlight}</p>
             </div>
           </div>
         </CardContent>
@@ -187,8 +187,8 @@ function BabyDevelopmentCard({ week }) {
         <div className="flex items-center gap-4">
           <div className="text-5xl">👶</div>
           <div>
-            <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-1">Baby is the size of a {development.size.toLowerCase()}</h3>
-            <p className="text-sm text-gray-700 dark:text-gray-300">{development.highlight}</p>
+            <h3 className="font-semibold text-foreground mb-1">Baby is the size of a {development.size.toLowerCase()}</h3>
+            <p className="text-sm text-foreground-secondary">{development.highlight}</p>
           </div>
         </div>
       </CardContent>
@@ -205,19 +205,19 @@ function MilestoneCard({ milestone, currentWeek, isExpanded, onToggle }) {
   const isOngoing = milestone.ongoing
 
   const colorStyles = {
-    sky: 'border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-sky-900/30',
-    teal: 'border-teal-200 dark:border-teal-700 bg-teal-50 dark:bg-teal-900/30',
-    sage: 'border-sage-200 dark:border-sage-700 bg-sage-50 dark:bg-sage-900/30',
-    coral: 'border-coral-200 dark:border-coral-700 bg-coral-50 dark:bg-coral-900/30'
+    sky: 'border-sky-200 bg-sky-50',
+    teal: 'border-teal-200 bg-teal-50',
+    sage: 'border-sage-200 bg-sage-50',
+    coral: 'border-coral-200 bg-coral-50'
   }
 
   const statusStyles = isPast
-    ? 'border-teal-300 dark:border-teal-600 bg-teal-50/50 dark:bg-teal-900/30'
+    ? 'border-teal-300 bg-teal-50/50'
     : isOngoing
-      ? 'border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-900/30'
+      ? 'border-amber-300 bg-amber-50'
       : isCurrent
-        ? 'border-2 border-coral-400 dark:border-coral-500 bg-white dark:bg-gray-800 shadow-md'
-        : colorStyles[category.color] || 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800'
+        ? 'border-2 border-coral-400 bg-surface shadow-md'
+        : colorStyles[category.color] || 'border bg-surface'
 
   const weekLabel = milestone.week === milestone.weekEnd
     ? `Week ${milestone.week}`
@@ -244,11 +244,11 @@ function MilestoneCard({ milestone, currentWeek, isExpanded, onToggle }) {
             {isPast && !isOngoing && <span className="text-teal-500 text-sm">✓</span>}
             {isOngoing && <span className="text-xs text-amber-600 font-medium">Ongoing</span>}
           </div>
-          <h4 className="font-semibold text-gray-800 dark:text-gray-100">{milestone.title}</h4>
-          <p className="text-sm text-gray-600 dark:text-gray-300">{milestone.shortDescription}</p>
+          <h4 className="font-semibold text-foreground">{milestone.title}</h4>
+          <p className="text-sm text-foreground-secondary">{milestone.shortDescription}</p>
         </div>
         <svg
-          className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-200 mt-1 ${isExpanded ? 'rotate-180' : ''}`}
+          className={`w-5 h-5 text-foreground-muted flex-shrink-0 transition-transform duration-200 mt-1 ${isExpanded ? 'rotate-180' : ''}`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -259,8 +259,8 @@ function MilestoneCard({ milestone, currentWeek, isExpanded, onToggle }) {
 
       {isExpanded && (
         <div className="px-4 pb-4 pt-0 animate-fade-in">
-          <div className="border-t border-gray-200 dark:border-gray-600 pt-3 ml-11">
-            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{milestone.details}</p>
+          <div className="border-t border pt-3 ml-11">
+            <p className="text-sm text-foreground-secondary leading-relaxed">{milestone.details}</p>
             <div className="mt-3 flex items-center gap-2">
               <span className={`text-xs px-2 py-1 rounded-full ${
                 category.color === 'sky' ? 'bg-sky-100 text-sky-700' :
@@ -271,7 +271,7 @@ function MilestoneCard({ milestone, currentWeek, isExpanded, onToggle }) {
                 {category.label}
               </span>
               {milestone.priority === 'optional' && (
-                <span className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600 dark:text-gray-300">Optional</span>
+                <span className="text-xs px-2 py-1 rounded-full bg-gray-100 text-foreground-secondary">Optional</span>
               )}
               {milestone.priority === 'essential' && (
                 <span className="text-xs px-2 py-1 rounded-full bg-coral-100 text-coral-600">Essential</span>
@@ -288,14 +288,14 @@ function MilestoneTimeline({ milestones, currentWeek, expandedId, onToggle }) {
   return (
     <div className="relative">
       {/* Vertical timeline line */}
-      <div className="absolute left-6 top-4 bottom-4 w-0.5 bg-coral-300 dark:bg-coral-600" aria-hidden="true" />
+      <div className="absolute left-6 top-4 bottom-4 w-0.5 bg-coral-300" aria-hidden="true" />
 
       <div className="space-y-4 relative">
         {milestones.map((milestone) => (
           <div key={milestone.id} className="relative pl-10">
             {/* Timeline dot */}
             <div
-              className={`absolute left-4 top-5 w-4 h-4 rounded-full border-2 border-white dark:border-gray-900 shadow-sm ${
+              className={`absolute left-4 top-5 w-4 h-4 rounded-full border-2 border-surface shadow-sm ${
                 milestone.weekEnd < currentWeek && !milestone.ongoing
                   ? 'bg-teal-500'
                   : milestone.ongoing
@@ -378,7 +378,7 @@ export function PregnancyTimeline() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-coral-50 to-white dark:from-gray-900 dark:to-gray-900 flex flex-col">
+    <div className="min-h-screen bg-gradient-warm flex flex-col">
       <Header
         showBack
         onBack={() => navigate('/')}
@@ -418,8 +418,8 @@ export function PregnancyTimeline() {
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">🎯</span>
                     <div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Due date</p>
-                      <p className="font-semibold text-gray-800 dark:text-gray-100">
+                      <p className="text-sm text-foreground-muted">Due date</p>
+                      <p className="font-semibold text-foreground">
                         {new Date(dueDate).toLocaleDateString('en-US', {
                           weekday: 'short',
                           month: 'long',
@@ -429,7 +429,7 @@ export function PregnancyTimeline() {
                       </p>
                     </div>
                   </div>
-                  <span className="text-sm text-coral-600 dark:text-coral-400">Change</span>
+                  <span className="text-sm text-coral-600">Change</span>
                 </div>
               </CardContent>
             </Card>
@@ -438,7 +438,7 @@ export function PregnancyTimeline() {
 
         {/* Milestones Section */}
         <div className="mb-8">
-          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">
+          <h2 className="text-lg font-semibold text-foreground mb-4">
             {selectedWeek === currentWeek ? "What's happening now" : `Week ${selectedWeek} milestones`}
           </h2>
 
@@ -453,8 +453,8 @@ export function PregnancyTimeline() {
             <Card>
               <CardContent className="pt-5 text-center">
                 <span className="text-4xl mb-2 block">📋</span>
-                <p className="text-gray-600 dark:text-gray-300">No specific milestones for this week.</p>
-                <p className="text-sm text-gray-500 mt-1">Keep taking your prenatal vitamins!</p>
+                <p className="text-foreground-secondary">No specific milestones for this week.</p>
+                <p className="text-sm text-foreground-muted mt-1">Keep taking your prenatal vitamins!</p>
               </CardContent>
             </Card>
           )}
@@ -465,16 +465,16 @@ export function PregnancyTimeline() {
           <CardContent className="pt-5">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">You're in your</p>
-                <p className="font-semibold text-gray-800 dark:text-gray-100 text-lg">
+                <p className="text-sm text-foreground-muted">You're in your</p>
+                <p className="font-semibold text-foreground text-lg">
                   {selectedWeek <= 13 ? 'First' : selectedWeek <= 26 ? 'Second' : 'Third'} Trimester
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-foreground-muted">
                   {selectedWeek <= 13 ? 'Weeks 1-13' : selectedWeek <= 26 ? 'Weeks 14-26' : 'Weeks 27-40'}
                 </p>
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-foreground-muted">
                   {40 - selectedWeek} weeks to go
                 </p>
               </div>
@@ -482,13 +482,13 @@ export function PregnancyTimeline() {
 
             {/* Progress bar */}
             <div className="mt-4">
-              <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div className="h-2 bg-muted rounded-full overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-coral-400 to-coral-500 rounded-full transition-all duration-500"
                   style={{ width: `${Math.min(100, (selectedWeek / 40) * 100)}%` }}
                 />
               </div>
-              <p className="text-xs text-gray-500 mt-1 text-center">
+              <p className="text-xs text-foreground-muted mt-1 text-center">
                 {Math.round((selectedWeek / 40) * 100)}% of pregnancy complete
               </p>
             </div>
@@ -496,7 +496,7 @@ export function PregnancyTimeline() {
         </Card>
 
         {/* Disclaimer */}
-        <p className="text-xs text-gray-500 text-center mb-8">
+        <p className="text-xs text-foreground-muted text-center mb-8">
           This timeline is for informational purposes only. Always consult your healthcare provider for personalized advice.
         </p>
       </main>

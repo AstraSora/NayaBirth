@@ -33,8 +33,8 @@ function CheckboxItem({ item, isChecked, onToggle, onRemove }) {
       </button>
       <span
         className={`
-          flex-1 text-gray-800 transition-all duration-200
-          ${isChecked ? 'line-through text-gray-400' : ''}
+          flex-1 text-foreground transition-all duration-200
+          ${isChecked ? 'line-through text-foreground-muted' : ''}
         `}
       >
         {item.label}
@@ -47,7 +47,7 @@ function CheckboxItem({ item, isChecked, onToggle, onRemove }) {
       {item.id.startsWith('custom-') && (
         <button
           onClick={() => onRemove(item.id)}
-          className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-red-500 transition-all focus:outline-none focus:ring-2 focus:ring-red-300 rounded"
+          className="opacity-0 group-hover:opacity-100 p-1 text-foreground-muted hover:text-red-500 transition-all focus:outline-none focus:ring-2 focus:ring-red-300 rounded"
           aria-label={`Remove ${item.label}`}
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -108,7 +108,7 @@ function AddItemForm({ categoryId, onAdd }) {
           setIsOpen(false)
           setValue('')
         }}
-        className="px-3 py-2 text-gray-500 hover:text-gray-700 transition-colors text-sm"
+        className="px-3 py-2 text-foreground-muted hover:text-foreground-secondary transition-colors text-sm"
       >
         Cancel
       </button>
@@ -132,8 +132,8 @@ function CategorySection({ category, isExpanded, onToggle, isItemChecked, onTogg
         <div className="flex items-center gap-3">
           <span className="text-2xl" aria-hidden="true">{category.icon}</span>
           <div className="text-left">
-            <h3 className="font-semibold text-gray-800 dark:text-gray-100">{category.title}</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">{checkedCount} of {totalCount} packed</p>
+            <h3 className="font-semibold text-foreground">{category.title}</h3>
+            <p className="text-sm text-foreground-muted">{checkedCount} of {totalCount} packed</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -141,7 +141,7 @@ function CategorySection({ category, isExpanded, onToggle, isItemChecked, onTogg
             <span className="text-teal-500 text-xl" aria-label="All items packed">✓</span>
           )}
           <svg
-            className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+            className={`w-5 h-5 text-foreground-muted transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -212,7 +212,7 @@ export function HospitalChecklist() {
         <Card className="mb-6">
           <CardContent className="pt-5">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600 dark:text-gray-300">
+              <span className="text-sm text-foreground-secondary">
                 {checkedCount} of {totalItems} items packed
               </span>
               <span className="text-sm font-medium text-teal-600">
@@ -244,8 +244,8 @@ export function HospitalChecklist() {
             <div className="flex items-start gap-3">
               <span className="text-2xl" aria-hidden="true">💡</span>
               <div>
-                <h2 className="font-medium text-gray-800 mb-1">Pack around 36 weeks</h2>
-                <p className="text-sm text-gray-700">
+                <h2 className="font-medium text-foreground mb-1">Pack around 36 weeks</h2>
+                <p className="text-sm text-foreground-secondary">
                   Have your bag ready early, just in case! Items checked are saved automatically.
                 </p>
               </div>
@@ -279,10 +279,10 @@ export function HospitalChecklist() {
           >
             <div className="flex items-center gap-3">
               <span className="text-2xl" aria-hidden="true">🏥</span>
-              <span className="font-semibold text-gray-800 dark:text-gray-100">UCI Hospital Provides</span>
+              <span className="font-semibold text-foreground">UCI Hospital Provides</span>
             </div>
             <svg
-              className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${showHospitalInfo ? 'rotate-180' : ''}`}
+              className={`w-5 h-5 text-foreground-muted transition-transform duration-200 ${showHospitalInfo ? 'rotate-180' : ''}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -292,12 +292,12 @@ export function HospitalChecklist() {
           </button>
           {showHospitalInfo && (
             <div className="border-t border-gray-100 p-4 animate-fade-in">
-              <p className="text-sm text-gray-600 mb-3">
+              <p className="text-sm text-foreground-secondary mb-3">
                 No need to pack these - the hospital will provide:
               </p>
               <ul className="space-y-2">
                 {hospitalProvides.map((item, index) => (
-                  <li key={index} className="flex items-center gap-2 text-sm text-gray-700">
+                  <li key={index} className="flex items-center gap-2 text-sm text-foreground-secondary">
                     <span className="text-teal-500">•</span>
                     {item}
                   </li>
@@ -321,7 +321,7 @@ export function HospitalChecklist() {
             ) : (
               <Card className="animate-fade-in">
                 <CardContent className="pt-5">
-                  <p className="text-center text-gray-700 mb-4">
+                  <p className="text-center text-foreground-secondary mb-4">
                     Are you sure you want to reset the checklist? This will uncheck all items.
                   </p>
                   <div className="flex gap-3">

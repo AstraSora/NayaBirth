@@ -8,6 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Brand colors (static - don't change with theme)
         coral: {
           50: '#FFF5F5',
           100: '#FFE5E5',
@@ -39,7 +40,22 @@ export default {
           200: '#BBF7D0',
           300: '#86EFAC',
           400: '#4ADE80',
-        }
+        },
+        // Semantic colors (auto-switch with theme via CSS variables)
+        surface: 'var(--color-bg-surface)',
+        'surface-hover': 'var(--color-bg-surface-hover)',
+        background: 'var(--color-bg-primary)',
+        muted: 'var(--color-bg-muted)',
+        elevated: 'var(--color-bg-elevated)',
+        foreground: 'var(--color-text-primary)',
+        'foreground-secondary': 'var(--color-text-secondary)',
+        'foreground-muted': 'var(--color-text-tertiary)',
+        'foreground-inverted': 'var(--color-text-inverted)',
+      },
+      borderColor: {
+        DEFAULT: 'var(--color-border)',
+        subtle: 'var(--color-border-subtle)',
+        strong: 'var(--color-border-strong)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

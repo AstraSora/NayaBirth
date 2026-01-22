@@ -9,7 +9,7 @@ export function WizardNavigation({
   disabled = false,
 }) {
   return (
-    <div className="sticky bottom-0 bg-white/80 backdrop-blur-md border-t border-gray-100 safe-area-bottom dark:bg-gray-900/80 dark:border-gray-800">
+    <div className="sticky bottom-0 bg-surface/80 backdrop-blur-md border-t border-subtle safe-area-bottom">
       <div className="max-w-lg mx-auto px-4 py-4 flex gap-3">
         {showBack && (
           <Button
@@ -51,8 +51,8 @@ export function SectionTabs({ sections, currentSection, onSectionClick }) {
               ${index === currentSection
                 ? 'bg-coral-400 text-white'
                 : index < currentSection
-                  ? 'bg-coral-100 text-coral-700 dark:bg-coral-900/40 dark:text-coral-300'
-                  : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
+                  ? 'bg-coral-100 text-coral-700'
+                  : 'bg-muted text-foreground-muted'
               }
             `}
           >

@@ -53,10 +53,10 @@ export function Retrieve() {
       <main className="max-w-lg mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <div className="text-5xl mb-4">🔑</div>
-          <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+          <h1 className="text-2xl font-bold text-foreground mb-2">
             Continue Your Plan
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-foreground-muted">
             Enter the 6-character PIN you received when you saved your birth plan
           </p>
         </div>
@@ -65,7 +65,7 @@ export function Retrieve() {
           <CardContent className="pt-6">
             <form onSubmit={handleSubmit}>
               <label className="block mb-4">
-                <span className="text-sm font-medium text-gray-700 mb-2 block">
+                <span className="text-sm font-medium text-foreground-secondary mb-2 block">
                   Your PIN
                 </span>
                 <input
@@ -101,7 +101,7 @@ export function Retrieve() {
         </Card>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+          <p className="text-sm text-foreground-muted mb-4">
             Don't have a PIN yet?
           </p>
           <Button

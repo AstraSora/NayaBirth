@@ -124,8 +124,8 @@ export function KickCounter() {
             <div className="flex items-start gap-3">
               <span className="text-2xl" aria-hidden="true">💡</span>
               <div>
-                <h2 className="font-medium text-gray-800 mb-1">Count your baby's kicks</h2>
-                <p className="text-sm text-gray-700">
+                <h2 className="font-medium text-foreground mb-1">Count your baby's kicks</h2>
+                <p className="text-sm text-foreground-secondary">
                   Track at the same time daily when baby is active. Goal: Feel {KICK_GOAL} movements within 2 hours.
                 </p>
               </div>
@@ -163,17 +163,17 @@ export function KickCounter() {
             {/* Center content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <div
-                className={`text-6xl font-bold ${isGoalReached ? 'text-teal-600' : 'text-gray-800'}`}
+                className={`text-6xl font-bold ${isGoalReached ? 'text-teal-600' : 'text-foreground'}`}
                 aria-live="polite"
                 aria-label={`${kicks} kicks recorded`}
               >
                 {kicks}
               </div>
-              <div className="text-gray-600 text-sm">
+              <div className="text-foreground-secondary text-sm">
                 of {KICK_GOAL} kicks
               </div>
               {isActive && (
-                <div className="text-gray-600 text-lg mt-2 font-mono" aria-label={`Elapsed time: ${formatTime(elapsedTime)}`}>
+                <div className="text-foreground-secondary text-lg mt-2 font-mono" aria-label={`Elapsed time: ${formatTime(elapsedTime)}`}>
                   {formatTime(elapsedTime)}
                 </div>
               )}
@@ -224,15 +224,15 @@ export function KickCounter() {
           <div className="mb-4">
             <button
               onClick={() => setShowHistory(!showHistory)}
-              className="flex items-center justify-between w-full p-4 bg-white rounded-xl shadow-card"
+              className="flex items-center justify-between w-full p-4 bg-surface rounded-xl shadow-card"
             >
               <div className="flex items-center gap-3">
                 <span className="text-xl">📊</span>
-                <span className="font-medium text-gray-800 dark:text-gray-100">Session History</span>
-                <span className="text-sm text-gray-500 dark:text-gray-400">({sessions.length})</span>
+                <span className="font-medium text-foreground">Session History</span>
+                <span className="text-sm text-foreground-muted">({sessions.length})</span>
               </div>
               <svg
-                className={`w-5 h-5 text-gray-400 transition-transform ${showHistory ? 'rotate-180' : ''}`}
+                className={`w-5 h-5 text-foreground-muted transition-transform ${showHistory ? 'rotate-180' : ''}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -245,15 +245,15 @@ export function KickCounter() {
 
         {/* History List */}
         {showHistory && sessions.length > 0 && (
-          <div className="bg-white rounded-xl shadow-card overflow-hidden animate-fade-in">
-            <div className="divide-y divide-gray-100">
+          <div className="bg-surface rounded-xl shadow-card overflow-hidden animate-fade-in">
+            <div className="divide-y divide-subtle">
               {sessions.map((session) => (
                 <div key={session.id} className="p-4 flex items-center justify-between">
                   <div>
-                    <div className="font-medium text-gray-800 dark:text-gray-100">
+                    <div className="font-medium text-foreground">
                       {session.kicks} kicks in {formatTime(session.duration)}
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">{formatDate(session.date)}</div>
+                    <div className="text-sm text-foreground-muted">{formatDate(session.date)}</div>
                   </div>
                   {session.goalReached && (
                     <span className="text-teal-500 text-xl">✓</span>
@@ -261,7 +261,7 @@ export function KickCounter() {
                 </div>
               ))}
             </div>
-            <div className="p-3 bg-gray-50 border-t border-gray-100 dark:border-gray-700">
+            <div className="p-3 bg-muted border-t border-subtle">
               <button
                 onClick={handleClearHistory}
                 className="text-sm text-red-500 hover:text-red-600"

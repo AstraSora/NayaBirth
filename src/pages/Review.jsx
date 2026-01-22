@@ -67,10 +67,10 @@ export function Review() {
   }
 
   const getDisplayValue = (question, value) => {
-    if (!value) return <span className="text-gray-500 italic dark:text-gray-400">Not answered</span>
+    if (!value) return <span className="text-foreground-muted italic">Not answered</span>
 
     if (question.type === 'checkbox' && Array.isArray(value)) {
-      if (value.length === 0) return <span className="text-gray-500 italic dark:text-gray-400">None selected</span>
+      if (value.length === 0) return <span className="text-foreground-muted italic">None selected</span>
       const labels = value.map(v => {
         const opt = question.options?.find(o => o.value === v)
         return opt?.label || v
@@ -97,14 +97,14 @@ export function Review() {
             <Card color="white" className="w-full max-w-sm">
               <CardContent className="pt-6 text-center">
                 <div className="text-5xl mb-4">🎉</div>
-                <h2 className="text-xl font-bold text-gray-800 mb-2 dark:text-gray-100">
+                <h2 className="text-xl font-bold text-foreground mb-2">
                   Plan Saved!
                 </h2>
-                <p className="text-gray-600 mb-4 dark:text-gray-400">
+                <p className="text-foreground-muted mb-4">
                   Your unique PIN to access this plan:
                 </p>
-                <div className="bg-coral-50 rounded-xl p-4 mb-4 dark:bg-coral-900/20">
-                  <span className="text-3xl font-mono font-bold text-coral-600 tracking-wider dark:text-coral-400">
+                <div className="bg-coral-50 rounded-xl p-4 mb-4">
+                  <span className="text-3xl font-mono font-bold text-coral-600 tracking-wider">
                     {pin}
                   </span>
                 </div>
@@ -122,7 +122,7 @@ export function Review() {
                 >
                   Done
                 </Button>
-                <p className="text-xs text-gray-500 mt-4 dark:text-gray-400">
+                <p className="text-xs text-foreground-muted mt-4">
                   Save this PIN - you'll need it to access your plan later
                 </p>
               </CardContent>
@@ -132,17 +132,17 @@ export function Review() {
 
         {/* Summary Header */}
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-800 mb-2 dark:text-gray-100">
+          <h1 className="text-2xl font-bold text-foreground mb-2">
             Your Birth Plan
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-foreground-muted">
             Review your preferences below. Tap any section to make changes.
           </p>
         </div>
 
         {/* Error message */}
         {error && (
-          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm dark:bg-red-900/30 dark:border-red-700 dark:text-red-300">
+          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
             {error}
           </div>
         )}
@@ -161,23 +161,23 @@ export function Review() {
                   <div className="flex items-center gap-3">
                     <div className={`
                       w-8 h-8 rounded-full flex items-center justify-center
-                      ${hasResponses ? 'bg-teal-400 dark:bg-teal-500' : 'bg-gray-200 dark:bg-gray-700'}
+                      ${hasResponses ? 'bg-teal-400' : 'bg-muted'}
                     `}>
                       {hasResponses ? (
                         <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       ) : (
-                        <span className="text-sm text-gray-500 dark:text-gray-400">{sectionIndex + 1}</span>
+                        <span className="text-sm text-foreground-muted">{sectionIndex + 1}</span>
                       )}
                     </div>
-                    <h3 className="font-semibold text-gray-800 dark:text-gray-100">{section.title}</h3>
+                    <h3 className="font-semibold text-foreground">{section.title}</h3>
                   </div>
                   <button
                     onClick={() => {
                       navigate('/birth-plan')
                     }}
-                    className="text-coral-500 text-sm font-medium hover:text-coral-600 dark:text-coral-400 dark:hover:text-coral-300"
+                    className="text-coral-500 text-sm font-medium hover:text-coral-600"
                   >
                     Edit
                   </button>
@@ -189,19 +189,19 @@ export function Review() {
                     .map((question) => {
                       const value = sectionResponses[question.id]
                       return (
-                        <div key={question.id} className="py-2 border-b border-gray-100 last:border-0 dark:border-gray-700">
-                          <div className="text-sm text-gray-500 mb-1 dark:text-gray-400">
+                        <div key={question.id} className="py-2 border-b border-subtle last:border-0">
+                          <div className="text-sm text-foreground-muted mb-1">
                             {question.question?.replace('?', '').slice(0, 50)}
                             {question.question?.length > 50 ? '...' : ''}
                           </div>
-                          <div className="text-gray-800 dark:text-gray-200">
+                          <div className="text-foreground">
                             {getDisplayValue(question, value)}
                           </div>
                         </div>
                       )
                     })}
                   {section.questions.filter(q => q.type !== 'info').length > 4 && (
-                    <p className="text-sm text-gray-400 pt-2 dark:text-gray-500">
+                    <p className="text-sm text-foreground-muted pt-2">
                       +{section.questions.filter(q => q.type !== 'info').length - 4} more items
                     </p>
                   )}
@@ -213,7 +213,7 @@ export function Review() {
       </main>
 
       {/* Fixed bottom actions */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-gray-100 safe-area-bottom dark:bg-gray-900/80 dark:border-gray-800">
+      <div className="fixed bottom-0 left-0 right-0 bg-surface/80 backdrop-blur-md border-t border-subtle safe-area-bottom">
         <div className="max-w-lg mx-auto px-4 py-4 space-y-3">
           <div className="flex gap-3">
             <Button
@@ -233,11 +233,11 @@ export function Review() {
             </Button>
           </div>
           {pin && (
-            <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-              Your PIN: <span className="font-mono font-bold dark:text-gray-200">{pin}</span>
+            <p className="text-center text-sm text-foreground-muted">
+              Your PIN: <span className="font-mono font-bold text-foreground">{pin}</span>
               <button
                 onClick={handleCopyPIN}
-                className="ml-2 text-coral-500 hover:text-coral-600 dark:text-coral-400 dark:hover:text-coral-300"
+                className="ml-2 text-coral-500 hover:text-coral-600"
               >
                 {copied ? 'Copied!' : 'Copy'}
               </button>
