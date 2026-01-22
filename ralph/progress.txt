@@ -106,3 +106,24 @@
 
 ---
 
+## Iteration 6
+
+### US-006: Build Personalized recommendations screen (Step 3)
+**Status:** PASSED
+**Files created/modified:**
+- src/components/onboarding/RecommendationsStep.jsx (created)
+- src/pages/OnboardingFlow.jsx (modified to import RecommendationsStep)
+
+**Implementation:**
+- "Recommended for you" heading with stage context message
+- Dynamic context: "In your third trimester..." / "At week X..." / stage-specific
+- Primary tool card with prominent "Explore [Tool Name]" button
+- Secondary recommendations in "Also recommended" section
+- "Continue to quick tour" button
+- "See all tools" link (completes onboarding, goes to Hub)
+- Back button returns to Stage screen
+- Verified in browser with third trimester: Birth Plan, Hospital Checklist, Contraction Timer
+- Build passes
+
+---
+

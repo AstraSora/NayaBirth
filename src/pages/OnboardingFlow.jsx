@@ -3,24 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { useOnboarding } from '../context/OnboardingContext'
 import { WelcomeStep } from '../components/onboarding/WelcomeStep'
 import { StageStep } from '../components/onboarding/StageStep'
+import { RecommendationsStep } from '../components/onboarding/RecommendationsStep'
 
 // Placeholder step components - will be implemented in subsequent stories
-
-function RecommendationsStep() {
-  const { nextStep, prevStep } = useOnboarding()
-  return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold mb-4">Recommendations</h1>
-        <p className="mb-6">Step 3 - Coming soon</p>
-        <div className="flex gap-4 justify-center">
-          <button onClick={prevStep} className="px-4 py-2 border rounded-lg">Back</button>
-          <button onClick={nextStep} className="px-6 py-3 bg-coral-500 text-white rounded-lg">Continue</button>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 function TourStep() {
   const { prevStep, completeOnboarding } = useOnboarding()
