@@ -42,3 +42,25 @@
 
 ---
 
+## Iteration 3
+
+### US-003: Build Welcome screen (Step 1)
+**Status:** PASSED
+**Files created/modified:**
+- src/components/onboarding/WelcomeStep.jsx (created)
+- src/pages/OnboardingFlow.jsx (modified to import WelcomeStep)
+- src/context/OnboardingContext.jsx (fixed hasExistingData to check meaningful content)
+
+**Implementation:**
+- UCI Health partnership badge at top
+- "Welcome to NayaBirth" title with tagline
+- 4 feature bullet points with icons
+- "Get Started" primary button (advances to next step)
+- "I've used this app before" link (calls skipOnboarding)
+- "Already have a saved birth plan?" link (navigates to /retrieve)
+- Fixed hasExistingData() to only return true if draft has actual responses or PIN
+- Verified in browser - all elements present and functional
+- Build passes
+
+---
+

@@ -36,11 +36,39 @@ export function OnboardingProvider({ children }) {
   const [onboardingStep, setOnboardingStep] = useState(0)
 
   // Check for existing data that indicates a returning user
+  // Only consider it "existing data" if there's actual meaningful content
   const hasExistingData = useCallback(() => {
-    return !!(
-      localStorage.getItem(STORAGE_KEYS.DRAFT) ||
-      localStorage.getItem(STORAGE_KEYS.TIMELINE)
-    )
+    // Check if timeline has a due date set
+    const timelineData = localStorage.getItem(STORAGE_KEYS.TIMELINE)
+    if (timelineData) {
+      try {
+        const parsed = JSON.parse(timelineData)
+        if (parsed.dueDate) return true
+      } catch (e) {
+        // Invalid JSON, ignore
+      }
+    }
+
+    // Check if birth plan draft has any actual responses
+    const draftData = localStorage.getItem(STORAGE_KEYS.DRAFT)
+    if (draftData) {
+      try {
+        const parsed = JSON.parse(draftData)
+        // Check if any section has actual data
+        if (parsed.responses) {
+          const hasResponses = Object.values(parsed.responses).some(section =>
+            Object.keys(section).length > 0
+          )
+          if (hasResponses) return true
+        }
+        // Check if there's a PIN (indicating saved plan)
+        if (parsed.pin) return true
+      } catch (e) {
+        // Invalid JSON, ignore
+      }
+    }
+
+    return false
   }, [])
 
   // Persist profile to localStorage

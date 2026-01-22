@@ -1,25 +1,9 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useOnboarding } from '../context/OnboardingContext'
+import { WelcomeStep } from '../components/onboarding/WelcomeStep'
 
 // Placeholder step components - will be implemented in subsequent stories
-function WelcomeStep() {
-  const { nextStep } = useOnboarding()
-  return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold mb-4">Welcome to NayaBirth</h1>
-        <p className="mb-6">Your pregnancy companion from UCI Health</p>
-        <button
-          onClick={nextStep}
-          className="px-6 py-3 bg-coral-500 text-white rounded-lg"
-        >
-          Get Started
-        </button>
-      </div>
-    </div>
-  )
-}
 
 function StageStep() {
   const { nextStep, prevStep } = useOnboarding()
