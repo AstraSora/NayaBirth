@@ -203,3 +203,29 @@
 
 ---
 
+## Iteration 11
+
+### US-011: Add Reset onboarding option in Settings
+**Status:** PASSED
+**Files modified:**
+- src/pages/Settings.jsx
+
+**Implementation:**
+- Add "Pregnancy Info" section to Settings page
+- Shows current pregnancy stage (e.g., "Trimester 3")
+- "Reset" button opens confirmation dialog
+- Dialog text: "This will restart the welcome setup. Your saved birth plans will not be affected."
+- Cancel button closes dialog
+- Reset button calls resetOnboarding() and navigates to /onboarding
+- Verified in browser - dialog appears on click
+- Build passes
+
+---
+
+# RALPH COMPLETE
+
+All 11 user stories implemented and verified:
+- US-001 through US-011: PASSED
+
+Feature: First-Time User Onboarding is complete.
+

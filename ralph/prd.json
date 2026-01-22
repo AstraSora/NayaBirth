@@ -208,8 +208,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 11,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Added 'Pregnancy Info' section with Reset button. Shows current trimester, confirmation dialog on click. Reset clears localStorage and navigates to /onboarding. Build passes. Verified in browser."
     }
   ]
 }
