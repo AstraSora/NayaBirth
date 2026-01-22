@@ -1,0 +1,7 @@
+# Ralph Progress Log
+# Feature: First-Time User Onboarding
+# Branch: ralph/first-time-user-onboarding
+# Started: 2026-01-22
+
+---
+

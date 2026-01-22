@@ -1,0 +1,215 @@
+{
+  "project": "NayaBirth",
+  "branchName": "ralph/first-time-user-onboarding",
+  "description": "First-Time User Onboarding - Guided onboarding flow that collects pregnancy stage and provides personalized tool recommendations",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Create OnboardingContext for state management",
+      "description": "As a developer, I need a React Context to manage onboarding state and user profile data collected during onboarding.",
+      "acceptanceCriteria": [
+        "Create OnboardingContext.jsx in /src/context/",
+        "State includes: hasCompletedOnboarding, dueDate, trimester, stage, onboardingStep",
+        "Persist profile data to localStorage under nayabirth_user_profile",
+        "Persist completion flag to localStorage under nayabirth_onboarding_complete",
+        "Provide completeOnboarding() action that sets flag",
+        "Provide skipOnboarding() action for users who want to skip",
+        "Provide updateProfile() action to update dueDate/trimester/stage",
+        "Typecheck passes"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Create onboarding route and detection logic",
+      "description": "As a developer, I need routes configured for the onboarding flow and logic to detect first-time users.",
+      "acceptanceCriteria": [
+        "Add /onboarding route in App.jsx that renders OnboardingFlow component",
+        "Create OnboardingFlow.jsx component in /src/pages/ that manages steps internally",
+        "Check localStorage for nayabirth_onboarding_complete flag on app load",
+        "Also check for existing data (nayabirth_draft, nayabirth-timeline) as secondary signal",
+        "If no onboarding complete AND no existing data, redirect to /onboarding",
+        "If onboarding complete OR existing data exists, allow normal Hub access",
+        "Preserve all existing routes and functionality",
+        "Typecheck passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-003",
+      "title": "Build Welcome screen (Step 1)",
+      "description": "As a first-time user, I want to see a welcoming introduction that explains what the app offers so I understand its value immediately.",
+      "acceptanceCriteria": [
+        "Create WelcomeStep.jsx component in /src/components/onboarding/",
+        "Display UCI Health partnership badge prominently at top",
+        "Show app name NayaBirth with tagline 'Your pregnancy companion from UCI Health'",
+        "Show 4 bullet points: Build your birth plan, Track weekly milestones, Access trusted resources, Prepare for delivery",
+        "Get Started primary button that advances to next step",
+        "I've used this app before text link that calls skipOnboarding()",
+        "Already have a saved birth plan? link that navigates to /retrieve",
+        "Use existing UI components (Button, Card) and match app design (coral accents)",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-004",
+      "title": "Build Pregnancy stage collection screen (Step 2)",
+      "description": "As a first-time user, I want to enter my pregnancy stage so the app can show me relevant tools and information.",
+      "acceptanceCriteria": [
+        "Create StageStep.jsx component in /src/components/onboarding/",
+        "Display heading: Where are you in your pregnancy journey?",
+        "Option A: I know my due date - shows date picker input",
+        "Option B: Select trimester - radio buttons for First/Second/Third trimester",
+        "Option C: I'm postpartum (recently delivered)",
+        "Option D: I'm planning a pregnancy (pre-conception)",
+        "If due date entered, calculate and display current week number",
+        "Store selection in OnboardingContext via updateProfile()",
+        "Continue button advances to next step",
+        "Back button returns to Welcome screen",
+        "Skip this step subtle link that advances without saving",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-005",
+      "title": "Create tool recommendation helper function",
+      "description": "As a developer, I need a function that returns recommended tools based on pregnancy stage.",
+      "acceptanceCriteria": [
+        "Create getRecommendedTools.js in /src/lib/ or /src/utils/",
+        "Function takes stage parameter: trimester (1,2,3), 'postpartum', or 'planning'",
+        "First trimester returns: Pregnancy Timeline (primary), Resources",
+        "Second trimester returns: Birth Plan Builder (primary), Pregnancy Timeline, Kick Counter",
+        "Third trimester returns: Birth Plan Builder (primary), Hospital Checklist, Contraction Timer",
+        "Postpartum returns: Postpartum Assessment (primary), Resources",
+        "Pre-conception returns: Resources (primary), Pregnancy Timeline",
+        "Each tool object includes: id, name, description, icon, route, relevanceText (why it's recommended now)",
+        "Typecheck passes"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-006",
+      "title": "Build Personalized recommendations screen (Step 3)",
+      "description": "As a first-time user, I want to see which tools are most relevant to my pregnancy stage so I know where to start.",
+      "acceptanceCriteria": [
+        "Create RecommendationsStep.jsx component in /src/components/onboarding/",
+        "Display Recommended for you heading with stage context (e.g., At 28 weeks...)",
+        "Call getRecommendedTools() with user's stage from OnboardingContext",
+        "Show 2-3 tool cards with icon, name, and relevanceText",
+        "Primary recommendation has Explore [Tool Name] button that navigates to tool route",
+        "See all tools secondary link to complete onboarding and go to Hub",
+        "Continue to tour button advances to tour step",
+        "Back button returns to Stage screen",
+        "If no stage was selected, show generic recommendations message",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-007",
+      "title": "Build Quick feature tour screen (Step 4)",
+      "description": "As a first-time user, I want a brief overview of key features so I understand how to navigate the app.",
+      "acceptanceCriteria": [
+        "Create TourStep.jsx component in /src/components/onboarding/",
+        "Show 3 cards that can be swiped/tapped through",
+        "Card 1: Build Your Birth Plan - Create and share preferences with your care team",
+        "Card 2: Track Your Journey - Week-by-week timeline with milestones",
+        "Card 3: Access Resources - Evidence-based information from UCI Health",
+        "Dot indicators showing current position (1/3, 2/3, 3/3)",
+        "Skip tour link always visible that completes onboarding",
+        "Finish button on last card completes onboarding",
+        "Use CSS scroll-snap for swipe behavior on mobile",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-008",
+      "title": "Complete onboarding and sync data",
+      "description": "As a user completing onboarding, I want a smooth transition to the main app with my data synced.",
+      "acceptanceCriteria": [
+        "completeOnboarding() sets nayabirth_onboarding_complete to true in localStorage",
+        "If due date was entered, also set nayabirth-timeline localStorage key with the due date",
+        "Navigate to Hub page after completion",
+        "If user clicked Explore [Tool] button, navigate to that tool instead of Hub",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-009",
+      "title": "Update Hub with personalized welcome message",
+      "description": "As a returning user who completed onboarding, I want the Hub to acknowledge my pregnancy stage.",
+      "acceptanceCriteria": [
+        "Read user profile from OnboardingContext or localStorage in Hub.jsx",
+        "If due date is known, calculate current week and show: Welcome back! You're in week X",
+        "If only trimester known, show: Welcome back! [First/Second/Third] trimester",
+        "If postpartum, show: Welcome back! How are you feeling today?",
+        "If planning or no stage, show default: Welcome to your pregnancy journey",
+        "Keep all existing Hub layout and functionality intact",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-010",
+      "title": "Add recommended tools section to Hub",
+      "description": "As a returning user, I want to see stage-appropriate tool recommendations on the Hub.",
+      "acceptanceCriteria": [
+        "Add Recommended for you section to Hub above or integrated with existing tools",
+        "Use getRecommendedTools() function with user's stage",
+        "Show primary recommendation prominently if stage is known",
+        "If no stage data, do not show this section (fall back to existing tools display)",
+        "Existing tools section remains available below or via Show all tools",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 10,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-011",
+      "title": "Add Reset onboarding option in Settings",
+      "description": "As a user, I want to redo the onboarding flow if my situation changes or I want to update my due date.",
+      "acceptanceCriteria": [
+        "Add Update Pregnancy Info or Restart Setup button to Settings page",
+        "Clicking shows confirmation dialog: This will restart the welcome setup. Your saved birth plans will not be affected.",
+        "On confirm, clear nayabirth_onboarding_complete and nayabirth_user_profile from localStorage",
+        "Navigate user to /onboarding after clearing",
+        "On cancel, close dialog with no action",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 11,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}
