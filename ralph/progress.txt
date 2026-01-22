@@ -165,3 +165,22 @@
 
 ---
 
+## Iteration 9
+
+### US-009: Update Hub with personalized welcome message
+**Status:** PASSED
+**Files modified:**
+- src/pages/Hub.jsx
+
+**Implementation:**
+- Import useOnboarding hook in Hub.jsx
+- Calculate welcomeMessage based on profile stage/trimester/week
+- Postpartum: "Welcome back!" / "How are you feeling today?"
+- Week known: "Welcome back!" / "You're in week X of your pregnancy."
+- Trimester known: "Welcome back!" / "You're in your [X] trimester."
+- Planning/default: generic welcome message
+- Verified in browser - shows "Welcome back! You're in your third trimester."
+- Build passes
+
+---
+

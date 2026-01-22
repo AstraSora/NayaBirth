@@ -174,8 +174,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 9,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Updated Hub.jsx with useOnboarding hook. Dynamic welcomeMessage based on stage/trimester/week. Verified in browser - shows 'Welcome back! You're in your third trimester.' Build passes."
     },
     {
       "id": "US-010",

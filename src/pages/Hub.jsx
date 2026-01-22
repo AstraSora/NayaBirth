@@ -1,11 +1,53 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { ToolCard } from '../components/hub/ToolCard'
 import { ResourceCard } from '../components/hub/ResourceCard'
+import { useOnboarding } from '../context/OnboardingContext'
 import UCIHealthLogo from '../assets/uci-health-logo.svg'
 
 export function Hub() {
   const [showAllTools, setShowAllTools] = useState(false)
+  const { profile, getCurrentWeek, getEffectiveTrimester } = useOnboarding()
+
+  // Generate personalized welcome message
+  const welcomeMessage = useMemo(() => {
+    const currentWeek = getCurrentWeek()
+    const trimester = getEffectiveTrimester()
+
+    if (profile.stage === 'postpartum') {
+      return {
+        title: 'Welcome back!',
+        subtitle: 'How are you feeling today?'
+      }
+    }
+
+    if (profile.stage === 'planning') {
+      return {
+        title: 'Welcome to your pregnancy journey',
+        subtitle: 'Tools and resources to help you prepare.'
+      }
+    }
+
+    if (currentWeek) {
+      return {
+        title: `Welcome back!`,
+        subtitle: `You're in week ${currentWeek} of your pregnancy.`
+      }
+    }
+
+    if (trimester) {
+      const trimesterNames = ['', 'first', 'second', 'third']
+      return {
+        title: 'Welcome back!',
+        subtitle: `You're in your ${trimesterNames[trimester]} trimester.`
+      }
+    }
+
+    return {
+      title: 'Welcome to your pregnancy journey',
+      subtitle: 'Tools and resources to support you through pregnancy, birth, and beyond.'
+    }
+  }, [profile.stage, getCurrentWeek, getEffectiveTrimester])
 
   return (
     <div className="min-h-screen bg-gradient-warm">
@@ -39,10 +81,10 @@ export function Hub() {
         {/* Welcome Message */}
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold text-foreground mb-2">
-            Welcome to your pregnancy journey
+            {welcomeMessage.title}
           </h2>
           <p className="text-foreground-secondary">
-            Tools and resources to support you through pregnancy, birth, and beyond.
+            {welcomeMessage.subtitle}
           </p>
         </div>
 
