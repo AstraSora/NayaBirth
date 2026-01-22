@@ -54,7 +54,7 @@ export function Hub() {
             aria-label="Retrieve a saved birth plan using your PIN"
           >
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-coral-100 dark:bg-coral-900/30 flex items-center justify-center text-2xl" aria-hidden="true">
+              <div className="w-12 h-12 rounded-full bg-coral-100 dark:bg-gray-700 flex items-center justify-center text-2xl" aria-hidden="true">
                 💾
               </div>
               <div className="flex-1">

@@ -54,11 +54,11 @@ function DueDateModal({ onSave, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <Card className="w-full max-w-sm animate-fade-in">
+      <Card className="w-full max-w-sm animate-fade-in overflow-hidden">
         <CardContent className="pt-6">
           <div className="text-center mb-6">
             <span className="text-4xl mb-3 block">📅</span>
-            <h2 className="text-xl font-bold text-gray-800 mb-2">When is your due date?</h2>
+            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">When is your due date?</h2>
             <p className="text-sm text-gray-600 dark:text-gray-300">
               We'll calculate your current week and show relevant milestones.
             </p>
@@ -71,7 +71,8 @@ function DueDateModal({ onSave, onClose }) {
               onChange={(e) => setDueDate(e.target.value)}
               min={today}
               max={maxDate.toISOString().split('T')[0]}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-coral-300 focus:border-coral-400 mb-4"
+              className="w-full max-w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-coral-300 focus:border-coral-400 mb-4 box-border"
+              style={{ WebkitAppearance: 'none' }}
               required
             />
 
@@ -99,18 +100,18 @@ function WeekSelector({ selectedWeek, currentWeek, onSelect, dueDate }) {
   }, [selectedWeek])
 
   return (
-    <div className="bg-white border-b border-gray-100 pb-4">
+    <div className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 pb-4 overflow-hidden">
       <div className="max-w-lg mx-auto px-4">
         <div className="text-center mb-3">
           <span className="text-3xl font-bold text-gray-800 dark:text-gray-100">Week {selectedWeek}</span>
           {dueDate && (
-            <p className="text-sm text-gray-500 mt-1">{getWeekDateRange(selectedWeek, dueDate)}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{getWeekDateRange(selectedWeek, dueDate)}</p>
           )}
         </div>
 
         <div
           ref={scrollRef}
-          className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4"
+          className="flex gap-2 overflow-x-auto py-3 scrollbar-hide -mx-4 px-4"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {weeks.map((week) => {
@@ -131,8 +132,8 @@ function WeekSelector({ selectedWeek, currentWeek, onSelect, dueDate }) {
                     : isCurrent
                       ? 'bg-teal-500 text-white'
                       : isPast
-                        ? 'bg-gray-100 text-gray-500'
-                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                        ? 'bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-300'
+                        : 'bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
                   }
                 `}
                 aria-label={`Week ${week}${isCurrent ? ' (current)' : ''}${isSelected ? ' (selected)' : ''}`}
@@ -166,13 +167,13 @@ function BabyDevelopmentCard({ week }) {
       return Math.abs(curr.week - week) < Math.abs(prev.week - week) ? curr : prev
     })
     return (
-      <Card className="bg-gradient-to-br from-coral-50 to-coral-100">
+      <Card color="coral">
         <CardContent className="pt-5">
           <div className="flex items-center gap-4">
             <div className="text-5xl">👶</div>
             <div>
-              <h3 className="font-semibold text-gray-800 mb-1">Baby is the size of a {closest.size.toLowerCase()}</h3>
-              <p className="text-sm text-gray-700">{closest.highlight}</p>
+              <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-1">Baby is the size of a {closest.size.toLowerCase()}</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300">{closest.highlight}</p>
             </div>
           </div>
         </CardContent>
@@ -181,13 +182,13 @@ function BabyDevelopmentCard({ week }) {
   }
 
   return (
-    <Card className="bg-gradient-to-br from-coral-50 to-coral-100">
+    <Card color="coral">
       <CardContent className="pt-5">
         <div className="flex items-center gap-4">
           <div className="text-5xl">👶</div>
           <div>
-            <h3 className="font-semibold text-gray-800 mb-1">Baby is the size of a {development.size.toLowerCase()}</h3>
-            <p className="text-sm text-gray-700">{development.highlight}</p>
+            <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-1">Baby is the size of a {development.size.toLowerCase()}</h3>
+            <p className="text-sm text-gray-700 dark:text-gray-300">{development.highlight}</p>
           </div>
         </div>
       </CardContent>
@@ -204,19 +205,19 @@ function MilestoneCard({ milestone, currentWeek, isExpanded, onToggle }) {
   const isOngoing = milestone.ongoing
 
   const colorStyles = {
-    sky: 'border-sky-200 bg-sky-50',
-    teal: 'border-teal-200 bg-teal-50',
-    sage: 'border-sage-200 bg-sage-50',
-    coral: 'border-coral-200 bg-coral-50'
+    sky: 'border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-sky-900/30',
+    teal: 'border-teal-200 dark:border-teal-700 bg-teal-50 dark:bg-teal-900/30',
+    sage: 'border-sage-200 dark:border-sage-700 bg-sage-50 dark:bg-sage-900/30',
+    coral: 'border-coral-200 dark:border-coral-700 bg-coral-50 dark:bg-coral-900/30'
   }
 
   const statusStyles = isPast
-    ? 'border-teal-300 bg-teal-50/50'
+    ? 'border-teal-300 dark:border-teal-600 bg-teal-50/50 dark:bg-teal-900/30'
     : isOngoing
-      ? 'border-amber-300 bg-amber-50'
+      ? 'border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-900/30'
       : isCurrent
-        ? 'border-2 border-coral-400 bg-white shadow-md'
-        : colorStyles[category.color] || 'border-gray-200 bg-white'
+        ? 'border-2 border-coral-400 dark:border-coral-500 bg-white dark:bg-gray-800 shadow-md'
+        : colorStyles[category.color] || 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800'
 
   const weekLabel = milestone.week === milestone.weekEnd
     ? `Week ${milestone.week}`
@@ -258,8 +259,8 @@ function MilestoneCard({ milestone, currentWeek, isExpanded, onToggle }) {
 
       {isExpanded && (
         <div className="px-4 pb-4 pt-0 animate-fade-in">
-          <div className="border-t border-gray-200 pt-3 ml-11">
-            <p className="text-sm text-gray-700 leading-relaxed">{milestone.details}</p>
+          <div className="border-t border-gray-200 dark:border-gray-600 pt-3 ml-11">
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{milestone.details}</p>
             <div className="mt-3 flex items-center gap-2">
               <span className={`text-xs px-2 py-1 rounded-full ${
                 category.color === 'sky' ? 'bg-sky-100 text-sky-700' :
@@ -287,14 +288,14 @@ function MilestoneTimeline({ milestones, currentWeek, expandedId, onToggle }) {
   return (
     <div className="relative">
       {/* Vertical timeline line */}
-      <div className="absolute left-6 top-4 bottom-4 w-0.5 bg-coral-300" aria-hidden="true" />
+      <div className="absolute left-6 top-4 bottom-4 w-0.5 bg-coral-300 dark:bg-coral-600" aria-hidden="true" />
 
       <div className="space-y-4 relative">
         {milestones.map((milestone) => (
           <div key={milestone.id} className="relative pl-10">
             {/* Timeline dot */}
             <div
-              className={`absolute left-4 top-5 w-4 h-4 rounded-full border-2 border-white shadow-sm ${
+              className={`absolute left-4 top-5 w-4 h-4 rounded-full border-2 border-white dark:border-gray-900 shadow-sm ${
                 milestone.weekEnd < currentWeek && !milestone.ongoing
                   ? 'bg-teal-500'
                   : milestone.ongoing
@@ -377,7 +378,7 @@ export function PregnancyTimeline() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-coral-50 to-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-coral-50 to-white dark:from-gray-900 dark:to-gray-900 flex flex-col">
       <Header
         showBack
         onBack={() => navigate('/')}
@@ -428,7 +429,7 @@ export function PregnancyTimeline() {
                       </p>
                     </div>
                   </div>
-                  <span className="text-sm text-coral-600">Change</span>
+                  <span className="text-sm text-coral-600 dark:text-coral-400">Change</span>
                 </div>
               </CardContent>
             </Card>
@@ -437,7 +438,7 @@ export function PregnancyTimeline() {
 
         {/* Milestones Section */}
         <div className="mb-8">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">
             {selectedWeek === currentWeek ? "What's happening now" : `Week ${selectedWeek} milestones`}
           </h2>
 
@@ -465,7 +466,7 @@ export function PregnancyTimeline() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-500 dark:text-gray-400">You're in your</p>
-                <p className="font-semibold text-gray-800 text-lg">
+                <p className="font-semibold text-gray-800 dark:text-gray-100 text-lg">
                   {selectedWeek <= 13 ? 'First' : selectedWeek <= 26 ? 'Second' : 'Third'} Trimester
                 </p>
               </div>
@@ -481,7 +482,7 @@ export function PregnancyTimeline() {
 
             {/* Progress bar */}
             <div className="mt-4">
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-coral-400 to-coral-500 rounded-full transition-all duration-500"
                   style={{ width: `${Math.min(100, (selectedWeek / 40) * 100)}%` }}

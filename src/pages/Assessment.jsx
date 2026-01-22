@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAssessment } from '../context/AssessmentContext'
 import { Header } from '../components/layout/Header'
 import { Button } from '../components/ui/Button'
@@ -9,25 +8,27 @@ export function Assessment() {
   const {
     questions,
     currentQuestion,
-    setCurrentQuestion,
     setAnswer,
     getAnswer,
     goToNext,
     goToPrevious,
     totalQuestions,
-    isComplete,
-    reset,
     epdsData
   } = useAssessment()
 
-  const question = questions[currentQuestion]
-  const selectedAnswer = getAnswer(question.id)
-  const progress = ((currentQuestion + 1) / totalQuestions) * 100
 
-  // Reset on mount
-  useEffect(() => {
-    reset()
-  }, [])
+  const question = questions?.[currentQuestion]
+  const selectedAnswer = question ? getAnswer(question.id) : undefined
+  const progress = totalQuestions > 0 ? ((currentQuestion + 1) / totalQuestions) * 100 : 0
+
+  // Show loading if data not ready
+  if (!question) {
+    return (
+      <div className="min-h-screen bg-gradient-warm dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-gray-600 dark:text-gray-400">Loading...</div>
+      </div>
+    )
+  }
 
   const handleSelectOption = (score) => {
     setAnswer(question.id, score)
@@ -48,9 +49,8 @@ export function Assessment() {
   }
 
   const handleSubmit = () => {
-    if (isComplete()) {
-      navigate('/assessment/results')
-    }
+    // Navigate to results - the results page will verify completion
+    navigate('/assessment/results')
   }
 
   return (
@@ -144,7 +144,7 @@ export function Assessment() {
             <Button
               variant="primary"
               onClick={handleSubmit}
-              disabled={!isComplete()}
+              disabled={selectedAnswer === undefined}
               className="flex-1"
             >
               See Results

@@ -35,21 +35,21 @@ export function AssessmentResults() {
 
   const colorStyles = {
     teal: {
-      bg: 'bg-teal-400/20',
-      border: 'border-teal-400',
-      text: 'text-teal-600',
+      bg: 'bg-teal-400/20 dark:bg-teal-900/40',
+      border: 'border-teal-400 dark:border-teal-500',
+      text: 'text-teal-600 dark:text-teal-400',
       icon: '💚'
     },
     coral: {
-      bg: 'bg-coral-100',
-      border: 'border-coral-400',
-      text: 'text-coral-600',
+      bg: 'bg-coral-100 dark:bg-gray-800',
+      border: 'border-coral-400 dark:border-coral-500',
+      text: 'text-coral-600 dark:text-coral-400',
       icon: '🧡'
     },
     red: {
-      bg: 'bg-red-100',
-      border: 'border-red-400',
-      text: 'text-red-600',
+      bg: 'bg-red-100 dark:bg-gray-800',
+      border: 'border-red-400 dark:border-red-500',
+      text: 'text-red-600 dark:text-red-400',
       icon: '❤️'
     }
   }
@@ -62,7 +62,7 @@ export function AssessmentResults() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-warm flex flex-col">
+    <div className="min-h-screen bg-gradient-warm dark:bg-gray-900 flex flex-col">
       <Header showBack onBack={() => navigate('/')} title="Your Results" />
 
       <main className="flex-1 max-w-lg mx-auto px-4 py-6 w-full">
@@ -72,10 +72,10 @@ export function AssessmentResults() {
             <div className="flex items-start gap-3">
               <span className="text-2xl">🆘</span>
               <div>
-                <h3 className="font-semibold text-red-800 mb-1">
+                <h3 className="font-semibold text-red-800 dark:text-red-400 mb-1">
                   {resources.crisis.title}
                 </h3>
-                <p className="text-sm text-red-700 mb-4">
+                <p className="text-sm text-red-700 dark:text-red-300 mb-4">
                   {resources.crisis.message}
                 </p>
                 <div className="space-y-2">
@@ -83,16 +83,16 @@ export function AssessmentResults() {
                     <a
                       key={index}
                       href={`tel:${contact.phone}`}
-                      className="flex items-center gap-3 bg-white rounded-xl p-3 hover:bg-red-50 transition-colors"
+                      className="flex items-center gap-3 bg-white dark:bg-gray-800 rounded-xl p-3 hover:bg-red-50 dark:hover:bg-gray-700 transition-colors"
                     >
-                      <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-xl">
+                      <div className="w-10 h-10 rounded-full bg-red-100 dark:bg-gray-700 flex items-center justify-center text-xl">
                         📞
                       </div>
                       <div className="flex-1">
                         <div className="font-medium text-gray-800 dark:text-gray-100">{contact.name}</div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">{contact.description}</div>
                       </div>
-                      <div className="font-bold text-red-600">{contact.phone}</div>
+                      <div className="font-bold text-red-600 dark:text-red-400">{contact.phone}</div>
                     </a>
                   ))}
                 </div>
@@ -160,7 +160,7 @@ export function AssessmentResults() {
       </main>
 
       {/* Actions */}
-      <div className="sticky bottom-0 bg-white border-t border-gray-100 safe-area-bottom">
+      <div className="sticky bottom-0 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 safe-area-bottom">
         <div className="max-w-lg mx-auto px-4 py-4 flex gap-3">
           <Button
             variant="secondary"
