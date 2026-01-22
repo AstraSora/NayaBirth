@@ -64,3 +64,25 @@
 
 ---
 
+## Iteration 4
+
+### US-004: Build Pregnancy stage collection screen (Step 2)
+**Status:** PASSED
+**Files created/modified:**
+- src/components/onboarding/StageStep.jsx (created)
+- src/pages/OnboardingFlow.jsx (modified to import StageStep)
+
+**Implementation:**
+- "Where are you in your pregnancy journey?" heading
+- 4 stage options: due date, trimester, postpartum, planning
+- Due date picker with real-time week calculation
+- Trimester sub-selection (First/Second/Third with week ranges)
+- Continue button (disabled until valid selection)
+- Back button returns to Welcome
+- Skip this step link advances without saving
+- Updates context via updateProfile()
+- Verified in browser - week 28 shows correctly for Apr 2026 due date
+- Build passes
+
+---
+
