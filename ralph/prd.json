@@ -140,8 +140,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 7,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Created TourStep.jsx with 3 scrollable cards, dot indicators, Next/Get Started button logic, Skip tour link. CSS scroll-snap for swipe. Verified in browser."
     },
     {
       "id": "US-008",

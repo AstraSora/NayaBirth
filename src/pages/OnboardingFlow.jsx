@@ -4,31 +4,7 @@ import { useOnboarding } from '../context/OnboardingContext'
 import { WelcomeStep } from '../components/onboarding/WelcomeStep'
 import { StageStep } from '../components/onboarding/StageStep'
 import { RecommendationsStep } from '../components/onboarding/RecommendationsStep'
-
-// Placeholder step components - will be implemented in subsequent stories
-
-function TourStep() {
-  const { prevStep, completeOnboarding } = useOnboarding()
-  const navigate = useNavigate()
-
-  const handleFinish = () => {
-    completeOnboarding()
-    navigate('/')
-  }
-
-  return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold mb-4">Quick Tour</h1>
-        <p className="mb-6">Step 4 - Coming soon</p>
-        <div className="flex gap-4 justify-center">
-          <button onClick={prevStep} className="px-4 py-2 border rounded-lg">Back</button>
-          <button onClick={handleFinish} className="px-6 py-3 bg-coral-500 text-white rounded-lg">Finish</button>
-        </div>
-      </div>
-    </div>
-  )
-}
+import { TourStep } from '../components/onboarding/TourStep'
 
 const STEPS = [
   WelcomeStep,
