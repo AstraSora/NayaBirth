@@ -191,8 +191,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 10,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Added 'Recommended for you' section with primary tool card. Shows Birth Plan Builder for third trimester with relevance text. Conditionally renders only when stage data exists. Verified in browser."
     },
     {
       "id": "US-011",

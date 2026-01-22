@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ToolCard } from '../components/hub/ToolCard'
 import { ResourceCard } from '../components/hub/ResourceCard'
 import { useOnboarding } from '../context/OnboardingContext'
+import { getRecommendedTools } from '../lib/getRecommendedTools'
 import UCIHealthLogo from '../assets/uci-health-logo.svg'
 
 export function Hub() {
@@ -48,6 +49,15 @@ export function Hub() {
       subtitle: 'Tools and resources to support you through pregnancy, birth, and beyond.'
     }
   }, [profile.stage, getCurrentWeek, getEffectiveTrimester])
+
+  // Get recommended tools based on stage
+  const recommendations = useMemo(() => {
+    const trimester = getEffectiveTrimester()
+    if (!profile.stage && !trimester) return null
+    return getRecommendedTools({ trimester, stage: profile.stage })
+  }, [profile.stage, getEffectiveTrimester])
+
+  const primaryRecommendation = recommendations?.find(t => t.isPrimary)
 
   return (
     <div className="min-h-screen bg-gradient-warm">
@@ -109,6 +119,31 @@ export function Hub() {
             </div>
           </Link>
         </section>
+
+        {/* Recommended For You Section - only show if we have stage data */}
+        {primaryRecommendation && (
+          <section className="mb-8" aria-labelledby="recommended-heading">
+            <h3 id="recommended-heading" className="text-lg font-semibold text-foreground mb-4">
+              Recommended for you
+            </h3>
+            <Link
+              to={primaryRecommendation.route}
+              className="block bg-surface rounded-2xl shadow-card p-4 hover:shadow-soft transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-coral-300 focus:ring-offset-2 border-2 border-coral-200"
+            >
+              <div className="flex items-start gap-4">
+                <span className="text-3xl">{primaryRecommendation.icon}</span>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-foreground mb-1">{primaryRecommendation.name}</h4>
+                  <p className="text-sm text-foreground-muted mb-2">{primaryRecommendation.description}</p>
+                  <p className="text-sm text-coral-500 font-medium">{primaryRecommendation.relevanceText}</p>
+                </div>
+                <svg className="w-5 h-5 text-foreground-muted mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </Link>
+          </section>
+        )}
 
         {/* Tools Section */}
         <section className="mb-8" aria-labelledby="tools-heading">

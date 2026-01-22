@@ -184,3 +184,22 @@
 
 ---
 
+## Iteration 10
+
+### US-010: Add recommended tools section to Hub
+**Status:** PASSED
+**Files modified:**
+- src/pages/Hub.jsx
+
+**Implementation:**
+- Import getRecommendedTools() in Hub.jsx
+- Calculate recommendations based on stage/trimester
+- Add "Recommended for you" section between saved plans and tools
+- Show primary recommendation with icon, name, description, and relevanceText
+- Conditionally render only when stage data exists
+- Existing tools section remains below
+- Verified in browser - shows Birth Plan Builder for third trimester
+- Build passes
+
+---
+
