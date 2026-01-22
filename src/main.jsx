@@ -6,19 +6,22 @@ import { ThemeProvider } from './context/ThemeContext'
 import { BirthPlanProvider } from './context/BirthPlanContext'
 import { AssessmentProvider } from './context/AssessmentContext'
 import { ChecklistProvider } from './context/ChecklistContext'
+import { OnboardingProvider } from './context/OnboardingContext'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider>
-        <BirthPlanProvider>
-          <AssessmentProvider>
-            <ChecklistProvider>
-              <App />
-            </ChecklistProvider>
-          </AssessmentProvider>
-        </BirthPlanProvider>
+        <OnboardingProvider>
+          <BirthPlanProvider>
+            <AssessmentProvider>
+              <ChecklistProvider>
+                <App />
+              </ChecklistProvider>
+            </AssessmentProvider>
+          </BirthPlanProvider>
+        </OnboardingProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>

@@ -36,8 +36,8 @@
         "Typecheck passes"
       ],
       "priority": 2,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Created OnboardingFlow.jsx with placeholder steps and internal step management. Added OnboardingGuard component in App.jsx for redirect logic. Added OnboardingProvider to main.jsx. /retrieve allowed without onboarding for returning users with PIN. Build passes."
     },
     {
       "id": "US-003",

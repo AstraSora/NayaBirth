@@ -22,3 +22,23 @@
 
 ---
 
+## Iteration 2
+
+### US-002: Create onboarding route and detection logic
+**Status:** PASSED
+**Files created/modified:**
+- src/pages/OnboardingFlow.jsx (created)
+- src/App.jsx (modified)
+- src/main.jsx (modified)
+
+**Implementation:**
+- Created OnboardingFlow.jsx with 4 placeholder steps (Welcome, Stage, Recommendations, Tour)
+- Internal step management via onboardingStep from context
+- Added OnboardingGuard component in App.jsx for automatic redirects
+- First-time users (no onboarding + no existing data) redirect to /onboarding
+- /retrieve allowed without onboarding for users with saved birth plan PINs
+- Added OnboardingProvider to main.jsx provider hierarchy
+- Build passes
+
+---
+
