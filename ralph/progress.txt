@@ -149,3 +149,19 @@
 
 ---
 
+## Iteration 8
+
+### US-008: Complete onboarding and sync data
+**Status:** PASSED
+**Files:** Already implemented in previous stories
+
+**Verification:**
+- completeOnboarding() sets nayabirth_onboarding_complete to "true"
+- userProfile saved with trimester, stage, onboardingCompletedAt
+- Navigates to Hub (/) after completion
+- "Explore [Tool]" in RecommendationsStep navigates to tool route
+- Build passes
+- Verified in browser - full flow from Welcome to Hub working
+
+---
+

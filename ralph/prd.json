@@ -156,8 +156,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 8,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Completion flow verified: onboarding_complete set to true, userProfile saved with trimester/stage, navigates to Hub. Explore [Tool] navigates to tool route. Build passes."
     },
     {
       "id": "US-009",
