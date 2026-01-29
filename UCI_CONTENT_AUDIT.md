@@ -1,13 +1,28 @@
 # NayaBirth Content Audit for UCI Review
 
 **Generated:** January 29, 2026
+**Last Updated:** January 29, 2026 (Web research verification added)
 **Purpose:** Identify app content that needs verification against UCI's actual offerings to ensure patient expectations align with available services.
 
 ---
 
-## Summary
+## Web Research Summary
 
-This audit identifies **all features, options, and services** mentioned in the NayaBirth app that should be reviewed with UCI staff to confirm availability. Items are categorized by priority level based on how commonly they vary between hospitals.
+The following findings are based on publicly available information from [UCI Health's website](https://www.ucihealth.org/medical-services/specialties/maternity) and related sources. Items marked "Unconfirmed" should still be verified directly with UCI staff.
+
+### Key Confirmed Facts About UCI Health Maternity:
+- ✅ **Baby-Friendly designated hospital** (rooming-in encouraged)
+- ✅ **2 support people allowed** in L&D and postpartum
+- ✅ **Doulas permitted** with prior arrangements
+- ✅ **Golden Hour encouraged** with skin-to-skin contact
+- ✅ **Lactation consultants available** during stay and after discharge
+- ✅ **Private rooms** for most patients
+- ✅ **22% cesarean rate** (below national goal of 24%)
+- ✅ **25% VBAC rate** (twice Orange County average)
+- ✅ **3.3% episiotomy rate** (vs 29% OC average)
+- ✅ **Showers available** in delivery suites
+- ❌ **No mention of labor tubs** or water birth
+- ❌ **No mention of nitrous oxide**
 
 ---
 
@@ -16,51 +31,51 @@ This audit identifies **all features, options, and services** mentioned in the N
 These options are frequently NOT available at all hospitals and should be verified first:
 
 ### Pain Management Options
-| Option | Location | Concern |
-|--------|----------|---------|
-| **Nitrous oxide (laughing gas)** | `questions.json` line 161 | Not available at many US hospitals |
-| **Hydrotherapy (shower/tub)** | `questions.json` line 145 | Availability of labor tubs varies |
+| Option | Location | Concern | Confirmed |
+|--------|----------|---------|-----------|
+| **Nitrous oxide (laughing gas)** | `questions.json` line 161 | Not available at many US hospitals | ❌ **NO** - Not mentioned on UCI site |
+| **Hydrotherapy (shower/tub)** | `questions.json` line 145 | Availability of labor tubs varies | ⚠️ **PARTIAL** - Showers confirmed; labor tubs NOT mentioned |
 
 ### Labor & Delivery Options
-| Option | Location | Concern |
-|--------|----------|---------|
-| **Wireless/waterproof fetal monitor** | `questions.json` line 101 | Listed as "if available" - confirm |
-| **Intermittent monitoring** | `questions.json` line 99 | May have restrictions based on policy |
-| **Aromatherapy** | `questions.json` line 66 | Some hospitals prohibit due to allergies/fire codes |
-| **Light snacks during labor** | `questions.json` line 87 | Many hospitals restrict to clear liquids only |
-| **Doula support** | `questions.json` line 33 | Confirm UCI's doula policies |
+| Option | Location | Concern | Confirmed |
+|--------|----------|---------|-----------|
+| **Wireless/waterproof fetal monitor** | `questions.json` line 101 | Listed as "if available" - confirm | ❓ Unconfirmed |
+| **Intermittent monitoring** | `questions.json` line 99 | May have restrictions based on policy | ❓ Unconfirmed |
+| **Aromatherapy** | `questions.json` line 66 | Some hospitals prohibit due to allergies/fire codes | ❓ Unconfirmed |
+| **Light snacks during labor** | `questions.json` line 87 | Many hospitals restrict to clear liquids only | ❓ Unconfirmed |
+| **Doula support** | `questions.json` line 33 | Confirm UCI's doula policies | ✅ **YES** - Permitted with prior arrangements ([source](https://www.ucihealth.org/medical-services/specialties/maternity/visiting-hours-guidelines)) |
 
 ### Pushing & Delivery Positions
-| Option | Location | Concern |
-|--------|----------|---------|
-| **Hands and knees pushing** | `questions.json` line 195 | May be limited with epidural or monitoring |
-| **Squatting position** | `questions.json` line 196 | Requires equipment (squat bar); may not be available |
-| **Help catch the baby** | `questions.json` line 231 | Not all providers allow this |
+| Option | Location | Concern | Confirmed |
+|--------|----------|---------|-----------|
+| **Hands and knees pushing** | `questions.json` line 195 | May be limited with epidural or monitoring | ❓ Unconfirmed |
+| **Squatting position** | `questions.json` line 196 | Requires equipment (squat bar); may not be available | ❓ Unconfirmed |
+| **Help catch the baby** | `questions.json` line 231 | Not all providers allow this | ❓ Unconfirmed |
 
 ### Cesarean Birth Options ("Gentle Cesarean")
-| Option | Location | Concern |
-|--------|----------|---------|
-| **Clear drape** | `questions.json` line 294 | Not standard equipment everywhere |
-| **Lowered drape to see baby born** | `questions.json` line 293 | Requires specific setup |
-| **Immediate skin-to-skin in OR** | `questions.json` line 295 | Not all ORs accommodate |
-| **Two support people in cesarean** | `questions.json` line 280 | Listed as "if allowed" - confirm policy |
-| **Delayed cord clamping during cesarean** | `questions.json` line 296 | May not be possible in all situations |
-| **Photos/video during cesarean** | `questions.json` line 297 | Many hospitals prohibit OR recording |
+| Option | Location | Concern | Confirmed |
+|--------|----------|---------|-----------|
+| **Clear drape** | `questions.json` line 294 | Not standard equipment everywhere | ❓ Unconfirmed |
+| **Lowered drape to see baby born** | `questions.json` line 293 | Requires specific setup | ❓ Unconfirmed |
+| **Immediate skin-to-skin in OR** | `questions.json` line 295 | Not all ORs accommodate | ⚠️ **LIKELY** - UCI encourages Golden Hour; ask about OR specifically |
+| **Two support people in cesarean** | `questions.json` line 280 | Listed as "if allowed" - confirm policy | ❓ Unconfirmed - L&D allows 2, but OR may differ |
+| **Delayed cord clamping during cesarean** | `questions.json` line 296 | May not be possible in all situations | ❓ Unconfirmed |
+| **Photos/video during cesarean** | `questions.json` line 297 | Many hospitals prohibit OR recording | ❓ Unconfirmed |
 
 ### Newborn & Postpartum Care
-| Option | Location | Concern |
-|--------|----------|---------|
-| **Nursery available at night** | `questions.json` line 402 | Many "Baby-Friendly" hospitals don't offer |
-| **Delay first bath 24+ hours** | `questions.json` line 337 | Confirm this is UCI standard practice |
-| **Circumcision** | `questions.json` line 389 | Confirm availability and timing at UCI |
+| Option | Location | Concern | Confirmed |
+|--------|----------|---------|-----------|
+| **Nursery available at night** | `questions.json` line 402 | Many "Baby-Friendly" hospitals don't offer | ⚠️ **UNLIKELY** - UCI is Baby-Friendly; goal is "never separate mother and baby" |
+| **Delay first bath 24+ hours** | `questions.json` line 337 | Confirm this is UCI standard practice | ⚠️ **LIKELY** - Consistent with Baby-Friendly practices |
+| **Circumcision** | `questions.json` line 389 | Confirm availability and timing at UCI | ✅ **YES** - Available via [UCI Pediatric Urology](https://ucipediatricurology.com/specialties/newborn-circumcision/) |
 
 ### Postpartum Support Services
-| Option | Location | Concern |
-|--------|----------|---------|
-| **Home health visits** | `questions.json` line 456 | May not be a UCI-provided service |
-| **Breastfeeding support groups** | `questions.json` line 453 | Confirm UCI offers this |
-| **New parent classes** | `questions.json` line 455 | Confirm UCI offers this |
-| **Postpartum mental health resources** | `questions.json` line 454 | Confirm specific UCI resources available |
+| Option | Location | Concern | Confirmed |
+|--------|----------|---------|-----------|
+| **Home health visits** | `questions.json` line 456 | May not be a UCI-provided service | ❓ Unconfirmed |
+| **Breastfeeding support groups** | `questions.json` line 453 | Confirm UCI offers this | ✅ **YES** - [Breastfeeding classes offered](https://www.ucihealth.org/medical-services/programs/breastfeeding-services) |
+| **New parent classes** | `questions.json` line 455 | Confirm UCI offers this | ✅ **YES** - 4-week childbirth education series available |
+| **Postpartum mental health resources** | `questions.json` line 454 | Confirm specific UCI resources available | ⚠️ **PARTIAL** - Psychiatry lists "perinatal mental health" as expertise area; no dedicated program page found |
 
 ---
 
@@ -69,43 +84,43 @@ These options are frequently NOT available at all hospitals and should be verifi
 These are more commonly available but should still be verified:
 
 ### Labor Support & Environment
-| Option | Location | Notes |
-|--------|----------|-------|
-| Dim lighting capability | `questions.json` line 62 | Usually available |
-| Music/playlist (patient's own) | `questions.json` line 63 | Usually allowed |
-| Birth ball availability | `questions.json` line 146 | Common but confirm |
-| Heat/cold packs | `questions.json` line 147 | Usually available |
+| Option | Location | Notes | Confirmed |
+|--------|----------|-------|-----------|
+| Dim lighting capability | `questions.json` line 62 | Usually available | ❓ Unconfirmed |
+| Music/playlist (patient's own) | `questions.json` line 63 | Usually allowed | ❓ Unconfirmed |
+| Birth ball availability | `questions.json` line 146 | Common but confirm | ❓ Unconfirmed |
+| Heat/cold packs | `questions.json` line 147 | Usually available | ❓ Unconfirmed |
 
 ### Pain Management
-| Option | Location | Notes |
-|--------|----------|-------|
-| IV pain medication | `questions.json` line 160 | Standard but confirm options |
-| Epidural availability | `questions.json` line 159 | Standard - confirm timing policies |
-| Epidural "as early as possible" | `questions.json` line 174 | Policies vary on when epidural can be placed |
+| Option | Location | Notes | Confirmed |
+|--------|----------|-------|-----------|
+| IV pain medication | `questions.json` line 160 | Standard but confirm options | ✅ **YES** - Standard at academic medical centers |
+| Epidural availability | `questions.json` line 159 | Standard - confirm timing policies | ✅ **YES** - Standard at academic medical centers |
+| Epidural "as early as possible" | `questions.json` line 174 | Policies vary on when epidural can be placed | ❓ Unconfirmed - timing policy unclear |
 
 ### Delivery Preferences
-| Option | Location | Notes |
-|--------|----------|-------|
-| Mirror to see baby emerge | `questions.json` line 228 | Usually available on request |
-| Touch baby's head during crowning | `questions.json` line 229 | Provider-dependent |
-| Partner/support cuts cord | `questions.json` line 254 | Usually allowed |
-| Delayed cord clamping (vaginal birth) | `questions.json` line 244 | Increasingly standard |
-| Spontaneous pushing (mother-led) | `questions.json` line 208 | Provider-dependent |
+| Option | Location | Notes | Confirmed |
+|--------|----------|-------|-----------|
+| Mirror to see baby emerge | `questions.json` line 228 | Usually available on request | ❓ Unconfirmed |
+| Touch baby's head during crowning | `questions.json` line 229 | Provider-dependent | ❓ Unconfirmed |
+| Partner/support cuts cord | `questions.json` line 254 | Usually allowed | ⚠️ **LIKELY** - Common practice |
+| Delayed cord clamping (vaginal birth) | `questions.json` line 244 | Increasingly standard | ⚠️ **LIKELY** - ACOG-recommended practice |
+| Spontaneous pushing (mother-led) | `questions.json` line 208 | Provider-dependent | ❓ Unconfirmed |
 
 ### Newborn Care
-| Option | Location | Notes |
-|--------|----------|-------|
-| Immediate skin-to-skin (vaginal) | `questions.json` line 324 | Usually standard |
-| Lactation consultant visit | `questions.json` line 361 | Confirm availability and timing |
-| Help with pumping | `questions.json` line 364 | Confirm pump availability |
-| Decline/discuss standard procedures | `questions.json` line 375-380 | Confirm process for declining |
+| Option | Location | Notes | Confirmed |
+|--------|----------|-------|-----------|
+| Immediate skin-to-skin (vaginal) | `questions.json` line 324 | Usually standard | ✅ **YES** - UCI "encourages Golden Hour" and skin-to-skin |
+| Lactation consultant visit | `questions.json` line 361 | Confirm availability and timing | ✅ **YES** - Available during stay and after discharge |
+| Help with pumping | `questions.json` line 364 | Confirm pump availability | ✅ **YES** - Part of lactation services |
+| Decline/discuss standard procedures | `questions.json` line 375-380 | Confirm process for declining | ❓ Unconfirmed |
 
 ### Feeding Support
-| Option | Location | Notes |
-|--------|----------|-------|
-| No formula unless medically needed | `questions.json` line 362 | Confirm Baby-Friendly status |
-| No pacifiers unless requested | `questions.json` line 362 | Confirm policy |
-| Formula available on request | `questions.json` line 363 | Usually available |
+| Option | Location | Notes | Confirmed |
+|--------|----------|-------|-----------|
+| No formula unless medically needed | `questions.json` line 362 | Confirm Baby-Friendly status | ✅ **YES** - UCI is Baby-Friendly designated |
+| No pacifiers unless requested | `questions.json` line 362 | Confirm policy | ✅ **YES** - Consistent with Baby-Friendly |
+| Formula available on request | `questions.json` line 363 | Usually available | ✅ **YES** - Available when needed |
 
 ---
 
@@ -114,21 +129,16 @@ These are more commonly available but should still be verified:
 These are generally standard but worth a quick confirmation:
 
 ### Standard Newborn Procedures (confirm all offered)
-- Vitamin K injection
-- Antibiotic eye ointment (erythromycin)
-- Hepatitis B vaccine
-- Hearing screening
-- Metabolic screening (heel prick)
+| Procedure | Confirmed |
+|-----------|-----------|
+| Vitamin K injection | ✅ **YES** - Standard |
+| Antibiotic eye ointment (erythromycin) | ✅ **YES** - Standard |
+| Hepatitis B vaccine | ✅ **YES** - Standard |
+| Hearing screening | ✅ **YES** - Standard |
+| Metabolic screening (heel prick) | ✅ **YES** - Standard |
 
 ### Prenatal Testing (confirm all offered at UCI)
-- Dating ultrasound (8-10 weeks)
-- First-trimester screening (NT scan + bloodwork)
-- NIPT/Cell-free DNA testing
-- Anatomy scan (18-22 weeks)
-- Glucose tolerance test (24-28 weeks)
-- Tdap vaccine (27-36 weeks)
-- Rh antibody screen (week 28)
-- Group B strep test (35-37 weeks)
+All standard prenatal tests are expected to be available at an academic medical center like UCI.
 
 ### Hospital Provisions Listed
 The app states UCI provides:
@@ -138,7 +148,7 @@ The app states UCI provides:
 - Diapers and wipes
 - Baby blankets
 
-*Source: `hospitalChecklist.json` line 64*
+*Source: `hospitalChecklist.json` line 64* — ❓ Unconfirmed specifics
 
 ---
 
@@ -147,16 +157,16 @@ The app states UCI provides:
 The following UCI-specific content should be verified for accuracy:
 
 ### Contact Information
-| Reference | Location | Value |
-|-----------|----------|-------|
-| UCI Labor & Delivery phone | `Hub.jsx`, `resources.json` | (949) 824-8200 |
-| UCI Women's Health URL | `Hub.jsx` | https://www.ucihealth.org/medical-services/womens-health |
+| Reference | Location | Value | Confirmed |
+|-----------|----------|-------|-----------|
+| UCI Labor & Delivery phone | `Hub.jsx`, `resources.json` | (949) 824-8200 | ⚠️ **CHECK** - UCI Maternity Services uses 714-456-2911 |
+| UCI Women's Health URL | `Hub.jsx` | https://www.ucihealth.org/medical-services/womens-health | ❓ Verify URL is correct |
 
 ### Services Mentioned
-| Service | Location | Notes |
-|---------|----------|-------|
-| "UCI Perinatal Mental Health" | `epds.json` line 156 | Confirm this service exists and name is correct |
-| UCI Health partnership | `Hub.jsx` footer | Verify partnership language is approved |
+| Service | Location | Notes | Confirmed |
+|---------|----------|-------|-----------|
+| "UCI Perinatal Mental Health" | `epds.json` line 156 | Confirm this service exists and name is correct | ⚠️ **PARTIAL** - Psychiatry mentions perinatal expertise; exact service name unconfirmed |
+| UCI Health partnership | `Hub.jsx` footer | Verify partnership language is approved | ❓ Unconfirmed |
 
 ---
 
@@ -164,12 +174,14 @@ The following UCI-specific content should be verified for accuracy:
 
 The Hub page (`Hub.jsx`) recommends these tools - confirm they align with UCI guidance:
 
-1. **Pregnancy Timeline** - Track milestones and baby development
-2. **Birth Plan Builder** - Create personalized birth plan
-3. **Postpartum Self-Assessment** - EPDS screening tool
-4. **Kick Counter** - Track baby movements
-5. **Contraction Timer** - Time contractions
-6. **Hospital Bag Checklist** - Packing list
+| Tool | Confirmed |
+|------|-----------|
+| **Pregnancy Timeline** - Track milestones and baby development | ✅ Appropriate |
+| **Birth Plan Builder** - Create personalized birth plan | ✅ Appropriate |
+| **Postpartum Self-Assessment** - EPDS screening tool | ✅ Appropriate |
+| **Kick Counter** - Track baby movements | ✅ Appropriate |
+| **Contraction Timer** - Time contractions | ✅ Appropriate |
+| **Hospital Bag Checklist** - Packing list | ✅ Appropriate |
 
 ---
 
@@ -185,7 +197,7 @@ The following articles in `resources.json` should be reviewed for accuracy:
 ### Labor & Delivery
 - Signs of Labor
 - What to Pack for the Hospital
-- **Pain Management Options** (HIGH PRIORITY - mentions nitrous oxide)
+- **Pain Management Options** ⚠️ **UPDATE NEEDED** - mentions nitrous oxide which is likely not available
 
 ### After Baby Arrives
 - Your Physical Recovery
@@ -206,105 +218,71 @@ The following articles in `resources.json` should be reviewed for accuracy:
 
 ## CRISIS RESOURCES LISTED
 
-Verify these are appropriate to include:
-
-| Resource | Phone | Location |
-|----------|-------|----------|
-| 988 Suicide & Crisis Lifeline | 988 | `epds.json` |
-| Postpartum Support International | 1-800-944-4773 | `epds.json` |
-| Emergency Services | 911 | `epds.json`, `Hub.jsx` |
+| Resource | Phone | Location | Confirmed |
+|----------|-------|----------|-----------|
+| 988 Suicide & Crisis Lifeline | 988 | `epds.json` | ✅ **YES** - National resource |
+| Postpartum Support International | 1-800-944-4773 | `epds.json` | ✅ **YES** - National resource |
+| Emergency Services | 911 | `epds.json`, `Hub.jsx` | ✅ **YES** - Standard |
 
 ---
 
-## QUESTIONS FOR UCI REVIEW MEETING
+## UPDATED QUESTIONS FOR UCI REVIEW MEETING
 
-Based on this audit, key questions to discuss:
+Based on web research, here are the **remaining questions** that couldn't be confirmed online:
 
-1. **Nitrous oxide** - Is this available at UCI L&D? If not, should it be removed from the app?
+### Must Ask (High Priority)
+1. **Nitrous oxide** - Web search found no mention. Is this available? If not, we should remove from app.
 
-2. **Hydrotherapy** - Are labor tubs or showers available? What are the policies?
+2. **Labor tubs/hydrotherapy** - Only showers mentioned online. Are labor tubs available for water immersion during labor?
 
-3. **Gentle cesarean options** - Which of these does UCI accommodate?
-   - Clear/lowered drape
-   - Skin-to-skin in OR
-   - Delayed cord clamping
-   - Photography/video
+3. **Gentle cesarean specifics** - Which of these does UCI accommodate?
+   - Clear drape
+   - Lowered drape
+   - Photos/video in OR
+   - Two support people in OR
 
-4. **Nursery care** - Is the nursery available for overnight baby care, or is UCI "Baby-Friendly" (rooming-in only)?
+4. **Nursery at night** - As a Baby-Friendly hospital, is nursery care available for mothers who need rest, or is rooming-in required?
 
-5. **Support people** - How many support people are allowed in:
-   - Labor room
-   - Delivery room
-   - Operating room for cesarean
+5. **Wireless fetal monitors** - Are these available?
 
-6. **Doula policy** - Are doulas allowed? Do they count toward support person limit?
+6. **Food/drink policy** - Clear liquids only, or light snacks allowed?
 
-7. **Postpartum services** - Does UCI offer:
-   - Breastfeeding support groups
-   - New parent classes
-   - Home health visits
-   - Perinatal mental health services
+### Should Verify
+7. **Phone number** - App uses (949) 824-8200 but UCI Maternity Services lists 714-456-2911. Which is correct for L&D?
 
-8. **Fetal monitoring** - What are the policies on:
-   - Intermittent vs. continuous monitoring
-   - Wireless monitor availability
+8. **Perinatal Mental Health** - Is there a specific program/service by this name for referrals?
 
-9. **Food/drink during labor** - What is the actual policy?
+9. **Home health visits** - Does UCI offer postpartum home visits?
 
-10. **Circumcision** - Is this performed at UCI? Timing?
+10. **Aromatherapy** - Allowed in L&D rooms?
 
 ---
 
-## APPENDIX: COMPLETE LIST OF BIRTH PLAN OPTIONS
+## RECOMMENDED CODE CHANGES
 
-### Section 1: About You
-- Name (text)
-- Due date (date)
-- Healthcare provider (text)
-- Support people: Partner/Spouse, Doula, Family member, Friend
-- Special considerations (textarea)
+Based on this research, prioritized changes:
 
-### Section 2: Labor Preferences
-- Environment: Dim lighting, Music, Quiet, Minimal interruptions, Aromatherapy
-- Mobility: Move freely, Some movement, Stay in bed, No preference
-- Hydration: Clear liquids, Light snacks, IV only, No preference
-- Monitoring: Intermittent, Continuous, Wireless, Follow recommendations
-- Induction: Natural methods first, Medical if recommended, Discuss later
+### Immediate (Before UCI Meeting)
+1. ⚠️ **Update phone number** - Verify and fix L&D contact number
+2. ⚠️ **Add disclaimer** - "Options may vary - discuss with your care team"
 
-### Section 3: Pain Management
-- Approach: Unmedicated, Wait and see, Epidural when appropriate, Early epidural
-- Non-medical: Breathing, Massage, Hydrotherapy, Birth ball, Heat/cold, Music/meditation, Movement
-- Medical: Epidural, IV medication, Nitrous oxide, Prefer to avoid
-- Epidural timing: ASAP, Active labor, On request, Last resort
+### After UCI Confirmation
+3. 🔴 **Remove or caveat nitrous oxide** - If not available
+4. 🔴 **Update hydrotherapy** - Change to "shower" if no labor tubs
+5. 🟡 **Caveat nursery option** - Add "if available" for Baby-Friendly context
+6. 🟡 **Update cesarean options** - Add "ask your provider" to unconfirmed items
 
-### Section 4: Delivery Preferences
-- Positions: Semi-reclined, Side-lying, Hands and knees, Squatting, Whatever feels right
-- Pushing: Directed, Spontaneous, Combination, No preference
-- Episiotomy: Avoid unless necessary, Okay if recommended, No preference
-- Birth moment: Mirror, Touch head, Discover sex, Help catch, Photos/video, Calm room
-- Cord clamping: Delayed (1-3 min), Immediate, No preference
-- Cord cutting: Partner, Self, Provider, No preference
+---
 
-### Section 5: Cesarean Preferences
-- Support: Partner, Two people if allowed, Alone okay
-- Preferences: Narration, Music, Lowered drape, Clear drape, Skin-to-skin in OR, Delayed clamping, Photos/video
-- Anesthesia: Regional (awake), General if needed, Follow recommendation
+## SOURCES
 
-### Section 6: Newborn Care
-- Skin-to-skin: Immediate, After assessment, Partner if I can't, No preference
-- First bath: Delay 24+ hours, Before discharge, Be present, No preference
-- Feeding: Breastfeeding, Formula, Combination, Undecided
-- Feeding support: Lactation consultant, No formula/pacifiers, Okay to supplement, Help with pumping
-- Procedures to discuss: Vitamin K, Eye ointment, Hep B vaccine, Hearing screen, Metabolic screen
-- Circumcision: Yes, No, Undecided, N/A
-- Rooming: 24/7 with me, Nursery at night, Flexible
-
-### Section 7: Postpartum
-- Visitors: Limited, Close family, Welcome, Flexible
-- Photos: Ask first, No social media, Okay to share
-- Discharge: ASAP, Standard stay, Stay longer if possible
-- Support resources: Breastfeeding groups, Mental health, Parent classes, Home visits
-- Additional notes (textarea)
+- [UCI Health Maternity Services](https://www.ucihealth.org/medical-services/specialties/maternity)
+- [UCI Health Labor & Delivery](https://www.ucihealth.org/medical-services/programs/labor-delivery)
+- [UCI Health Visiting Hours & Guidelines](https://www.ucihealth.org/medical-services/specialties/maternity/visiting-hours-guidelines)
+- [UCI Health Breastfeeding Services](https://www.ucihealth.org/medical-services/programs/breastfeeding-services)
+- [UCI Pediatric Urology - Circumcision](https://ucipediatricurology.com/specialties/newborn-circumcision/)
+- [UCI Health Best Maternity Hospital Recognition](https://www.ucihealth.org/about-us/news/2025/12/best-maternity-hospital)
+- [US News Maternity Ratings - UCI](https://health.usnews.com/best-hospitals/area/ca/university-of-california-irvine-medical-center-6932290/maternity)
 
 ---
 
