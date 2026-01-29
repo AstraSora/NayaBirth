@@ -145,21 +145,66 @@ export function Settings() {
             About
           </h2>
 
-          <div className="bg-surface rounded-2xl shadow-card p-4">
-            <div className="flex items-center gap-3 mb-3">
-              <span className="text-3xl" aria-hidden="true">🌸</span>
-              <div>
-                <h3 className="font-bold text-foreground">
-                  NayaBirth
-                </h3>
-                <p className="text-sm text-foreground-muted">
-                  UCI Pregnancy Hub
-                </p>
+          <div className="bg-surface rounded-2xl shadow-card divide-y divide-subtle overflow-hidden">
+            {/* App Info */}
+            <div className="p-4">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-3xl" aria-hidden="true">🌸</span>
+                <div>
+                  <h3 className="font-bold text-foreground">
+                    NayaBirth
+                  </h3>
+                  <p className="text-sm text-foreground-muted">
+                    UCI Pregnancy Hub
+                  </p>
+                </div>
               </div>
+              <p className="text-sm text-foreground-muted">
+                Your pregnancy resource center providing tools and information to support you through pregnancy, birth, and beyond.
+              </p>
             </div>
-            <p className="text-sm text-foreground-muted">
-              Your pregnancy resource center providing tools and information to support you through pregnancy, birth, and beyond.
-            </p>
+
+            {/* Medical Disclaimer */}
+            <div className="p-4">
+              <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                <span aria-hidden="true">⚕️</span>
+                Medical Disclaimer
+              </h4>
+              <p className="text-sm text-foreground-muted">
+                NayaBirth provides general educational information only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult your healthcare provider with questions about your pregnancy or medical condition.
+              </p>
+            </div>
+
+            {/* Content Sources */}
+            <div className="p-4">
+              <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                <span aria-hidden="true">📚</span>
+                Content Sources
+              </h4>
+              <p className="text-sm text-foreground-muted mb-3">
+                Information in this app is informed by guidelines from:
+              </p>
+              <ul className="text-sm text-foreground-muted space-y-1">
+                <li>• American College of Obstetricians and Gynecologists (ACOG)</li>
+                <li>• Centers for Disease Control and Prevention (CDC)</li>
+                <li>• American Academy of Pediatrics (AAP)</li>
+                <li>• World Health Organization (WHO)</li>
+                <li>• Cleveland Clinic</li>
+                <li>• Mayo Clinic</li>
+                <li>• Postpartum Support International</li>
+              </ul>
+            </div>
+
+            {/* EPDS Attribution */}
+            <div className="p-4">
+              <h4 className="font-medium text-foreground mb-2 flex items-center gap-2">
+                <span aria-hidden="true">📋</span>
+                Screening Tool Attribution
+              </h4>
+              <p className="text-sm text-foreground-muted">
+                The emotional wellbeing screening uses the Edinburgh Postnatal Depression Scale (EPDS), developed by Cox, J.L., Holden, J.M., & Sagovsky, R. (1987). <em>British Journal of Psychiatry</em>, 150, 782-786.
+              </p>
+            </div>
           </div>
         </section>
 
