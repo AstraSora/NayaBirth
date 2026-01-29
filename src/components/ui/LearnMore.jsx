@@ -1,7 +1,13 @@
 import { useState } from 'react'
+import { parseMarkdown } from '../../utils/parseMarkdown'
 
 export function LearnMore({ children, className = '' }) {
   const [isOpen, setIsOpen] = useState(false)
+
+  // If children is a string, parse markdown to render citations as links
+  const content = typeof children === 'string'
+    ? <span dangerouslySetInnerHTML={{ __html: parseMarkdown(children) }} />
+    : children
 
   return (
     <div className={`mt-3 ${className}`}>
@@ -23,7 +29,7 @@ export function LearnMore({ children, className = '' }) {
 
       {isOpen && (
         <div className="mt-3 p-4 bg-muted rounded-xl text-sm text-foreground-secondary animate-fade-in">
-          {children}
+          {content}
         </div>
       )}
     </div>

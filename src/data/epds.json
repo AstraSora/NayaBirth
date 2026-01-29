@@ -3,6 +3,12 @@
   "description": "This brief questionnaire helps you reflect on how you've been feeling. Your answers help identify if additional support might be helpful.",
   "disclaimer": "This screening tool is not a diagnosis. It's designed to help you and your healthcare provider understand your emotional wellbeing. Please discuss your results with your care team.",
   "timeframe": "Please choose the answer that comes closest to how you have felt IN THE PAST 7 DAYS, not just how you feel today.",
+  "attribution": {
+    "name": "Edinburgh Postnatal Depression Scale (EPDS)",
+    "citation": "Cox, J.L., Holden, J.M., & Sagovsky, R. (1987). Detection of postnatal depression: Development of the 10-item Edinburgh Postnatal Depression Scale. British Journal of Psychiatry, 150, 782-786.",
+    "note": "The EPDS is a validated screening tool recommended by ACOG for perinatal depression screening.",
+    "acogUrl": "https://www.acog.org/programs/perinatal-mental-health/patient-screening"
+  },
   "questions": [
     {
       "id": 1,
@@ -133,12 +139,20 @@
         {
           "name": "988 Suicide & Crisis Lifeline",
           "phone": "988",
+          "url": "https://988lifeline.org/",
           "description": "Call or text 24/7"
         },
         {
           "name": "Postpartum Support International",
           "phone": "1-800-944-4773",
+          "url": "https://postpartum.net/get-help/",
           "description": "Call or text 'HELP' to 1-800-944-4773"
+        },
+        {
+          "name": "National Maternal Mental Health Hotline",
+          "phone": "1-833-943-5746",
+          "url": "https://mchb.hrsa.gov/national-maternal-mental-health-hotline",
+          "description": "24/7 support in English and Spanish"
         },
         {
           "name": "Emergency Services",
@@ -158,7 +172,8 @@
       },
       {
         "title": "Support Groups",
-        "description": "Connecting with other parents who understand can be incredibly helpful."
+        "description": "Connecting with other parents who understand can be incredibly helpful.",
+        "url": "https://postpartum.net/get-help/psi-online-support-groups/"
       }
     ]
   }

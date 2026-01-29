@@ -2,20 +2,8 @@ import { useState } from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom'
 import { Header } from '../components/layout/Header'
 import { Card, CardContent } from '../components/ui/Card'
+import { parseMarkdown } from '../utils/parseMarkdown'
 import resourcesData from '../data/resources.json'
-
-// Parse markdown text: **bold** and [link text](url)
-function parseMarkdown(text) {
-  if (!text) return ''
-  return text
-    // First convert markdown links to HTML anchors
-    .replace(
-      /\[([^\]]+)\]\(([^)]+)\)/g,
-      '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-coral-600 hover:text-coral-700 underline decoration-coral-300 hover:decoration-coral-500 inline-flex items-center gap-0.5">$1<svg class="w-3 h-3 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>'
-    )
-    // Then convert bold text
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-}
 
 export function ResourceCategory() {
   const navigate = useNavigate()

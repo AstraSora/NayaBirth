@@ -30,7 +30,7 @@
           "id": "supportPeople",
           "type": "checkbox",
           "question": "Who will be supporting you during labor?",
-          "learnMore": "Having continuous support during labor has been shown to improve outcomes and satisfaction. Support people can help with comfort measures, advocacy, and emotional encouragement.",
+          "learnMore": "Having continuous support during labor has been shown to [improve outcomes and satisfaction](https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003766.pub6/full). Support people can help with comfort measures, advocacy, and emotional encouragement.",
           "options": [
             { "value": "partner", "label": "Partner/Spouse" },
             { "value": "doula", "label": "Doula" },
@@ -71,7 +71,7 @@
           "id": "mobility",
           "type": "radio",
           "question": "What are your preferences for movement during labor?",
-          "learnMore": "Movement during labor can help manage pain and may help your baby move into the best position. Options may be limited if you have an epidural or continuous fetal monitoring is needed.",
+          "learnMore": "[Movement during labor](https://www.acog.org/womens-health/faqs/labor-induction) can help manage pain and may help your baby move into the best position. Options may be limited if you have an epidural or continuous fetal monitoring is needed.",
           "options": [
             { "value": "free", "label": "Move freely - walk, use birth ball, change positions" },
             { "value": "some", "label": "Some movement with guidance from staff" },
@@ -83,7 +83,7 @@
           "id": "hydration",
           "type": "radio",
           "question": "What are your preferences for eating and drinking during labor?",
-          "learnMore": "Clear liquids are typically allowed during labor. Some hospitals allow light snacks during early labor. IV fluids are available if needed.",
+          "learnMore": "[Clear liquids are typically allowed](https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2009/05/oral-intake-during-labor) during labor for low-risk patients. Some hospitals allow light snacks during early labor. IV fluids are available if needed.",
           "options": [
             { "value": "clearLiquids", "label": "Clear liquids only (water, ice chips, popsicles)" },
             { "value": "lightSnacks", "label": "Light snacks if allowed" },
@@ -95,7 +95,7 @@
           "id": "monitoring",
           "type": "radio",
           "question": "What are your preferences for fetal monitoring?",
-          "learnMore": "Continuous monitoring is required in certain situations (epidural, Pitocin, high-risk pregnancy). Intermittent monitoring may allow more freedom of movement for low-risk pregnancies.",
+          "learnMore": "[Continuous monitoring](https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2009/07/intrapartum-fetal-heart-rate-monitoring-nomenclature-interpretation-and-general-management-principles) is required in certain situations (epidural, Pitocin, high-risk pregnancy). Intermittent monitoring may allow more freedom of movement for low-risk pregnancies.",
           "options": [
             { "value": "intermittent", "label": "Intermittent monitoring if medically appropriate" },
             { "value": "continuous", "label": "Continuous monitoring" },
@@ -107,7 +107,7 @@
           "id": "laborInduction",
           "type": "radio",
           "question": "If induction becomes necessary, what are your preferences?",
-          "learnMore": "Induction may be recommended for medical reasons such as post-dates pregnancy, preeclampsia, or gestational diabetes. Methods include membrane sweeping, cervical ripening agents, and Pitocin.",
+          "learnMore": "[Induction](https://www.acog.org/womens-health/faqs/labor-induction) may be recommended for medical reasons such as post-dates pregnancy, preeclampsia, or gestational diabetes. Methods include membrane sweeping, cervical ripening agents, and Pitocin.",
           "options": [
             { "value": "natural", "label": "Try natural methods first (walking, nipple stimulation)" },
             { "value": "medical", "label": "Start with medical induction if recommended" },
@@ -127,7 +127,7 @@
           "id": "painApproach",
           "type": "radio",
           "question": "What is your overall approach to pain management?",
-          "learnMore": "There's no right or wrong approach. Your comfort and ability to cope are what matter. You can always change your mind during labor.",
+          "learnMore": "There's no right or wrong approach. Your comfort and ability to cope are what matter. You can always change your mind during labor. [ACOG states](https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/10/approaches-to-limit-intervention-during-labor-and-birth) that maternal request is a sufficient reason for pain relief.",
           "options": [
             { "value": "unmedicated", "label": "Prefer unmedicated birth - will request medication if needed" },
             { "value": "waitAndSee", "label": "Wait and see - open to medication based on how labor progresses" },
@@ -139,7 +139,7 @@
           "id": "nonMedicalPain",
           "type": "checkbox",
           "question": "Which non-medical pain relief methods interest you?",
-          "learnMore": "These techniques can be used alone or combined with medication. Your support person and nurses can help you with many of these techniques.",
+          "learnMore": "These [non-pharmacologic techniques](https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/10/approaches-to-limit-intervention-during-labor-and-birth) can be used alone or combined with medication. Your support person and nurses can help you with many of these techniques.",
           "options": [
             { "value": "breathing", "label": "Breathing techniques" },
             { "value": "massage", "label": "Massage/counter-pressure" },
@@ -154,7 +154,7 @@
           "id": "medicalPain",
           "type": "checkbox",
           "question": "Which medical pain relief options would you consider?",
-          "learnMore": "Epidurals are the most effective form of pain relief and allow you to rest. IV medications provide temporary relief but may make you drowsy. Nitrous oxide (laughing gas) provides mild relief with no lasting effects.",
+          "learnMore": "[Epidurals](https://www.acog.org/womens-health/faqs/medications-for-pain-relief-during-labor-and-delivery) are the most effective form of pain relief and allow you to rest. IV medications provide temporary relief but may make you drowsy. Nitrous oxide (laughing gas) provides mild relief with no lasting effects.",
           "options": [
             { "value": "epidural", "label": "Epidural" },
             { "value": "ivMedication", "label": "IV pain medication" },
@@ -190,7 +190,7 @@
           "id": "pushingPosition",
           "type": "checkbox",
           "question": "What positions interest you for pushing?",
-          "learnMore": "Different positions can help with comfort and may help your baby descend. Your ability to use certain positions may depend on whether you have an epidural.",
+          "learnMore": "[Different positions](https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/10/approaches-to-limit-intervention-during-labor-and-birth) can help with comfort and may help your baby descend. Your ability to use certain positions may depend on whether you have an epidural.",
           "options": [
             { "value": "semiReclined", "label": "Semi-reclined (standard hospital position)" },
             { "value": "sideying", "label": "Side-lying" },
@@ -203,7 +203,7 @@
           "id": "pushingGuidance",
           "type": "radio",
           "question": "What type of pushing guidance would you prefer?",
-          "learnMore": "Directed pushing involves holding your breath and pushing for 10 seconds. Spontaneous pushing follows your body's urges. Research shows both methods are safe.",
+          "learnMore": "Directed pushing involves holding your breath and pushing for 10 seconds. [Spontaneous pushing](https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/10/approaches-to-limit-intervention-during-labor-and-birth) follows your body's urges. Research shows both methods are safe.",
           "options": [
             { "value": "directed", "label": "Directed pushing with coaching" },
             { "value": "spontaneous", "label": "Spontaneous pushing - follow my body's urges" },
@@ -215,7 +215,7 @@
           "id": "episiotomy",
           "type": "radio",
           "question": "What are your preferences regarding episiotomy?",
-          "learnMore": "Episiotomy is a cut made to enlarge the vaginal opening. Routine episiotomy is no longer recommended. It may be needed in emergencies.",
+          "learnMore": "Episiotomy is a cut made to enlarge the vaginal opening. [Routine episiotomy is no longer recommended](https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2016/07/prevention-and-management-of-obstetric-lacerations-at-vaginal-delivery) by ACOG. It may be needed in emergencies.",
           "options": [
             { "value": "avoid", "label": "Prefer to avoid unless medically necessary" },
             { "value": "okay", "label": "Okay if provider recommends" },
@@ -240,9 +240,9 @@
           "id": "cordClamping",
           "type": "radio",
           "question": "What are your preferences for cord clamping?",
-          "learnMore": "Delayed cord clamping (waiting 1-3 minutes) allows more blood to transfer to baby and may have health benefits. Immediate clamping may be needed in emergencies.",
+          "learnMore": "[Delayed cord clamping](https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2020/12/delayed-umbilical-cord-clamping-after-birth) (waiting 30-60 seconds) is recommended by ACOG for most births. It allows more blood to transfer to baby and has health benefits including improved iron stores. Immediate clamping may be needed in emergencies.",
           "options": [
-            { "value": "delayed", "label": "Delayed cord clamping (1-3 minutes)" },
+            { "value": "delayed", "label": "Delayed cord clamping (30-60 seconds or longer)" },
             { "value": "immediate", "label": "Immediate cord clamping" },
             { "value": "noPreference", "label": "No preference - follow standard practice" }
           ]
@@ -270,7 +270,7 @@
         {
           "id": "cesareanIntro",
           "type": "info",
-          "content": "Even if you're planning a vaginal birth, it's helpful to think about your preferences in case a cesarean becomes necessary. About 30% of births in the US are cesarean deliveries."
+          "content": "Even if you're planning a vaginal birth, it's helpful to think about your preferences in case a cesarean becomes necessary. [About 32% of births](https://www.cdc.gov/nchs/fastats/delivery.htm) in the US are cesarean deliveries."
         },
         {
           "id": "cesareanSupport",
@@ -286,7 +286,7 @@
           "id": "cesareanPreferences",
           "type": "checkbox",
           "question": "What preferences do you have for a cesarean birth?",
-          "learnMore": "Many hospitals can accommodate 'gentle' or 'family-centered' cesarean preferences when it's safe to do so. Ask your provider what options are available.",
+          "learnMore": "Many hospitals can accommodate '[gentle' or 'family-centered' cesarean](https://www.acog.org/womens-health/faqs/cesarean-birth) preferences when it's safe to do so. Ask your provider what options are available.",
           "options": [
             { "value": "narration", "label": "Narration of what's happening" },
             { "value": "music", "label": "Play my music" },
@@ -301,7 +301,7 @@
           "id": "cesareanAnesthesia",
           "type": "radio",
           "question": "Anesthesia preferences for cesarean:",
-          "learnMore": "Regional anesthesia (spinal or epidural) is preferred for most cesareans. General anesthesia is used in emergencies or when regional isn't possible.",
+          "learnMore": "[Regional anesthesia](https://www.acog.org/womens-health/faqs/cesarean-birth) (spinal or epidural) is preferred for most cesareans as it allows you to be awake. General anesthesia is used in emergencies or when regional isn't possible.",
           "options": [
             { "value": "regional", "label": "Regional anesthesia (spinal/epidural) - stay awake" },
             { "value": "general", "label": "General anesthesia if needed" },
@@ -321,7 +321,7 @@
           "id": "skinToSkin",
           "type": "radio",
           "question": "What are your preferences for skin-to-skin contact?",
-          "learnMore": "Skin-to-skin contact helps regulate baby's temperature, heart rate, and breathing. It also promotes bonding and breastfeeding. It's typically done immediately after birth and continued as desired.",
+          "learnMore": "[Skin-to-skin contact](https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding) helps regulate baby's temperature, heart rate, and breathing. It also promotes bonding and breastfeeding. The [AAP and WHO recommend](https://publications.aap.org/pediatrics/article/150/1/e2022057988/188304/Breastfeeding-and-the-Use-of-Human-Milk) immediate and uninterrupted skin-to-skin for at least an hour after birth.",
           "options": [
             { "value": "immediate", "label": "Immediate and uninterrupted skin-to-skin" },
             { "value": "afterAssessment", "label": "After initial assessment" },
@@ -333,7 +333,7 @@
           "id": "firstBath",
           "type": "radio",
           "question": "When would you like baby's first bath?",
-          "learnMore": "Delaying the first bath (24+ hours) helps maintain baby's temperature, blood sugar, and allows the vernix to absorb into the skin. The World Health Organization recommends waiting at least 24 hours.",
+          "learnMore": "Delaying the first bath (24+ hours) helps maintain baby's temperature, blood sugar, and allows the vernix to absorb into the skin. The [World Health Organization recommends](https://www.who.int/publications/i/item/9789241506649) waiting at least 24 hours after birth.",
           "options": [
             { "value": "delay", "label": "Delay 24+ hours" },
             { "value": "same", "label": "Before leaving hospital is fine" },
@@ -345,7 +345,7 @@
           "id": "feeding",
           "type": "radio",
           "question": "How do you plan to feed your baby?",
-          "learnMore": "Whatever your choice, the nursing staff will support you. Lactation consultants are available to help with breastfeeding challenges.",
+          "learnMore": "Whatever your choice, the nursing staff will support you. [Lactation consultants](https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2021/02/breastfeeding-and-lactation-support) are available to help with breastfeeding challenges.",
           "options": [
             { "value": "breastfeeding", "label": "Breastfeeding exclusively" },
             { "value": "formula", "label": "Formula feeding" },
@@ -372,7 +372,7 @@
           "id": "newbornProcedures",
           "type": "checkbox",
           "question": "Standard newborn procedures - please indicate any you'd like to discuss or decline:",
-          "learnMore": "These procedures are routine but can be discussed with your provider. Vitamin K prevents a rare bleeding disorder. Eye ointment prevents infection. The hepatitis B vaccine is the first in a series.",
+          "learnMore": "These procedures are routine but can be discussed with your provider. [Vitamin K](https://www.cdc.gov/breastfeeding-special-circumstances/hcp/illnesses-conditions/vitamin-k.html) prevents a rare but serious bleeding disorder. [Eye ointment](https://www.aap.org/en/patient-care/newborn-and-infant-health/) prevents infection. The [hepatitis B vaccine](https://www.cdc.gov/hepatitis-b/hcp/vaccination-infants-children/birth-dose-information.html) is the first in a series recommended by CDC.",
           "options": [
             { "value": "vitaminK", "label": "Vitamin K injection" },
             { "value": "eyeOintment", "label": "Antibiotic eye ointment" },
@@ -385,7 +385,7 @@
           "id": "circumcision",
           "type": "radio",
           "question": "If you have a boy, what are your circumcision preferences?",
-          "learnMore": "Circumcision is an elective procedure. There are medical benefits and risks to consider. The American Academy of Pediatrics states the benefits outweigh the risks but does not recommend routine circumcision.",
+          "learnMore": "Circumcision is an elective procedure. There are medical benefits and risks to consider. The [American Academy of Pediatrics](https://publications.aap.org/pediatrics/article/130/3/e756/30225/Male-Circumcision) states the health benefits outweigh the risks, but the benefits are not great enough to recommend routine circumcision for all male newborns.",
           "options": [
             { "value": "yes", "label": "Yes, we want circumcision" },
             { "value": "no", "label": "No, we do not want circumcision" },
@@ -397,7 +397,7 @@
           "id": "rooming",
           "type": "radio",
           "question": "What are your rooming preferences?",
-          "learnMore": "Rooming-in means baby stays with you 24/7. This promotes bonding and breastfeeding. The nursery is available if you need rest.",
+          "learnMore": "[Rooming-in](https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding) means baby stays with you 24/7. This promotes bonding and breastfeeding. The nursery is available if you need rest.",
           "options": [
             { "value": "roomingIn", "label": "Baby with me 24/7 (rooming-in)" },
             { "value": "nursery", "label": "Baby in nursery at night for rest" },
@@ -438,7 +438,7 @@
           "id": "dischargeTiming",
           "type": "radio",
           "question": "Discharge timing preferences:",
-          "learnMore": "Typical hospital stay is 1-2 days for vaginal birth and 2-4 days for cesarean. Early discharge may be possible if you and baby are doing well.",
+          "learnMore": "Typical hospital stay is [1-2 days for vaginal birth and 2-4 days for cesarean](https://www.acog.org/womens-health/faqs/hospital-stay-after-delivery). Early discharge may be possible if you and baby are doing well.",
           "options": [
             { "value": "early", "label": "Prefer to go home as soon as possible" },
             { "value": "standard", "label": "Standard hospital stay is fine" },
