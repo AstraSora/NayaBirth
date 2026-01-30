@@ -1,15 +1,21 @@
+import { AvailabilityBadge } from './AvailabilityBadge'
+
 export function CheckboxOption({
   value,
   label,
   checked,
   onChange,
+  availability,
   className = '',
 }) {
+  const isUnavailable = availability === 'unavailable'
+
   return (
     <label
       className={`
         option-card
         ${checked ? 'option-card-selected' : ''}
+        ${isUnavailable ? 'opacity-60' : ''}
         ${className}
       `}
     >
@@ -36,9 +42,14 @@ export function CheckboxOption({
           </svg>
         )}
       </div>
-      <span className={`text-base ${checked ? 'text-foreground font-medium' : 'text-foreground-secondary'}`}>
-        {label}
-      </span>
+      <div className="flex-1 flex flex-col gap-1">
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className={`text-base ${checked ? 'text-foreground font-medium' : 'text-foreground-secondary'}`}>
+            {label}
+          </span>
+          {availability && <AvailabilityBadge availability={availability} />}
+        </div>
+      </div>
     </label>
   )
 }
@@ -64,6 +75,7 @@ export function CheckboxGroup({
           key={option.value}
           value={option.value}
           label={option.label}
+          availability={option.availability}
           checked={values.includes(option.value)}
           onChange={(e) => handleChange(option.value, e.target.checked)}
         />
