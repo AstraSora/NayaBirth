@@ -10,6 +10,7 @@ export function Assessment() {
     currentQuestion,
     setAnswer,
     getAnswer,
+    answers,
     goToNext,
     goToPrevious,
     totalQuestions,
@@ -36,6 +37,13 @@ export function Assessment() {
     setTimeout(() => {
       if (currentQuestion < totalQuestions - 1) {
         goToNext()
+      } else {
+        // Last question - verify all questions answered before going to results
+        // Count existing answers + 1 for the one we just set (async state)
+        const answeredCount = Object.keys(answers).length + (answers[question.id] === undefined ? 1 : 0)
+        if (answeredCount >= totalQuestions) {
+          navigate('/assessment/results')
+        }
       }
     }, 300)
   }

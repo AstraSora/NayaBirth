@@ -52,10 +52,12 @@ export function AssessmentProvider({ children }) {
   }, [])
 
   const goToNext = useCallback(() => {
-    if (currentQuestion < totalQuestions - 1) {
+    // Only advance if current question is answered
+    const currentQuestionId = epdsData.questions[currentQuestion]?.id
+    if (currentQuestion < totalQuestions - 1 && answers[currentQuestionId] !== undefined) {
       setCurrentQuestion(prev => prev + 1)
     }
-  }, [currentQuestion, totalQuestions])
+  }, [currentQuestion, totalQuestions, answers])
 
   const goToPrevious = useCallback(() => {
     if (currentQuestion > 0) {
