@@ -29,12 +29,12 @@ export function WelcomeStep() {
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-8">
         {/* UCI Health Partnership Badge */}
         <div className="mb-8 flex flex-col items-center">
-          <div className="bg-white rounded-2xl shadow-soft px-6 py-4 flex items-center gap-3">
-            <span className="text-sm text-foreground-muted">In partnership with</span>
+          <div className="bg-white rounded-2xl shadow-soft px-5 py-3 flex flex-col items-center gap-1">
+            <span className="text-xs text-foreground-muted">In partnership with</span>
             <img
               src={UCIHealthLogo}
               alt="UCI Health"
-              className="h-8"
+              className="h-6"
             />
           </div>
         </div>
