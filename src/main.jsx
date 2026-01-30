@@ -7,6 +7,7 @@ import { BirthPlanProvider } from './context/BirthPlanContext'
 import { AssessmentProvider } from './context/AssessmentContext'
 import { ChecklistProvider } from './context/ChecklistContext'
 import { OnboardingProvider } from './context/OnboardingContext'
+import { AnalyticsProvider } from './context/AnalyticsContext'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -17,7 +18,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <BirthPlanProvider>
             <AssessmentProvider>
               <ChecklistProvider>
-                <App />
+                <AnalyticsProvider>
+                  <App />
+                </AnalyticsProvider>
               </ChecklistProvider>
             </AssessmentProvider>
           </BirthPlanProvider>

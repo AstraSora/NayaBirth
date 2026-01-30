@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useBirthPlan } from '../context/BirthPlanContext'
+import { useAnalytics } from '../hooks/useAnalytics'
 import { Header } from '../components/layout/Header'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent, CardHeader } from '../components/ui/Card'
@@ -10,6 +11,7 @@ import questionsData from '../data/questions.json'
 export function Review() {
   const navigate = useNavigate()
   const { responses, pin, setPIN, setSaved } = useBirthPlan()
+  const { trackBirthPlanSaved } = useAnalytics()
   const [saving, setSaving] = useState(false)
   const [showPIN, setShowPIN] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -33,6 +35,8 @@ export function Review() {
       if (result.success) {
         setSaved()
         setShowPIN(true)
+        // Track birth plan saved
+        trackBirthPlanSaved(!!planPIN)
       } else {
         setError(result.error || 'Failed to save. Please try again.')
       }

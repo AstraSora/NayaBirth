@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom'
+import { useAnalytics } from '../hooks/useAnalytics'
 import { Header } from '../components/layout/Header'
 import { Card, CardContent } from '../components/ui/Card'
 import { parseMarkdown } from '../utils/parseMarkdown'
@@ -9,6 +10,8 @@ export function ResourceCategory() {
   const navigate = useNavigate()
   const { category: categoryId } = useParams()
   const [expandedArticle, setExpandedArticle] = useState(null)
+  const { trackResourceClicked, trackArticleRead } = useAnalytics()
+  const articleOpenTime = useRef({})
 
   const category = resourcesData.categories.find(c => c.id === categoryId)
 
@@ -39,9 +42,23 @@ export function ResourceCategory() {
     sage: 'text-green-600',
   }
 
-  const toggleArticle = (articleId) => {
-    setExpandedArticle(expandedArticle === articleId ? null : articleId)
-  }
+  const toggleArticle = useCallback((articleId, articleTitle) => {
+    // If closing an article, track read duration
+    if (expandedArticle === articleId) {
+      const openTime = articleOpenTime.current[articleId]
+      if (openTime) {
+        const durationSeconds = Math.round((Date.now() - openTime) / 1000)
+        trackArticleRead(categoryId, articleId, articleTitle, durationSeconds)
+        delete articleOpenTime.current[articleId]
+      }
+      setExpandedArticle(null)
+    } else {
+      // Opening an article
+      trackResourceClicked(categoryId, articleId, articleTitle)
+      articleOpenTime.current[articleId] = Date.now()
+      setExpandedArticle(articleId)
+    }
+  }, [expandedArticle, categoryId, trackResourceClicked, trackArticleRead])
 
   return (
     <div className="min-h-screen bg-gradient-warm flex flex-col">
@@ -82,7 +99,7 @@ export function ResourceCategory() {
             <article key={resource.id} className="bg-surface rounded-2xl shadow-card overflow-hidden">
               {/* Article Header - Clickable */}
               <button
-                onClick={() => toggleArticle(resource.id)}
+                onClick={() => toggleArticle(resource.id, resource.title)}
                 aria-expanded={expandedArticle === resource.id}
                 aria-controls={`article-${resource.id}`}
                 className="w-full text-left p-5 min-h-[72px] hover:bg-surface-hover transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-coral-300"

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 import { useOnboarding } from '../context/OnboardingContext'
 import { Header } from '../components/layout/Header'
+import { StudyEnrollment } from '../components/study/StudyEnrollment'
 
 export function Settings() {
   const { isDarkMode, toggleDarkMode } = useTheme()
@@ -70,6 +71,17 @@ export function Settings() {
 
           <p className="mt-3 text-sm text-foreground-muted px-2">
             Dark mode reduces eye strain in low-light environments and may help save battery on devices with OLED screens.
+          </p>
+        </section>
+
+        {/* Research Study Section */}
+        <section className="mb-6">
+          <h2 className="text-lg font-semibold text-foreground mb-4">
+            Research Study
+          </h2>
+          <StudyEnrollment />
+          <p className="mt-3 text-sm text-foreground-muted px-2">
+            If you received an enrollment code from the UCI research team, you can join the NayaBirth study here.
           </p>
         </section>
 

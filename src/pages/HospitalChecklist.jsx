@@ -1,5 +1,6 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAnalytics } from '../hooks/useAnalytics'
 import { Header } from '../components/layout/Header'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
@@ -176,6 +177,7 @@ function CategorySection({ category, isExpanded, onToggle, isItemChecked, onTogg
 
 export function HospitalChecklist() {
   const navigate = useNavigate()
+  const { trackToolUsed } = useAnalytics()
   const {
     categories,
     hospitalProvides,
@@ -193,10 +195,25 @@ export function HospitalChecklist() {
 
   const [showResetConfirm, setShowResetConfirm] = useState(false)
   const [showHospitalInfo, setShowHospitalInfo] = useState(false)
+  const lastCheckedCount = useRef(getCheckedCount())
 
   const totalItems = getTotalItems()
   const checkedCount = getCheckedCount()
   const progressPercent = totalItems > 0 ? Math.round((checkedCount / totalItems) * 100) : 0
+
+  // Track checklist usage when leaving page (if items were checked)
+  useEffect(() => {
+    return () => {
+      const currentChecked = getCheckedCount()
+      if (currentChecked > 0 && currentChecked !== lastCheckedCount.current) {
+        trackToolUsed('hospital_checklist', {
+          items_checked: currentChecked,
+          total_items: getTotalItems(),
+          completion_percent: Math.round((currentChecked / getTotalItems()) * 100)
+        })
+      }
+    }
+  }, [])
 
   const handleReset = useCallback(() => {
     reset()
