@@ -11,8 +11,7 @@ import {
   setAnalyticsUserId,
   generateStudyUserId
 } from '../lib/analytics'
-
-const STORAGE_KEY = 'nayabirth_study_properties'
+import { loadStudyProperties, saveStudyProperties } from '../lib/storage'
 
 const AnalyticsContext = createContext(null)
 
@@ -32,32 +31,22 @@ export function AnalyticsProvider({ children }) {
   const { profile } = useOnboarding()
   const { isSaved } = useBirthPlan()
 
+  const defaultStudyProperties = {
+    study_participant: false,
+    study_group: null,
+    birth_plan_user: false,
+    pregnancy_stage: null,
+    enrollment_date: null,
+    study_user_id: null
+  }
+
   const [studyProperties, setStudyProperties] = useState(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY)
-      return saved ? JSON.parse(saved) : {
-        study_participant: false,
-        study_group: null,
-        birth_plan_user: false,
-        pregnancy_stage: null,
-        enrollment_date: null,
-        study_user_id: null
-      }
-    } catch {
-      return {
-        study_participant: false,
-        study_group: null,
-        birth_plan_user: false,
-        pregnancy_stage: null,
-        enrollment_date: null,
-        study_user_id: null
-      }
-    }
+    return loadStudyProperties(defaultStudyProperties)
   })
 
   // Persist study properties to localStorage
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(studyProperties))
+    saveStudyProperties(studyProperties)
   }, [studyProperties])
 
   // Sync user properties when profile changes

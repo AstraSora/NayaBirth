@@ -1,6 +1,8 @@
 import { useState, useMemo } from 'react'
 import { useOnboarding } from '../../context/OnboardingContext'
 import { Button } from '../ui/Button'
+import { calculateCurrentWeekFromDue } from '../../lib/dateUtils'
+import { getTrimesterFromWeek, TRIMESTER_BOUNDARIES } from '../../constants/pregnancy'
 
 export function StageStep() {
   const { nextStep, prevStep, updateProfile } = useOnboarding()
@@ -10,12 +12,7 @@ export function StageStep() {
   // Calculate current week from due date
   const currentWeek = useMemo(() => {
     if (!dueDate) return null
-    const due = new Date(dueDate)
-    const now = new Date()
-    const diffTime = due.getTime() - now.getTime()
-    const diffWeeks = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 7))
-    const week = 40 - diffWeeks
-    return Math.max(1, Math.min(42, week))
+    return calculateCurrentWeekFromDue(dueDate)
   }, [dueDate])
 
   const handleContinue = () => {
@@ -23,7 +20,7 @@ export function StageStep() {
       updateProfile({
         dueDate,
         stage: 'pregnant',
-        trimester: currentWeek <= 12 ? 1 : currentWeek <= 26 ? 2 : 3
+        trimester: getTrimesterFromWeek(currentWeek)
       })
     } else if (selectedOption === 'trimester1') {
       updateProfile({ stage: 'pregnant', trimester: 1 })

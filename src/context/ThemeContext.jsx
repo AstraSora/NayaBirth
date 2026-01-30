@@ -1,13 +1,14 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import { loadDarkModePreference, saveDarkModePreference } from '../lib/storage'
 
 const ThemeContext = createContext()
 
 export function ThemeProvider({ children }) {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     // Check localStorage for saved preference
-    const saved = localStorage.getItem('darkMode')
+    const saved = loadDarkModePreference()
     if (saved !== null) {
-      return JSON.parse(saved)
+      return saved
     }
     // Check system preference
     return window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -15,7 +16,7 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     // Update localStorage when theme changes
-    localStorage.setItem('darkMode', JSON.stringify(isDarkMode))
+    saveDarkModePreference(isDarkMode)
 
     // Update document class
     if (isDarkMode) {

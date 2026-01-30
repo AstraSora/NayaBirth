@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer, useCallback, useEffect } from 'react'
+import { loadBirthPlanDraft, saveBirthPlanDraft, clearBirthPlanDraft } from '../lib/storage'
 
 const BirthPlanContext = createContext(null)
 
@@ -98,26 +99,18 @@ export function BirthPlanProvider({ children }) {
 
   // Load from localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem('nayabirth_draft')
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved)
-        if (parsed.responses) {
-          dispatch({ type: 'LOAD_PLAN', data: parsed })
-        }
-      } catch (e) {
-        console.error('Error loading saved draft:', e)
-      }
+    const saved = loadBirthPlanDraft()
+    if (saved?.responses) {
+      dispatch({ type: 'LOAD_PLAN', data: saved })
     }
   }, [])
 
   // Auto-save to localStorage on changes
   useEffect(() => {
-    const toSave = {
+    saveBirthPlanDraft({
       pin: state.pin,
       responses: state.responses
-    }
-    localStorage.setItem('nayabirth_draft', JSON.stringify(toSave))
+    })
   }, [state.responses, state.pin])
 
   const setResponse = useCallback((section, field, value) => {
@@ -157,7 +150,7 @@ export function BirthPlanProvider({ children }) {
   }, [])
 
   const reset = useCallback(() => {
-    localStorage.removeItem('nayabirth_draft')
+    clearBirthPlanDraft()
     dispatch({ type: 'RESET' })
   }, [])
 

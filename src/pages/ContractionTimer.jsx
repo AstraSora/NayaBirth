@@ -4,21 +4,9 @@ import { useAnalytics } from '../hooks/useAnalytics'
 import { Header } from '../components/layout/Header'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
-
-const STORAGE_KEY = 'nayabirth-contractions'
-
-function formatDuration(seconds) {
-  const mins = Math.floor(seconds / 60)
-  const secs = seconds % 60
-  return `${mins}:${secs.toString().padStart(2, '0')}`
-}
-
-function formatTime(dateString) {
-  return new Date(dateString).toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit'
-  })
-}
+import { MAX_CONTRACTIONS, CONTRACTION_511, CONTRACTION_INTENSITY } from '../constants/tools'
+import { formatDuration, formatTime } from '../lib/dateUtils'
+import { loadContractions, saveContractions, clearContractions } from '../lib/storage'
 
 export function ContractionTimer() {
   const navigate = useNavigate()
@@ -33,14 +21,7 @@ export function ContractionTimer() {
 
   // Load contractions from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved) {
-      try {
-        setContractions(JSON.parse(saved))
-      } catch (e) {
-        console.error('Failed to load contractions')
-      }
-    }
+    setContractions(loadContractions())
   }, [])
 
   // Timer effect
@@ -64,23 +45,25 @@ export function ContractionTimer() {
   // Check 5-1-1 rule
   useEffect(() => {
     if (contractions.length >= 3) {
-      const recentContractions = contractions.slice(0, 6) // Check last 6 contractions
+      const recentContractions = contractions.slice(0, CONTRACTION_511.MIN_CONTRACTIONS)
 
-      // Check if contractions are about 5 minutes apart (4-6 min range)
+      // Check if contractions are about 5 minutes apart
       const intervalsValid = recentContractions.slice(0, -1).every((c, i) => {
         if (i === 0) return true
         const interval = (new Date(recentContractions[i].startTime) - new Date(recentContractions[i + 1].startTime)) / 1000 / 60
-        return interval >= 4 && interval <= 6
+        return interval >= CONTRACTION_511.INTERVAL_MIN && interval <= CONTRACTION_511.INTERVAL_MAX
       })
 
-      // Check if durations are about 1 minute (45-90 sec range)
-      const durationsValid = recentContractions.every(c => c.duration >= 45 && c.duration <= 90)
+      // Check if durations are about 1 minute
+      const durationsValid = recentContractions.every(c =>
+        c.duration >= CONTRACTION_511.DURATION_MIN && c.duration <= CONTRACTION_511.DURATION_MAX
+      )
 
-      // Check if this pattern has been going on for an hour (at least 6 contractions ~5 min apart)
-      if (contractions.length >= 6 && intervalsValid && durationsValid) {
-        const firstContraction = new Date(contractions[5].startTime)
+      // Check if this pattern has been going on for an hour
+      if (contractions.length >= CONTRACTION_511.MIN_CONTRACTIONS && intervalsValid && durationsValid) {
+        const firstContraction = new Date(contractions[CONTRACTION_511.MIN_CONTRACTIONS - 1].startTime)
         const latestContraction = new Date(contractions[0].startTime)
-        const hourElapsed = (latestContraction - firstContraction) >= 60 * 60 * 1000
+        const hourElapsed = (latestContraction - firstContraction) >= CONTRACTION_511.PATTERN_DURATION
 
         if (hourElapsed) {
           setShow511Alert(true)
@@ -112,9 +95,9 @@ export function ContractionTimer() {
         : null
     }
 
-    const updated = [newContraction, ...contractions].slice(0, 50) // Keep last 50
+    const updated = [newContraction, ...contractions].slice(0, MAX_CONTRACTIONS)
     setContractions(updated)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
+    saveContractions(updated)
 
     setIsTimingContraction(false)
     setContractionStart(null)
@@ -132,7 +115,7 @@ export function ContractionTimer() {
     }
 
     setContractions([])
-    localStorage.removeItem(STORAGE_KEY)
+    clearContractions()
     setShow511Alert(false)
     sessionStartTime.current = null
   }, [contractions, trackToolUsed])
@@ -289,12 +272,12 @@ export function ContractionTimer() {
                   >
                     <div className="text-foreground" role="cell">{formatTime(contraction.startTime)}</div>
                     <div className={`font-medium ${
-                      contraction.duration >= 60 ? 'text-coral-600' : 'text-foreground'
+                      contraction.duration >= CONTRACTION_INTENSITY.LONG_DURATION ? 'text-coral-600' : 'text-foreground'
                     }`} role="cell">
                       {formatDuration(contraction.duration)}
                     </div>
                     <div className={`${
-                      contraction.interval && contraction.interval <= 300 ? 'text-coral-600 font-medium' : 'text-foreground-muted'
+                      contraction.interval && contraction.interval <= CONTRACTION_INTENSITY.SHORT_INTERVAL ? 'text-coral-600 font-medium' : 'text-foreground-muted'
                     }`} role="cell">
                       {contraction.interval ? formatDuration(contraction.interval) : '—'}
                     </div>

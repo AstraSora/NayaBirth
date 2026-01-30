@@ -4,29 +4,9 @@ import { useAnalytics } from '../hooks/useAnalytics'
 import { Header } from '../components/layout/Header'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
-
-const KICK_GOAL = 10
-const STORAGE_KEY = 'nayabirth-kick-sessions'
-
-function formatTime(seconds) {
-  const hrs = Math.floor(seconds / 3600)
-  const mins = Math.floor((seconds % 3600) / 60)
-  const secs = seconds % 60
-  if (hrs > 0) {
-    return `${hrs}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
-  }
-  return `${mins}:${secs.toString().padStart(2, '0')}`
-}
-
-function formatDate(dateString) {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit'
-  })
-}
+import { KICK_GOAL, MAX_KICK_SESSIONS } from '../constants/tools'
+import { formatDuration, formatDateTime } from '../lib/dateUtils'
+import { loadKickSessions, saveKickSessions, clearKickSessions } from '../lib/storage'
 
 export function KickCounter() {
   const navigate = useNavigate()
@@ -41,14 +21,7 @@ export function KickCounter() {
 
   // Load sessions from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved) {
-      try {
-        setSessions(JSON.parse(saved))
-      } catch (e) {
-        console.error('Failed to load sessions')
-      }
-    }
+    setSessions(loadKickSessions())
   }, [])
 
   // Timer effect
@@ -89,9 +62,9 @@ export function KickCounter() {
       goalReached: kicks >= KICK_GOAL
     }
 
-    const updatedSessions = [session, ...sessions].slice(0, 20) // Keep last 20 sessions
+    const updatedSessions = [session, ...sessions].slice(0, MAX_KICK_SESSIONS)
     setSessions(updatedSessions)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedSessions))
+    saveKickSessions(updatedSessions)
 
     // Track tool usage
     trackToolUsed('kick_counter', {
@@ -116,7 +89,7 @@ export function KickCounter() {
 
   const handleClearHistory = useCallback(() => {
     setSessions([])
-    localStorage.removeItem(STORAGE_KEY)
+    clearKickSessions()
   }, [])
 
   const progress = Math.min((kicks / KICK_GOAL) * 100, 100)
@@ -182,8 +155,8 @@ export function KickCounter() {
                 of {KICK_GOAL} kicks
               </div>
               {isActive && (
-                <div className="text-foreground-secondary text-lg mt-2 font-mono" aria-label={`Elapsed time: ${formatTime(elapsedTime)}`}>
-                  {formatTime(elapsedTime)}
+                <div className="text-foreground-secondary text-lg mt-2 font-mono" aria-label={`Elapsed time: ${formatDuration(elapsedTime)}`}>
+                  {formatDuration(elapsedTime)}
                 </div>
               )}
             </div>
@@ -260,9 +233,9 @@ export function KickCounter() {
                 <div key={session.id} className="p-4 flex items-center justify-between">
                   <div>
                     <div className="font-medium text-foreground">
-                      {session.kicks} kicks in {formatTime(session.duration)}
+                      {session.kicks} kicks in {formatDuration(session.duration)}
                     </div>
-                    <div className="text-sm text-foreground-muted">{formatDate(session.date)}</div>
+                    <div className="text-sm text-foreground-muted">{formatDateTime(session.date)}</div>
                   </div>
                   {session.goalReached && (
                     <span className="text-teal-500 text-xl">✓</span>

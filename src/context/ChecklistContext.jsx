@@ -1,9 +1,8 @@
 import { createContext, useContext, useReducer, useCallback, useEffect } from 'react'
 import checklistData from '../data/hospitalChecklist.json'
+import { loadChecklistState, saveChecklistState, clearChecklistState } from '../lib/storage'
 
 const ChecklistContext = createContext(null)
-
-const STORAGE_KEY = 'nayabirth_hospital_checklist'
 
 // Get all item IDs from the checklist data
 const getAllItemIds = () => {
@@ -88,25 +87,19 @@ export function ChecklistProvider({ children }) {
 
   // Load from localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY)
+    const saved = loadChecklistState()
     if (saved) {
-      try {
-        const parsed = JSON.parse(saved)
-        dispatch({ type: 'LOAD_STATE', data: parsed })
-      } catch (e) {
-        console.error('Error loading saved checklist:', e)
-      }
+      dispatch({ type: 'LOAD_STATE', data: saved })
     }
   }, [])
 
   // Save to localStorage on changes
   useEffect(() => {
-    const toSave = {
+    saveChecklistState({
       checkedItems: state.checkedItems,
       customItems: state.customItems,
       expandedCategories: state.expandedCategories
-    }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave))
+    })
   }, [state.checkedItems, state.customItems, state.expandedCategories])
 
   const toggleItem = useCallback((itemId) => {
@@ -126,7 +119,7 @@ export function ChecklistProvider({ children }) {
   }, [])
 
   const reset = useCallback(() => {
-    localStorage.removeItem(STORAGE_KEY)
+    clearChecklistState()
     dispatch({ type: 'RESET' })
   }, [])
 

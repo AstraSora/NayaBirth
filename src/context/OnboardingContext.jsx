@@ -1,13 +1,18 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
+import { STORAGE_KEYS } from '../constants/storage'
+import { calculateCurrentWeekFromDue } from '../lib/dateUtils'
+import { getTrimesterFromWeek } from '../constants/pregnancy'
+import {
+  loadUserProfile,
+  saveUserProfile,
+  isOnboardingComplete,
+  setOnboardingComplete,
+  loadTimelineData,
+  saveTimelineData,
+  loadBirthPlanDraft
+} from '../lib/storage'
 
 const OnboardingContext = createContext(null)
-
-const STORAGE_KEYS = {
-  ONBOARDING_COMPLETE: 'nayabirth_onboarding_complete',
-  USER_PROFILE: 'nayabirth_user_profile',
-  TIMELINE: 'nayabirth-timeline',
-  DRAFT: 'nayabirth_draft'
-}
 
 const initialProfile = {
   dueDate: null,
@@ -18,19 +23,11 @@ const initialProfile = {
 
 export function OnboardingProvider({ children }) {
   const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(() => {
-    return localStorage.getItem(STORAGE_KEYS.ONBOARDING_COMPLETE) === 'true'
+    return isOnboardingComplete()
   })
 
   const [profile, setProfile] = useState(() => {
-    const saved = localStorage.getItem(STORAGE_KEYS.USER_PROFILE)
-    if (saved) {
-      try {
-        return { ...initialProfile, ...JSON.parse(saved) }
-      } catch (e) {
-        console.error('Error loading user profile:', e)
-      }
-    }
-    return initialProfile
+    return loadUserProfile(initialProfile)
   })
 
   const [onboardingStep, setOnboardingStep] = useState(0)
@@ -39,33 +36,21 @@ export function OnboardingProvider({ children }) {
   // Only consider it "existing data" if there's actual meaningful content
   const hasExistingData = useCallback(() => {
     // Check if timeline has a due date set
-    const timelineData = localStorage.getItem(STORAGE_KEYS.TIMELINE)
-    if (timelineData) {
-      try {
-        const parsed = JSON.parse(timelineData)
-        if (parsed.dueDate) return true
-      } catch (e) {
-        // Invalid JSON, ignore
-      }
-    }
+    const timelineData = loadTimelineData()
+    if (timelineData?.dueDate) return true
 
     // Check if birth plan draft has any actual responses
-    const draftData = localStorage.getItem(STORAGE_KEYS.DRAFT)
+    const draftData = loadBirthPlanDraft()
     if (draftData) {
-      try {
-        const parsed = JSON.parse(draftData)
-        // Check if any section has actual data
-        if (parsed.responses) {
-          const hasResponses = Object.values(parsed.responses).some(section =>
-            Object.keys(section).length > 0
-          )
-          if (hasResponses) return true
-        }
-        // Check if there's a PIN (indicating saved plan)
-        if (parsed.pin) return true
-      } catch (e) {
-        // Invalid JSON, ignore
+      // Check if any section has actual data
+      if (draftData.responses) {
+        const hasResponses = Object.values(draftData.responses).some(section =>
+          Object.keys(section).length > 0
+        )
+        if (hasResponses) return true
       }
+      // Check if there's a PIN (indicating saved plan)
+      if (draftData.pin) return true
     }
 
     return false
@@ -73,15 +58,12 @@ export function OnboardingProvider({ children }) {
 
   // Persist profile to localStorage
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.USER_PROFILE, JSON.stringify(profile))
+    saveUserProfile(profile)
   }, [profile])
 
   // Persist onboarding completion status
   useEffect(() => {
-    localStorage.setItem(
-      STORAGE_KEYS.ONBOARDING_COMPLETE,
-      String(hasCompletedOnboarding)
-    )
+    setOnboardingComplete(hasCompletedOnboarding)
   }, [hasCompletedOnboarding])
 
   const updateProfile = useCallback((updates) => {
@@ -95,7 +77,7 @@ export function OnboardingProvider({ children }) {
 
     // Sync due date with timeline if set
     if (profile.dueDate) {
-      localStorage.setItem(STORAGE_KEYS.TIMELINE, JSON.stringify({ dueDate: profile.dueDate }))
+      saveTimelineData({ dueDate: profile.dueDate })
     }
   }, [profile.dueDate])
 
@@ -108,8 +90,8 @@ export function OnboardingProvider({ children }) {
   }, [])
 
   const resetOnboarding = useCallback(() => {
-    localStorage.removeItem(STORAGE_KEYS.ONBOARDING_COMPLETE)
-    localStorage.removeItem(STORAGE_KEYS.USER_PROFILE)
+    setOnboardingComplete(false)
+    saveUserProfile(initialProfile)
     setHasCompletedOnboarding(false)
     setProfile(initialProfile)
     setOnboardingStep(0)
@@ -130,12 +112,7 @@ export function OnboardingProvider({ children }) {
   // Calculate current week from due date
   const getCurrentWeek = useCallback(() => {
     if (!profile.dueDate) return null
-    const due = new Date(profile.dueDate)
-    const now = new Date()
-    const diffTime = due.getTime() - now.getTime()
-    const diffWeeks = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 7))
-    const currentWeek = 40 - diffWeeks
-    return Math.max(1, Math.min(42, currentWeek))
+    return calculateCurrentWeekFromDue(profile.dueDate)
   }, [profile.dueDate])
 
   // Derive trimester from due date if not explicitly set
@@ -143,9 +120,7 @@ export function OnboardingProvider({ children }) {
     if (profile.trimester) return profile.trimester
     const week = getCurrentWeek()
     if (!week) return null
-    if (week <= 12) return 1
-    if (week <= 26) return 2
-    return 3
+    return getTrimesterFromWeek(week)
   }, [profile.trimester, getCurrentWeek])
 
   const value = {
