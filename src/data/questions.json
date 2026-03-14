@@ -61,11 +61,25 @@
           "learnMore": "Creating a calm, comfortable environment can help you relax and allow labor to progress naturally. The nursing staff will do their best to accommodate your preferences.",
           "options": [
             { "value": "dimLighting", "label": "Dim lighting", "availability": "available" },
+            { "value": "fairyLights", "label": "Fairy lights / string lights", "availability": "ask" },
             { "value": "music", "label": "Music/playlist", "availability": "available" },
             { "value": "quiet", "label": "Quiet atmosphere", "availability": "available" },
             { "value": "minimal", "label": "Minimal interruptions", "availability": "available" },
-            { "value": "aromatherapy", "label": "Aromatherapy", "availability": "ask" }
+            { "value": "aromatherapy", "label": "Aromatherapy / aromatic diffuser", "availability": "ask" },
+            { "value": "candles", "label": "Battery-operated candles", "availability": "ask" },
+            { "value": "coldCompresses", "label": "Cold compresses", "availability": "available" },
+            { "value": "birthBall", "label": "Birth ball / exercise ball", "availability": "available" }
           ]
+        },
+        {
+          "id": "musicPreferences",
+          "type": "textarea",
+          "question": "What music or playlist would you like during labor and delivery?",
+          "placeholder": "Specific songs, playlists, genres, or artists you find calming...",
+          "condition": {
+            "field": "laborEnvironment",
+            "includes": "music"
+          }
         },
         {
           "id": "mobility",
@@ -209,17 +223,6 @@
             { "value": "spontaneous", "label": "Spontaneous pushing - follow my body's urges" },
             { "value": "combination", "label": "Combination based on progress" },
             { "value": "noPreference", "label": "No preference - trust my care team" }
-          ]
-        },
-        {
-          "id": "episiotomy",
-          "type": "radio",
-          "question": "What are your preferences regarding episiotomy?",
-          "learnMore": "Episiotomy is a cut made to enlarge the vaginal opening. [Routine episiotomy is no longer recommended](https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2016/07/prevention-and-management-of-obstetric-lacerations-at-vaginal-delivery) by ACOG. It may be needed in emergencies.",
-          "options": [
-            { "value": "avoid", "label": "Prefer to avoid unless medically necessary" },
-            { "value": "okay", "label": "Okay if provider recommends" },
-            { "value": "noPreference", "label": "No preference" }
           ]
         },
         {
@@ -371,8 +374,8 @@
         {
           "id": "newbornProcedures",
           "type": "checkbox",
-          "question": "Standard newborn procedures - please indicate any you'd like to discuss or decline:",
-          "learnMore": "These procedures are routine but can be discussed with your provider. [Vitamin K](https://www.cdc.gov/breastfeeding-special-circumstances/hcp/illnesses-conditions/vitamin-k.html) prevents a rare but serious bleeding disorder. [Eye ointment](https://www.aap.org/en/patient-care/newborn-and-infant-health/) prevents infection. The [hepatitis B vaccine](https://www.cdc.gov/hepatitis-b/hcp/vaccination-infants-children/birth-dose-information.html) is the first in a series recommended by CDC.",
+          "question": "Standard newborn procedures - which would you like more information about?",
+          "learnMore": "These are standard-of-care procedures performed for all newborns. Select any you'd like more information about. [Vitamin K](https://www.cdc.gov/breastfeeding-special-circumstances/hcp/illnesses-conditions/vitamin-k.html) prevents a rare but serious bleeding disorder. [Eye ointment](https://www.aap.org/en/patient-care/newborn-and-infant-health/) prevents infection. The [hepatitis B vaccine](https://www.cdc.gov/hepatitis-b/hcp/vaccination-infants-children/birth-dose-information.html) is the first in a series recommended by CDC.",
           "options": [
             { "value": "vitaminK", "label": "Vitamin K injection" },
             { "value": "eyeOintment", "label": "Antibiotic eye ointment" },
