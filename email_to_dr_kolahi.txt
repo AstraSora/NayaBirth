@@ -1,0 +1,38 @@
+Hi Dr. Kolahi,
+
+Great questions. I dug through the codebase and here's what I found:
+
+Where birth plan data lives:
+
+The birth plan gets saved to Google Firebase Firestore, which is a cloud database. When a patient saves their plan, it generates a unique 6-character PIN that acts as both the identifier and the "password" to retrieve it later. There's also a local draft saved in the browser while they're filling it out, but the permanent copy lives in Firebase.
+
+So yes, it is stored on the web. Having looked at the current setup, I share some of the HIPAA concerns. Right now, access is PIN-only -- no user accounts, no login, no multi-factor auth. The PIN space is roughly 1 billion combinations, so it's not easy to guess randomly, but there's no rate limiting or lockout on the retrieval side. Data travels over HTTPS, but it's not encrypted at rest in the database. There's also no audit trail for who accessed a given plan and when.
+
+For context, the birth plan collects the patient's preferred name, due date, provider name, and free-text fields where they can describe medical conditions, fears, and past experiences. That combination of identifiable info plus health details is exactly the kind of thing HIPAA is designed to protect. If we want to use this in a clinical setting, we'd need to address a few things: a BAA with Google/Firebase, encryption at rest, proper access controls, and an audit log at minimum.
+
+That said, the app isn't currently handling insurance info, SSNs, or medical record numbers. The exposure is more about the combination of name + due date + provider + health preferences. Still worth taking seriously, but the scope is narrower than a full EHR.
+
+What information gets saved:
+
+The birth plan has about 50 data points across 7 sections:
+
+- About You: preferred name, due date, provider name, support people, special considerations (cultural preferences, medical conditions, fears)
+- Labor Preferences: environment (lighting, music, etc.), movement, eating/drinking, fetal monitoring, induction preferences
+- Pain Management: medical options (epidural, IV meds, nitrous), epidural timing, non-medical methods (breathing, massage, birth ball, etc.)
+- Delivery Preferences: pushing positions, pushing guidance, episiotomy preference, moment-of-birth wishes, cord clamping/cutting
+- Cesarean Preferences: support person, birth preferences during C-section, anesthesia
+- Newborn Care: skin-to-skin, first bath timing, feeding method, standard procedures (vitamin K, eye ointment, hep B, hearing/metabolic screening), circumcision, rooming
+- Postpartum: visitor preferences, photo/social media sharing, discharge timing, support resources, additional notes
+
+Printing:
+
+Yes, there's already a print button on the review page. It opens the browser's print dialog, so patients can either print a hard copy or save it as a PDF. The printout is formatted with all their answered questions organized by section. They can bring it to their doctor or the hospital.
+
+ACOG birth plan format:
+
+I'll start working on redesigning the birth plan output to match the ACOG sample format. Will share a draft when it's ready for you to review and tweak. No rush on your end either.
+
+Let me know if you have any other questions.
+
+Best,
+Sam

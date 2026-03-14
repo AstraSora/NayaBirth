@@ -136,21 +136,6 @@
           ]
         },
         {
-          "id": "nonMedicalPain",
-          "type": "checkbox",
-          "question": "Which non-medical pain relief methods interest you?",
-          "learnMore": "These [non-pharmacologic techniques](https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/10/approaches-to-limit-intervention-during-labor-and-birth) can be used alone or combined with medication. Your support person and nurses can help you with many of these techniques.",
-          "options": [
-            { "value": "breathing", "label": "Breathing techniques", "availability": "available" },
-            { "value": "massage", "label": "Massage/counter-pressure", "availability": "available" },
-            { "value": "water", "label": "Hydrotherapy (shower only)", "availability": "limited" },
-            { "value": "birthBall", "label": "Birth ball", "availability": "available" },
-            { "value": "heat", "label": "Heat/cold packs", "availability": "available" },
-            { "value": "music", "label": "Music/meditation", "availability": "available" },
-            { "value": "movement", "label": "Movement/position changes", "availability": "available" }
-          ]
-        },
-        {
           "id": "medicalPain",
           "type": "checkbox",
           "question": "Which medical pain relief options would you consider?",
@@ -175,6 +160,21 @@
             { "value": "active", "label": "When in active labor" },
             { "value": "request", "label": "When I request it" },
             { "value": "lastResort", "label": "Only as a last resort" }
+          ]
+        },
+        {
+          "id": "nonMedicalPain",
+          "type": "checkbox",
+          "question": "Which non-medical pain relief methods interest you?",
+          "learnMore": "These [non-pharmacologic techniques](https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/10/approaches-to-limit-intervention-during-labor-and-birth) can be used alone or combined with medication. Your support person and nurses can help you with many of these techniques.",
+          "options": [
+            { "value": "breathing", "label": "Breathing techniques", "availability": "available" },
+            { "value": "massage", "label": "Massage/counter-pressure", "availability": "available" },
+            { "value": "water", "label": "Hydrotherapy (shower only)", "availability": "limited" },
+            { "value": "birthBall", "label": "Birth ball", "availability": "available" },
+            { "value": "heat", "label": "Heat/cold packs", "availability": "available" },
+            { "value": "music", "label": "Music/meditation", "availability": "available" },
+            { "value": "movement", "label": "Movement/position changes", "availability": "available" }
           ]
         }
       ]
