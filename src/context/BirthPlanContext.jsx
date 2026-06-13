@@ -5,7 +5,6 @@ const BirthPlanContext = createContext(null)
 
 const initialState = {
   currentSection: 0,
-  pin: null,
   isLoading: false,
   isSaved: false,
   lastSaved: null,
@@ -61,11 +60,6 @@ function birthPlanReducer(state, action) {
         ...state,
         currentSection: Math.max(state.currentSection - 1, 0)
       }
-    case 'SET_PIN':
-      return {
-        ...state,
-        pin: action.pin
-      }
     case 'SET_LOADING':
       return {
         ...state,
@@ -80,7 +74,6 @@ function birthPlanReducer(state, action) {
     case 'LOAD_PLAN':
       return {
         ...state,
-        pin: action.data.pin,
         responses: action.data.responses,
         isLoading: false,
         isSaved: true
@@ -105,13 +98,13 @@ export function BirthPlanProvider({ children }) {
     }
   }, [])
 
-  // Auto-save to localStorage on changes
+  // Auto-save draft for the current session only (cleared when the session ends).
+  // Birth plans are never persisted to the cloud or retrievable after the session.
   useEffect(() => {
     saveBirthPlanDraft({
-      pin: state.pin,
       responses: state.responses
     })
-  }, [state.responses, state.pin])
+  }, [state.responses])
 
   const setResponse = useCallback((section, field, value) => {
     dispatch({ type: 'SET_RESPONSE', section, field, value })
@@ -131,10 +124,6 @@ export function BirthPlanProvider({ children }) {
 
   const prevSection = useCallback(() => {
     dispatch({ type: 'PREV_SECTION' })
-  }, [])
-
-  const setPIN = useCallback((pin) => {
-    dispatch({ type: 'SET_PIN', pin })
   }, [])
 
   const setLoading = useCallback((isLoading) => {
@@ -161,7 +150,6 @@ export function BirthPlanProvider({ children }) {
     setCurrentSection,
     nextSection,
     prevSection,
-    setPIN,
     setLoading,
     setSaved,
     loadPlan,

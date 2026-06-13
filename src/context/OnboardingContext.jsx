@@ -39,18 +39,13 @@ export function OnboardingProvider({ children }) {
     const timelineData = loadTimelineData()
     if (timelineData?.dueDate) return true
 
-    // Check if birth plan draft has any actual responses
+    // Check if birth plan draft has any actual responses (current session only)
     const draftData = loadBirthPlanDraft()
-    if (draftData) {
-      // Check if any section has actual data
-      if (draftData.responses) {
-        const hasResponses = Object.values(draftData.responses).some(section =>
-          Object.keys(section).length > 0
-        )
-        if (hasResponses) return true
-      }
-      // Check if there's a PIN (indicating saved plan)
-      if (draftData.pin) return true
+    if (draftData?.responses) {
+      const hasResponses = Object.values(draftData.responses).some(section =>
+        Object.keys(section).length > 0
+      )
+      if (hasResponses) return true
     }
 
     return false

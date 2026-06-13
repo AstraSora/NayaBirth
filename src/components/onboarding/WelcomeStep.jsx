@@ -12,10 +12,6 @@ export function WelcomeStep() {
     navigate('/')
   }
 
-  const handleRetrieve = () => {
-    navigate('/retrieve')
-  }
-
   const features = [
     { icon: '📝', text: 'Build your birth plan' },
     { icon: '📅', text: 'Track weekly milestones' },
@@ -85,15 +81,6 @@ export function WelcomeStep() {
         >
           I've used this app before
         </button>
-
-        <div className="text-foreground-muted text-sm">
-          <button
-            onClick={handleRetrieve}
-            className="text-coral-500 hover:text-coral-600 transition-colors font-medium"
-          >
-            Already have a saved birth plan?
-          </button>
-        </div>
       </footer>
     </div>
   )

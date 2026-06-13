@@ -28,13 +28,11 @@ export function useAnalytics() {
   }, [track])
 
   /**
-   * Track when user saves their birth plan
-   * @param {boolean} hasPin - Whether a PIN was generated/used
+   * Track when user saves/prints their birth plan to their own device.
+   * No birth plan content is stored server-side.
    */
-  const trackBirthPlanSaved = useCallback((hasPin) => {
-    track('birth_plan_saved', {
-      has_pin: hasPin
-    })
+  const trackBirthPlanDownloaded = useCallback(() => {
+    track('birth_plan_downloaded')
   }, [track])
 
   /**
@@ -106,7 +104,7 @@ export function useAnalytics() {
   return {
     trackBirthPlanStarted,
     trackBirthPlanSectionCompleted,
-    trackBirthPlanSaved,
+    trackBirthPlanDownloaded,
     trackResourceClicked,
     trackArticleRead,
     trackEPDSCompleted,

@@ -4,7 +4,6 @@ import { usePageTracking } from './hooks/usePageTracking'
 import { Hub } from './pages/Hub'
 import { BirthPlan } from './pages/BirthPlan'
 import { Review } from './pages/Review'
-import { Retrieve } from './pages/Retrieve'
 import { Assessment } from './pages/Assessment'
 import { AssessmentResults } from './pages/AssessmentResults'
 import { KickCounter } from './pages/KickCounter'
@@ -21,8 +20,7 @@ function OnboardingGuard({ children }) {
   const { hasCompletedOnboarding, hasExistingData } = useOnboarding()
   const location = useLocation()
 
-  // Allow access to retrieve page without onboarding (for returning users with PIN)
-  const allowedPaths = ['/retrieve', '/onboarding']
+  const allowedPaths = ['/onboarding']
   if (allowedPaths.some(path => location.pathname.startsWith(path))) {
     return children
   }
@@ -51,7 +49,6 @@ function App() {
         {/* Birth Plan */}
         <Route path="/birth-plan" element={<BirthPlan />} />
         <Route path="/review" element={<Review />} />
-        <Route path="/retrieve" element={<Retrieve />} />
 
         {/* EPDS Assessment */}
         <Route path="/assessment" element={<Assessment />} />

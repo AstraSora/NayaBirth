@@ -2,21 +2,9 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Birth plans collection - PIN-based access
-    // The PIN (document ID) acts as the access key
-    match /birth_plans/{pin} {
-      // Anyone can read if they have the PIN (document ID)
-      allow read: if true;
-
-      // Anyone can create/update if the PIN in the data matches the document ID
-      allow create, update: if request.resource.data.pin == pin
-                            && request.resource.data.responses != null;
-
-      // No delete allowed - plans are permanent
-      allow delete: if false;
-    }
-
-    // Deny access to any other collections by default
+    // Birth plans are NOT stored in the cloud (IRB protocol: no PHI persisted
+    // server-side, no PIN-based retrieval). The app writes no Firestore data.
+    // Deny all access by default.
     match /{document=**} {
       allow read, write: if false;
     }

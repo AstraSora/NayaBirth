@@ -121,26 +121,50 @@ export function setOnboardingComplete(complete) {
 }
 
 /**
- * Load birth plan draft
- * @returns {Object|null} Draft data
+ * Birth plan draft helpers.
+ *
+ * Per the IRB protocol, birth plans are NOT persisted to the cloud and must not
+ * be retrievable after the participant's session ends. We therefore store the
+ * working draft in sessionStorage (cleared when the browser session/tab closes)
+ * rather than localStorage. Patients keep their plan by saving/printing a copy
+ * to their own device.
  */
 export function loadBirthPlanDraft() {
-  return getStorageItem(STORAGE_KEYS.DRAFT, null)
+  try {
+    const item = sessionStorage.getItem(STORAGE_KEYS.DRAFT)
+    if (item === null) return null
+    return JSON.parse(item)
+  } catch (e) {
+    console.error('Error reading birth plan draft:', e)
+    return null
+  }
 }
 
 /**
- * Save birth plan draft
+ * Save birth plan draft (session-scoped)
  * @param {Object} draft - Draft to save
  */
 export function saveBirthPlanDraft(draft) {
-  setStorageItem(STORAGE_KEYS.DRAFT, draft)
+  try {
+    sessionStorage.setItem(STORAGE_KEYS.DRAFT, JSON.stringify(draft))
+    return true
+  } catch (e) {
+    console.error('Error writing birth plan draft:', e)
+    return false
+  }
 }
 
 /**
  * Clear birth plan draft
  */
 export function clearBirthPlanDraft() {
-  removeStorageItem(STORAGE_KEYS.DRAFT)
+  try {
+    sessionStorage.removeItem(STORAGE_KEYS.DRAFT)
+    return true
+  } catch (e) {
+    console.error('Error removing birth plan draft:', e)
+    return false
+  }
 }
 
 /**

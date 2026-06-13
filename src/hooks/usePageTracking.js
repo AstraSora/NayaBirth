@@ -14,7 +14,6 @@ const PAGE_NAMES = {
   '/onboarding': 'Onboarding',
   '/birth-plan': 'Birth Plan',
   '/review': 'Birth Plan Review',
-  '/retrieve': 'Retrieve Birth Plan',
   '/assessment': 'Wellbeing Assessment',
   '/assessment/results': 'Assessment Results',
   '/kick-counter': 'Kick Counter',

@@ -98,28 +98,6 @@ export function Hub() {
           </p>
         </div>
 
-        {/* Saved Plans Link - for returning users */}
-        <section className="mb-8">
-          <Link
-            to="/retrieve"
-            className="block bg-surface rounded-2xl shadow-card p-4 hover:shadow-soft transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-coral-300 focus:ring-offset-2"
-            aria-label="Retrieve a saved birth plan using your PIN"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-coral-100 flex items-center justify-center text-2xl" aria-hidden="true">
-                💾
-              </div>
-              <div className="flex-1">
-                <h4 className="font-semibold text-foreground">Have a saved birth plan?</h4>
-                <p className="text-sm text-foreground-muted">Enter your PIN to continue</p>
-              </div>
-              <svg className="w-5 h-5 text-foreground-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </Link>
-        </section>
-
         {/* Recommended For You Section - only show if we have stage data */}
         {primaryRecommendation && (
           <section className="mb-8" aria-labelledby="recommended-heading">

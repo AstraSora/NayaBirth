@@ -8,7 +8,7 @@ export const STORAGE_KEYS = {
   ONBOARDING_COMPLETE: 'nayabirth_onboarding_complete',
   USER_PROFILE: 'nayabirth_user_profile',
 
-  // Birth Plan
+  // Birth Plan (session-scoped — stored in sessionStorage, not localStorage)
   DRAFT: 'nayabirth_draft',
 
   // Timeline

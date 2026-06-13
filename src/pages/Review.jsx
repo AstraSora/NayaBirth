@@ -1,73 +1,22 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useBirthPlan } from '../context/BirthPlanContext'
 import { useAnalytics } from '../hooks/useAnalytics'
 import { Header } from '../components/layout/Header'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent, CardHeader } from '../components/ui/Card'
-import { saveBirthPlan, generateUniquePIN } from '../lib/firebase'
 import questionsData from '../data/questions.json'
 
 export function Review() {
   const navigate = useNavigate()
-  const { responses, pin, setPIN, setSaved } = useBirthPlan()
-  const { trackBirthPlanSaved } = useAnalytics()
-  const [saving, setSaving] = useState(false)
-  const [showPIN, setShowPIN] = useState(false)
-  const [copied, setCopied] = useState(false)
-  const [error, setError] = useState(null)
+  const { responses } = useBirthPlan()
+  const { trackBirthPlanDownloaded } = useAnalytics()
 
   const sections = questionsData.sections
-
-  const handleSave = async () => {
-    setSaving(true)
-    setError(null)
-
-    try {
-      let planPIN = pin
-      if (!planPIN) {
-        planPIN = await generateUniquePIN()
-        setPIN(planPIN)
-      }
-
-      const result = await saveBirthPlan(planPIN, responses)
-
-      if (result.success) {
-        setSaved()
-        setShowPIN(true)
-        // Track birth plan saved
-        trackBirthPlanSaved(!!planPIN)
-      } else {
-        setError(result.error || 'Failed to save. Please try again.')
-      }
-    } catch (err) {
-      setError('An error occurred. Please try again.')
-      console.error(err)
-    } finally {
-      setSaving(false)
-    }
-  }
-
-  const handleCopyPIN = async () => {
-    if (pin) {
-      await navigator.clipboard.writeText(pin)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    }
-  }
 
   const handleDownloadPDF = async () => {
     const { generatePDF } = await import('../lib/pdf')
     await generatePDF(responses, sections)
-  }
-
-  const handleEdit = (sectionIndex) => {
-    navigate('/birth-plan')
-    // Use setTimeout to ensure navigation completes before setting section
-    setTimeout(() => {
-      const { setCurrentSection } = useBirthPlan.getState?.() || {}
-      if (setCurrentSection) setCurrentSection(sectionIndex)
-    }, 0)
+    trackBirthPlanDownloaded()
   }
 
   const getDisplayValue = (question, value) => {
@@ -95,45 +44,6 @@ export function Review() {
       <Header showBack onBack={() => navigate('/birth-plan')} title="Review Your Plan" showHome />
 
       <main className="max-w-lg mx-auto px-4 py-6 pb-32">
-        {/* PIN Display Modal */}
-        {showPIN && pin && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <Card color="white" className="w-full max-w-sm">
-              <CardContent className="pt-6 text-center">
-                <div className="text-5xl mb-4">🎉</div>
-                <h2 className="text-xl font-bold text-foreground mb-2">
-                  Plan Saved!
-                </h2>
-                <p className="text-foreground-muted mb-4">
-                  Your unique PIN to access this plan:
-                </p>
-                <div className="bg-coral-50 rounded-xl p-4 mb-4">
-                  <span className="text-3xl font-mono font-bold text-coral-600 tracking-wider">
-                    {pin}
-                  </span>
-                </div>
-                <Button
-                  variant="secondary"
-                  onClick={handleCopyPIN}
-                  className="w-full mb-3"
-                >
-                  {copied ? '✓ Copied!' : 'Copy PIN'}
-                </Button>
-                <Button
-                  variant="primary"
-                  onClick={() => setShowPIN(false)}
-                  className="w-full"
-                >
-                  Done
-                </Button>
-                <p className="text-xs text-foreground-muted mt-4">
-                  Save this PIN - you'll need it to access your plan later
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        )}
-
         {/* Summary Header */}
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-foreground mb-2">
@@ -144,12 +54,14 @@ export function Review() {
           </p>
         </div>
 
-        {/* Error message */}
-        {error && (
-          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
-            {error}
-          </div>
-        )}
+        {/* Save reminder - plans are not stored, patient keeps their own copy */}
+        <div className="mb-6 p-4 bg-sky-50 border border-sky-200 rounded-xl text-sm text-foreground-secondary">
+          <p className="font-medium text-foreground mb-1">📄 Save a copy to keep your plan</p>
+          <p>
+            Your birth plan isn't stored in the app. Use <span className="font-medium">Save / Print</span> below
+            to save it to your device or print a copy to bring to your appointments.
+          </p>
+        </div>
 
         {/* Sections Summary */}
         <div className="space-y-4">
@@ -218,35 +130,14 @@ export function Review() {
 
       {/* Fixed bottom actions */}
       <div className="fixed bottom-0 left-0 right-0 bg-surface/80 backdrop-blur-md border-t border-subtle safe-area-bottom">
-        <div className="max-w-lg mx-auto px-4 py-4 space-y-3">
-          <div className="flex gap-3">
-            <Button
-              variant="secondary"
-              onClick={handleDownloadPDF}
-              className="flex-1"
-            >
-              🖨️ Print
-            </Button>
-            <Button
-              variant="primary"
-              onClick={handleSave}
-              loading={saving}
-              className="flex-1"
-            >
-              💾 Save Plan
-            </Button>
-          </div>
-          {pin && (
-            <p className="text-center text-sm text-foreground-muted">
-              Your PIN: <span className="font-mono font-bold text-foreground">{pin}</span>
-              <button
-                onClick={handleCopyPIN}
-                className="ml-2 text-coral-500 hover:text-coral-600"
-              >
-                {copied ? 'Copied!' : 'Copy'}
-              </button>
-            </p>
-          )}
+        <div className="max-w-lg mx-auto px-4 py-4">
+          <Button
+            variant="primary"
+            onClick={handleDownloadPDF}
+            className="w-full"
+          >
+            🖨️ Save / Print My Plan
+          </Button>
         </div>
       </div>
     </div>
