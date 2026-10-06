@@ -160,8 +160,8 @@ export function ResourceCategory() {
                           )
                         }
 
-                        // Handle paragraphs with mixed content (headers + lists or just lists)
-                        if (hasListItems) {
+                        // Handle paragraphs with mixed content (headers + lists, headers + text, or just lists)
+                        if (hasListItems || lines.length > 1) {
                           const elements = []
                           let currentList = []
 
@@ -184,9 +184,9 @@ export function ResourceCategory() {
                                 currentList = []
                               }
                               elements.push(
-                                <h4 key={`h-${lineIndex}`} className="font-semibold text-foreground mt-3 mb-1">
-                                  {trimmedLine.slice(2, -2)}
-                                </h4>
+                                <h4 key={`h-${lineIndex}`} className="font-semibold text-foreground mt-3 mb-1" dangerouslySetInnerHTML={{
+                                  __html: parseMarkdown(trimmedLine.slice(2, -2))
+                                }} />
                               )
                             }
                             // Bold header with colon (inline header like "**First few days:**")

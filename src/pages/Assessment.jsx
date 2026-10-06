@@ -92,6 +92,7 @@ export function Assessment() {
       {currentQuestion === 0 && (
         <div className="max-w-lg mx-auto px-4 pt-4">
           <div className="bg-teal-100 rounded-xl p-4 text-sm text-foreground-secondary">
+            <p className="mb-2">{epdsData.description}</p>
             <p className="font-medium text-foreground mb-1">{epdsData.timeframe}</p>
           </div>
         </div>

@@ -2,19 +2,19 @@
   "categories": [
     {
       "id": "labor",
-      "title": "For Labor",
+      "title": "For the Birthing Person",
       "icon": "🏥",
       "items": [
         { "id": "id-insurance", "label": "ID and insurance cards", "essential": true },
-        { "id": "birth-plan", "label": "Birth plan (if you have one)" },
-        { "id": "robe", "label": "Comfortable robe or gown" },
-        { "id": "grip-socks", "label": "Grip socks" },
-        { "id": "hair-ties", "label": "Hair ties" },
-        { "id": "lip-balm", "label": "Lip balm" },
+        { "id": "birth-plan", "label": "Copy of birth plan (if you have one)" },
+        { "id": "robe", "label": "Clothing for labor: loose and comfortable robe or gown, slip-on shoes" },
+        { "id": "toiletries", "label": "Toiletries (toothbrush, lip balm, hair ties, lotion, personal hygiene items, etc.)" },
+        { "id": "glasses-contacts", "label": "Glasses (instead of contacts)" },
+        { "id": "slippers", "label": "Shower shoes, sandals/slippers" },
         { "id": "phone-charger", "label": "Phone and charger", "essential": true },
-        { "id": "focal-point", "label": "Focal point or comfort items" },
-        { "id": "pillow", "label": "Own pillow (optional)" },
-        { "id": "music", "label": "Music playlist or speaker" }
+        { "id": "focal-point", "label": "Comfort items: blanket, pillow, playlist, speaker for music, white noise machine, personal fan" },
+        { "id": "water-bottle", "label": "Re-usable water bottle with a straw" },
+        { "id": "snacks-drinks", "label": "Snacks and drinks" }
       ]
     },
     {
@@ -22,46 +22,31 @@
       "title": "For After Birth",
       "icon": "💝",
       "items": [
-        { "id": "going-home-outfit", "label": "Going-home outfit (loose and comfortable)", "essential": true },
-        { "id": "nursing-bras", "label": "Nursing bras (if breastfeeding)" },
-        { "id": "toiletries", "label": "Toiletries (toothbrush, shampoo, etc.)" },
-        { "id": "glasses-contacts", "label": "Glasses or contacts" },
-        { "id": "slippers", "label": "Slippers or flip-flops" },
-        { "id": "nursing-pads", "label": "Nursing pads" },
-        { "id": "nipple-cream", "label": "Nipple cream (if breastfeeding)" }
-      ]
-    },
-    {
-      "id": "baby",
-      "title": "For Baby",
-      "icon": "👶",
-      "items": [
-        { "id": "baby-outfit", "label": "Going-home outfit", "essential": true },
-        { "id": "car-seat", "label": "Car seat (installed and ready)", "essential": true },
-        { "id": "baby-blanket", "label": "Blanket" },
-        { "id": "baby-hat", "label": "Hat or beanie" },
-        { "id": "baby-socks", "label": "Socks or booties" }
+        { "id": "going-home-outfit", "label": "Going-home outfit (nursing bra, comfortable underwear, loose clothing)", "essential": true },
+        { "id": "baby-outfit", "label": "Going-home outfit for baby", "essential": true },
+        { "id": "pediatrician-info", "label": "Pediatrician information, if you have a specific person in mind (otherwise UCI will help you get your initial 2-3 day baby visit appointment at UCI)" },
+        { "id": "car-seat", "label": "Infant car seat (installed in the vehicle, no need to bring up to the room)", "essential": true }
       ]
     },
     {
       "id": "support-person",
-      "title": "For Support Person",
+      "title": "For Your Support Person",
       "icon": "🤝",
       "items": [
         { "id": "support-snacks", "label": "Snacks" },
-        { "id": "support-clothes", "label": "Change of clothes" },
-        { "id": "support-toiletries", "label": "Toiletries" },
-        { "id": "support-entertainment", "label": "Entertainment (book, tablet, etc.)" },
-        { "id": "support-cash", "label": "Cash for vending machines" },
-        { "id": "support-charger", "label": "Phone charger" }
+        { "id": "support-clothes", "label": "A few changes of clothes; PJs" },
+        { "id": "support-toiletries", "label": "Toiletries" }
       ]
     }
   ],
   "hospitalProvides": [
     "Hospital gown",
     "Mesh underwear and pads",
-    "Basic toiletries",
+    "Grip socks",
+    "Basic toiletries, witch hazel pads, lanolin cream",
     "Diapers and wipes",
-    "Baby blankets"
+    "Baby blanket",
+    "Lactation consultations",
+    "Maternity education classes"
   ]
 }

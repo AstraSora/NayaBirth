@@ -261,9 +261,9 @@ export function HospitalChecklist() {
             <div className="flex items-start gap-3">
               <span className="text-2xl" aria-hidden="true">💡</span>
               <div>
-                <h2 className="font-medium text-foreground mb-1">Pack around 36 weeks</h2>
+                <h2 className="font-medium text-foreground mb-1">Pack your bag by 37 weeks</h2>
                 <p className="text-sm text-foreground-secondary">
-                  Have your bag ready early, just in case! Items checked are saved automatically.
+                  The average hospital stay is about 24-48 hours after an uncomplicated vaginal delivery and 2-4 days after a cesarean delivery, so pack accordingly! Items checked are saved automatically.
                 </p>
               </div>
             </div>
