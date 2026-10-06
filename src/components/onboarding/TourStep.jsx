@@ -20,7 +20,7 @@ const TOUR_CARDS = [
     id: 3,
     icon: '📚',
     title: 'Access Resources',
-    description: 'Evidence-based information from UCI Health covering pregnancy, labor, postpartum recovery, mental health, and feeding.',
+    description: 'Evidence-based information from UCI Family Medicine covering pregnancy, labor, postpartum recovery, mental health, and feeding.',
   },
 ]
 

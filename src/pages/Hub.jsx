@@ -4,7 +4,7 @@ import { ToolCard } from '../components/hub/ToolCard'
 import { ResourceCard } from '../components/hub/ResourceCard'
 import { useOnboarding } from '../context/OnboardingContext'
 import { getRecommendedTools } from '../lib/getRecommendedTools'
-import UCIHealthLogo from '../assets/uci-health-logo.svg'
+import UCIFamilyMedicineLogo from '../assets/uci-family-medicine-logo.png'
 
 export function Hub() {
   const [showAllTools, setShowAllTools] = useState(false)
@@ -279,12 +279,12 @@ export function Hub() {
       {/* Footer */}
       <footer className="max-w-lg mx-auto px-4 pb-8 text-center text-sm text-foreground-muted safe-area-bottom">
         <div className="flex justify-center mb-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-surface/70 rounded-full shadow-sm">
+          <div className="inline-flex flex-col items-center gap-1 px-4 py-2 bg-white rounded-2xl shadow-sm">
             <span className="text-xs text-foreground-muted">In partnership with</span>
             <img
-              src={UCIHealthLogo}
-              alt="UCI Health"
-              className="h-4"
+              src={UCIFamilyMedicineLogo}
+              alt="UCI Family Medicine"
+              className="h-20"
             />
           </div>
         </div>
@@ -292,7 +292,7 @@ export function Hub() {
           For informational purposes only. Always consult your healthcare provider.
         </p>
         <p className="text-xs text-foreground-muted">
-          © {new Date().getFullYear()} UCI Health • NayaBirth
+          © {new Date().getFullYear()} UCI Family Medicine • NayaBirth
         </p>
       </footer>
     </div>

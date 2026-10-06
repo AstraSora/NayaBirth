@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useOnboarding } from '../../context/OnboardingContext'
 import { Button } from '../ui/Button'
-import UCIHealthLogo from '../../assets/uci-health-logo.svg'
+import UCIFamilyMedicineLogo from '../../assets/uci-family-medicine-logo.png'
 
 export function WelcomeStep() {
   const { nextStep, skipOnboarding } = useOnboarding()
@@ -23,14 +23,14 @@ export function WelcomeStep() {
     <div className="min-h-screen bg-gradient-warm flex flex-col">
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-8">
-        {/* UCI Health Partnership Badge */}
+        {/* UCI Family Medicine Partnership Badge */}
         <div className="mb-8 flex flex-col items-center">
           <div className="bg-white rounded-2xl shadow-soft px-5 py-3 flex flex-col items-center gap-1">
             <span className="text-xs text-foreground-muted">In partnership with</span>
             <img
-              src={UCIHealthLogo}
-              alt="UCI Health"
-              className="h-6"
+              src={UCIFamilyMedicineLogo}
+              alt="UCI Family Medicine"
+              className="h-28"
             />
           </div>
         </div>
@@ -42,7 +42,7 @@ export function WelcomeStep() {
             Welcome to NayaBirth
           </h1>
           <p className="text-lg text-foreground-secondary">
-            Your pregnancy companion from UCI Health
+            Your pregnancy companion from UCI Family Medicine
           </p>
         </div>
 

@@ -52,7 +52,7 @@ export function getRecommendedTools({ trimester = null, stage = null }) {
     resources: {
       id: 'resources',
       name: 'Resources',
-      description: 'Evidence-based information from UCI Health',
+      description: 'Evidence-based information from UCI Family Medicine',
       icon: '📚',
       route: '/resources',
     },
