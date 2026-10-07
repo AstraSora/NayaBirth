@@ -253,7 +253,7 @@ export function Hub() {
             Quick Links
           </h3>
           <p className="text-sm text-foreground-muted mb-3 -mt-2">
-            UCI numbers and links apply if you're delivering at a UCI Medical Center.
+            The UCI Labor & Delivery number applies if you're delivering at a UCI Medical Center.
           </p>
           <div className="bg-surface rounded-2xl shadow-card divide-y divide-subtle overflow-hidden">
             {/* Emergency link at top with prominent styling */}
@@ -265,17 +265,10 @@ export function Hub() {
               emergency
             />
             <QuickLink
-              href="tel:+19498248200"
+              href="tel:+17144565272"
               icon="📞"
               title="UCI Labor & Delivery"
-              subtitle="(949) 824-8200"
-            />
-            <QuickLink
-              href="https://www.ucihealth.org/medical-services/womens-health"
-              icon="🏥"
-              title="UCI Women's Health"
-              subtitle="Schedule appointments"
-              external
+              subtitle="(714) 456-5272"
             />
           </div>
         </section>

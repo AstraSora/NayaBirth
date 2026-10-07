@@ -144,7 +144,7 @@ export function ContractionTimer() {
                   Labor & Delivery.
                 </p>
                 <a
-                  href="tel:+19498248200"
+                  href="tel:+17144565272"
                   className="inline-flex items-center gap-2 mt-3 px-4 py-2 bg-coral-500 text-white rounded-xl font-medium text-sm"
                 >
                   <span>📞</span> Call UCI L&D
