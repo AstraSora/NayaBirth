@@ -111,13 +111,13 @@ function buildPrintContent(responses, sections) {
     <html>
     <head>
       <meta charset="UTF-8">
-      <title>My Birth Plan - UCI Family Medicine</title>
+      <title>My Birth Plan</title>
       ${styles}
     </head>
     <body>
       <div class="header">
         <h1>My Birth Plan</h1>
-        <p>Created with NayaBirth for UCI Family Medicine</p>
+        <p>Created with NayaBirth</p>
         <p>Generated: ${new Date().toLocaleDateString()}</p>
       </div>
   `

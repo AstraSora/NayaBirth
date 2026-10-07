@@ -8,8 +8,14 @@ import { BirthPlanProvider } from './context/BirthPlanContext'
 import { AssessmentProvider } from './context/AssessmentContext'
 import { ChecklistProvider } from './context/ChecklistContext'
 import { OnboardingProvider } from './context/OnboardingContext'
-import { AnalyticsProvider } from './context/AnalyticsContext'
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/600.css'
+import '@fontsource/inter/700.css'
+import { removeLegacyTracking } from './lib/legacyCleanup'
 import './index.css'
+
+removeLegacyTracking()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -20,9 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <BirthPlanProvider>
               <AssessmentProvider>
                 <ChecklistProvider>
-                  <AnalyticsProvider>
-                    <App />
-                  </AnalyticsProvider>
+                  <App />
                 </ChecklistProvider>
               </AssessmentProvider>
             </BirthPlanProvider>

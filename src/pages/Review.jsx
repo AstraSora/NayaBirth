@@ -1,22 +1,20 @@
 import { useNavigate } from 'react-router-dom'
 import { useBirthPlan } from '../context/BirthPlanContext'
-import { useAnalytics } from '../hooks/useAnalytics'
 import { Header } from '../components/layout/Header'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent, CardHeader } from '../components/ui/Card'
 import questionsData from '../data/questions.json'
+import { PlanPrivacyNote } from '../components/ui/PlanPrivacyNote'
 
 export function Review() {
   const navigate = useNavigate()
   const { responses } = useBirthPlan()
-  const { trackBirthPlanDownloaded } = useAnalytics()
 
   const sections = questionsData.sections
 
   const handleDownloadPDF = async () => {
     const { generatePDF } = await import('../lib/pdf')
     await generatePDF(responses, sections)
-    trackBirthPlanDownloaded()
   }
 
   const getDisplayValue = (question, value) => {
@@ -54,14 +52,7 @@ export function Review() {
           </p>
         </div>
 
-        {/* Save reminder - plans are not stored, patient keeps their own copy */}
-        <div className="mb-6 p-4 bg-sky-50 border border-sky-200 rounded-xl text-sm text-foreground-secondary">
-          <p className="font-medium text-foreground mb-1">📄 Save a copy to keep your plan</p>
-          <p>
-            Your birth plan isn't stored in the app. Use <span className="font-medium">Save / Print</span> below
-            to save it to your device or print a copy to bring to your appointments.
-          </p>
-        </div>
+        <PlanPrivacyNote className="mb-6" />
 
         {/* Sections Summary */}
         <div className="space-y-4">

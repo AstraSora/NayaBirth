@@ -21,9 +21,6 @@ export const STORAGE_KEYS = {
   // Checklist
   HOSPITAL_CHECKLIST: 'nayabirth_hospital_checklist',
 
-  // Analytics/Study
-  STUDY_PROPERTIES: 'nayabirth_study_properties',
-
   // Theme
   DARK_MODE: 'darkMode'
 }

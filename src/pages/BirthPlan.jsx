@@ -1,12 +1,11 @@
-import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useBirthPlan } from '../context/BirthPlanContext'
-import { useAnalytics } from '../hooks/useAnalytics'
 import { Header } from '../components/layout/Header'
 import { WizardNavigation, SectionTabs } from '../components/layout/Navigation'
 import { ProgressBar } from '../components/ui/ProgressBar'
 import { QuestionRenderer } from '../components/sections/QuestionRenderer'
 import questionsData from '../data/questions.json'
+import { PlanPrivacyNote } from '../components/ui/PlanPrivacyNote'
 
 export function BirthPlan() {
   const navigate = useNavigate()
@@ -17,19 +16,9 @@ export function BirthPlan() {
     prevSection,
     responses,
   } = useBirthPlan()
-  const { trackBirthPlanStarted, trackBirthPlanSectionCompleted } = useAnalytics()
-  const hasTrackedStart = useRef(false)
 
   const sections = questionsData.sections
   const section = sections[currentSection]
-
-  // Track birth plan started (once per session)
-  useEffect(() => {
-    if (!hasTrackedStart.current) {
-      trackBirthPlanStarted()
-      hasTrackedStart.current = true
-    }
-  }, [trackBirthPlanStarted])
 
   const handleBack = () => {
     if (currentSection === 0) {
@@ -40,9 +29,6 @@ export function BirthPlan() {
   }
 
   const handleNext = () => {
-    // Track section completion
-    trackBirthPlanSectionCompleted(section.id, section.title)
-
     if (currentSection === sections.length - 1) {
       navigate('/review')
     } else {
@@ -69,6 +55,12 @@ export function BirthPlan() {
           <ProgressBar current={currentSection} total={sections.length} />
         </div>
       </div>
+
+      {currentSection === 0 && (
+        <div className="max-w-lg mx-auto px-4 pt-4 w-full">
+          <PlanPrivacyNote />
+        </div>
+      )}
 
       {/* Section tabs */}
       <div className="bg-surface border-b border-subtle">

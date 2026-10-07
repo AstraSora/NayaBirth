@@ -61,7 +61,7 @@ export function AvailabilityNote({ availability }) {
   if (availability === 'unavailable') {
     return (
       <p className="text-xs text-red-600 mt-1">
-        This option is not currently available at UCI Health.
+        If you're delivering at a UCI Medical Center, this option is not currently available.
       </p>
     )
   }
@@ -69,7 +69,7 @@ export function AvailabilityNote({ availability }) {
   if (availability === 'ask') {
     return (
       <p className="text-xs text-amber-600 mt-1">
-        Check with your UCI care team about availability.
+        If you're delivering at a UCI Medical Center, check with your care team about availability.
       </p>
     )
   }

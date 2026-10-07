@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAnalytics } from '../hooks/useAnalytics'
 import { Header } from '../components/layout/Header'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
@@ -10,7 +9,6 @@ import { loadKickSessions, saveKickSessions, clearKickSessions } from '../lib/st
 
 export function KickCounter() {
   const navigate = useNavigate()
-  const { trackToolUsed } = useAnalytics()
   const [kicks, setKicks] = useState(0)
   const [isActive, setIsActive] = useState(false)
   const [elapsedTime, setElapsedTime] = useState(0)
@@ -65,13 +63,6 @@ export function KickCounter() {
     const updatedSessions = [session, ...sessions].slice(0, MAX_KICK_SESSIONS)
     setSessions(updatedSessions)
     saveKickSessions(updatedSessions)
-
-    // Track tool usage
-    trackToolUsed('kick_counter', {
-      kicks_recorded: kicks,
-      session_duration_seconds: elapsedTime,
-      goal_reached: kicks >= KICK_GOAL
-    })
 
     // Reset
     setKicks(0)

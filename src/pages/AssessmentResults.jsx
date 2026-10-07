@@ -1,7 +1,6 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAssessment } from '../context/AssessmentContext'
-import { useAnalytics } from '../hooks/useAnalytics'
 import { Header } from '../components/layout/Header'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
@@ -15,8 +14,6 @@ export function AssessmentResults() {
     epdsData,
     reset
   } = useAssessment()
-  const { trackEPDSCompleted } = useAnalytics()
-  const hasTrackedCompletion = useRef(false)
 
   const [showCrisis, setShowCrisis] = useState(false)
 
@@ -31,20 +28,7 @@ export function AssessmentResults() {
     if (hasHighRiskAnswer()) {
       setShowCrisis(true)
     }
-
-    // Track EPDS completion (once)
-    if (!hasTrackedCompletion.current) {
-      const result = getScoreCategory()
-      // Map color to category name for privacy-safe tracking
-      const categoryMap = {
-        teal: 'low',
-        coral: 'moderate',
-        red: 'elevated'
-      }
-      trackEPDSCompleted(result.score, categoryMap[result.color] || 'unknown')
-      hasTrackedCompletion.current = true
-    }
-  }, [isComplete, hasHighRiskAnswer, navigate, getScoreCategory, trackEPDSCompleted])
+  }, [isComplete, hasHighRiskAnswer, navigate])
 
   const result = getScoreCategory()
   const { resources } = epdsData

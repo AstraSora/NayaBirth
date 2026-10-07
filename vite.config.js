@@ -9,9 +9,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/*.png', 'illustrations/*.svg'],
       manifest: {
-        name: 'UCI Pregnancy Hub - NayaBirth',
-        short_name: 'UCI Pregnancy',
-        description: 'Your pregnancy resource center - birth plan, tools, and resources for UCI Family Medicine patients',
+        name: 'NayaBirth - Pregnancy Hub',
+        short_name: 'NayaBirth',
+        description: 'Your pregnancy resource center - birth plan, tools, and resources',
         theme_color: '#F8A5A5',
         background_color: '#F0F9FF',
         display: 'standalone',
@@ -31,23 +31,7 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365
-              },
-              cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
-          }
-        ]
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}']
       }
     })
   ]

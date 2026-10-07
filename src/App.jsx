@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useOnboarding } from './context/OnboardingContext'
-import { usePageTracking } from './hooks/usePageTracking'
 import { Hub } from './pages/Hub'
 import { BirthPlan } from './pages/BirthPlan'
 import { Review } from './pages/Review'
@@ -34,9 +33,6 @@ function OnboardingGuard({ children }) {
 }
 
 function App() {
-  // Track page views automatically
-  usePageTracking()
-
   return (
     <OnboardingGuard>
       <Routes>

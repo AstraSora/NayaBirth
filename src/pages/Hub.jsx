@@ -4,7 +4,6 @@ import { ToolCard } from '../components/hub/ToolCard'
 import { ResourceCard } from '../components/hub/ResourceCard'
 import { useOnboarding } from '../context/OnboardingContext'
 import { getRecommendedTools } from '../lib/getRecommendedTools'
-import UCIFamilyMedicineLogo from '../assets/uci-family-medicine-logo.png'
 
 export function Hub() {
   const [showAllTools, setShowAllTools] = useState(false)
@@ -68,7 +67,7 @@ export function Hub() {
             <div className="flex items-center gap-3">
               <span className="text-3xl" aria-hidden="true">🌸</span>
               <div>
-                <h1 className="font-bold text-foreground text-lg leading-tight">UCI Pregnancy Hub</h1>
+                <h1 className="font-bold text-foreground text-lg leading-tight">NayaBirth</h1>
                 <p className="text-xs text-foreground-muted">Your pregnancy resource center</p>
               </div>
             </div>
@@ -95,6 +94,9 @@ export function Hub() {
           </h2>
           <p className="text-foreground-secondary">
             {welcomeMessage.subtitle}
+          </p>
+          <p className="text-xs text-foreground-muted mt-3">
+            General information based on ACOG guidance. Not medical advice. Follow the instructions of your own prenatal care team.
           </p>
         </div>
 
@@ -250,6 +252,9 @@ export function Hub() {
           <h3 id="quicklinks-heading" className="text-lg font-semibold text-foreground mb-4">
             Quick Links
           </h3>
+          <p className="text-sm text-foreground-muted mb-3 -mt-2">
+            UCI numbers and links apply if you're delivering at a UCI Medical Center.
+          </p>
           <div className="bg-surface rounded-2xl shadow-card divide-y divide-subtle overflow-hidden">
             {/* Emergency link at top with prominent styling */}
             <QuickLink
@@ -278,21 +283,11 @@ export function Hub() {
 
       {/* Footer */}
       <footer className="max-w-lg mx-auto px-4 pb-8 text-center text-sm text-foreground-muted safe-area-bottom">
-        <div className="flex justify-center mb-3">
-          <div className="inline-flex flex-col items-center gap-1 px-4 py-2 bg-white rounded-2xl shadow-sm">
-            <span className="text-xs text-foreground-muted">In partnership with</span>
-            <img
-              src={UCIFamilyMedicineLogo}
-              alt="UCI Family Medicine"
-              className="h-20"
-            />
-          </div>
-        </div>
         <p className="mb-2">
-          For informational purposes only. Always consult your healthcare provider.
+          Independent resource. Not affiliated with or endorsed by UCI Health.
         </p>
         <p className="text-xs text-foreground-muted">
-          © {new Date().getFullYear()} UCI Family Medicine • NayaBirth
+          © {new Date().getFullYear()} NayaBirth
         </p>
       </footer>
     </div>

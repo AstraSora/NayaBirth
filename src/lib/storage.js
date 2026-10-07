@@ -237,23 +237,6 @@ export function clearChecklistState() {
 }
 
 /**
- * Load study properties
- * @param {Object} defaults - Default properties
- * @returns {Object} Study properties
- */
-export function loadStudyProperties(defaults = {}) {
-  return getStorageItem(STORAGE_KEYS.STUDY_PROPERTIES, defaults)
-}
-
-/**
- * Save study properties
- * @param {Object} properties - Properties to save
- */
-export function saveStudyProperties(properties) {
-  setStorageItem(STORAGE_KEYS.STUDY_PROPERTIES, properties)
-}
-
-/**
  * Load dark mode preference
  * @returns {boolean|null} Dark mode preference or null if not set
  */

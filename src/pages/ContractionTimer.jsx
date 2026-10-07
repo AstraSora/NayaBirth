@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAnalytics } from '../hooks/useAnalytics'
 import { Header } from '../components/layout/Header'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
@@ -10,14 +9,12 @@ import { loadContractions, saveContractions, clearContractions } from '../lib/st
 
 export function ContractionTimer() {
   const navigate = useNavigate()
-  const { trackToolUsed } = useAnalytics()
   const [isTimingContraction, setIsTimingContraction] = useState(false)
   const [contractionStart, setContractionStart] = useState(null)
   const [currentDuration, setCurrentDuration] = useState(0)
   const [contractions, setContractions] = useState([])
   const [show511Alert, setShow511Alert] = useState(false)
   const intervalRef = useRef(null)
-  const sessionStartTime = useRef(null)
 
   // Load contractions from localStorage
   useEffect(() => {
@@ -74,9 +71,6 @@ export function ContractionTimer() {
 
   const startContraction = useCallback(() => {
     // Track session start time for first contraction
-    if (!sessionStartTime.current) {
-      sessionStartTime.current = Date.now()
-    }
     setIsTimingContraction(true)
     setContractionStart(Date.now())
     setCurrentDuration(0)
@@ -105,20 +99,10 @@ export function ContractionTimer() {
   }, [contractionStart, contractions])
 
   const handleClearAll = useCallback(() => {
-    // Track tool usage before clearing
-    if (contractions.length > 0 && sessionStartTime.current) {
-      const sessionDuration = Math.round((Date.now() - sessionStartTime.current) / 1000)
-      trackToolUsed('contraction_timer', {
-        contractions_timed: contractions.length,
-        session_duration_seconds: sessionDuration
-      })
-    }
-
     setContractions([])
     clearContractions()
     setShow511Alert(false)
-    sessionStartTime.current = null
-  }, [contractions, trackToolUsed])
+  }, [])
 
   // Calculate averages
   const getAverages = () => {
